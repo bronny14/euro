@@ -1,0 +1,79 @@
+$icons: (0:0)
+$icons: map-merge($icons,(Download: (X: -36px, Y:-33px, W: 32px, H: 28px, TW: 96px, TH: 91px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(i-check: (X: 0px, Y:-71px, W: 28px, H: 20px, TW: 96px, TH: 91px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(note: (X: -72px, Y:0px, W: 24px, H: 24px, TW: 96px, TH: 91px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(print: (X: 0px, Y:0px, W: 32px, H: 31px, TW: 96px, TH: 91px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(reload: (X: 0px, Y:-35px, W: 29px, H: 32px, TW: 96px, TH: 91px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(wallet: (X: -36px, Y:0px, W: 32px, H: 29px, TW: 96px, TH: 91px, IMG: '../img/icons.png')))
+
+
+// Gets an attribute from the sass map
+@function icon-attr($icon, $attr)
+	$icon: map-get($icons, $icon)
+	@return map-get($icon, $attr)
+
+@mixin sprite($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	width: icon-attr($iconName, W)
+	height: icon-attr($iconName, H)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-position($iconName)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-retina($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	$width: icon-attr($iconName, W)
+	$height: icon-attr($iconName, H)
+	width: $width/2
+	height: $height/2
+	$x: icon-attr($iconName, X)
+	$y: icon-attr($iconName, Y)
+	background-position: $x/2 $y/2
+	$tw: icon-attr($iconName, TW) 	
+	$th: icon-attr($iconName, TH)
+	background-size: $tw/2 $th/2  	
+
+
+@mixin s($i)
+	+sprite($i)
+@mixin sp($i)
+	+sprite-position($i)
+@mixin sr($i)
+	+sprite-retina($i)	
+
+//
+//.icon-Download
+//	width: 32px
+//	height: 28px
+//	background-image: url('../img/icons.png')
+//	background-position: -36px -33px
+//
+//.icon-i-check
+//	width: 28px
+//	height: 20px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -71px
+//
+//.icon-note
+//	width: 24px
+//	height: 24px
+//	background-image: url('../img/icons.png')
+//	background-position: -72px 0px
+//
+//.icon-print
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px 0px
+//
+//.icon-reload
+//	width: 29px
+//	height: 32px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -35px
+//
+//.icon-wallet
+//	width: 32px
+//	height: 29px
+//	background-image: url('../img/icons.png')
+//	background-position: -36px 0px
+//

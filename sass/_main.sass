@@ -1,0 +1,5379 @@
+input[type='number']
+	-moz-appearance: textfield;
+input[type='submit']
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none; 
+input::-webkit-clear-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+	-webkit-appearance: none;
+input[type="password"]
+	font: small-caption
+	line-height: 1.65
+input
+	box-shadow : none
+	font-family: $os
+	color: #000
+	+rem(font-size,16px)
+	+placeholder 
+		font-family: $os
+	&::-ms-clear
+		display: none;
+svg
+	display: inline-block
+	max-width: 100%
+	max-height: 100%
+button
+	background: 0 0
+a
+	text-decoration: none
+	transition: color .3s
+	color: $org
+*
+	+box
+	-webkit-tap-highlight-color: transparent
+	+placeholder 
+		font-family: $os
+		+rem(font-size,16px)
+
+textarea
+	resize: none
+
+	+placeholder 
+		font-family: $os
+		+rem(font-size,14px)
+ul
+	li>a 
+		display: inline-block
+		width: 100%
+html
+	font-size: 16px
+	line-height: 1
+	overflow-x: hidden
+	+r(1150)
+		font-size: 15px
+  // +r(1280)
+  //   font-size: 14px
+  // +r(991)
+  //   font-size: 16px
+  //   // &:not(.bx-ios)
+  //   overflow-x: hidden
+  // +r(769)
+  //   font-size: 15px
+	// +r(600)
+	// 	font-size: 15px
+body
+	background-color: #fff
+	+box
+	+font-smoothing
+	text-rendering: optimizeLegibility
+	font-family: $os
+	min-width: 320px
+	-webkit-overflow-scrolling: touch;
+	& ::selection
+		background-color: $org
+		color: $white
+	& ::-moz-selection
+		background-color: $org
+		color: $white
+
+body, .out
+	width: 100%
+	height: 100%
+	// overflow-x: hidden
+	&.modal_open
+		position: fixed
+	&.open
+		+r(991)
+			overflow: hidden
+	&.menu-open
+		+r(1024)
+			position: fixed
+			// overflow: hidden
+			// width: 100%
+			// height: 100%
+.loading
+	// position: relative
+	// &:before
+	// 	content: ''
+	// 	display: inline-block
+	// 	+coverdiv
+	// 	background-color: #FFF
+	// 	opacity: .7
+	// 	z-index: 8
+	*
+		opacity: .8
+		+tr(opacity .2s)
+		pointer-events: none
+.out
+	position: relative
+	// +r(768)
+	// 	overflow-x: hidden
+.page__header--wrap
+	position: fixed
+	left: 0
+	width: 100%
+	right: 0
+	top: 0
+	z-index: 20
+	visibility: hidden
+	transform: translateX(0)
+
+#logob
+	width: 100%
+	height: 100%
+	display: inline-block
+	
+.page
+	&__wrapper
+		background-color: #fff
+		display: flex
+		flex-wrap: nowrap
+		flex-direction: column
+		min-height: 100%
+		overflow: hidden
+	&__outer
+		width: 100%
+		display: block
+		height: 100%
+	&__header
+		// background: $bl
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		align-items: center
+		position: relative
+		visibility: visible
+		+tr(transform .3s)
+		// backface-visibility: hidden
+	&__footer
+		position: relative
+		flex: 0 0 auto
+		background-color: #e3ecf2
+		flex-flow: row wrap
+	&__content
+		// +rem(padding,0 0 0100px)
+		flex: 1 0 auto
+		width: 100%
+		* 
+		+rm(768)
+			+scrollbar
+				+rem(width,4px)
+			::-webkit-scrollbar-thumb 
+				+rem(width,6px)
+				+rem(border-radius,3px)
+				background: #888888
+				cursor: pointer
+.m-logo
+	display: inline-block
+	width: 15.5%
+	+rem(max-width,202px)
+	padding-bottom: 7%
+	+contain
+	vertical-align: middle
+
+.title
+	color: $blk
+	font-weight: bold
+	line-height: 0.842
+	&.h1
+		+rem(font-size,38px)
+	&.h2
+		+rem(font-size,22px)
+		line-height: 1.455;
+	&.h3,&.h4
+		color: $textTitle
+		line-height: 2;
+		+rem(font-size, 20px)
+		font-weight: 400
+	&.h4
+		+rem(font-size,16px)
+		line-height: 1.625;
+.box
+	+rem(max-width,1210px)
+	width: 100%
+	display: block
+	margin: 0 auto
+	+padlr(15px)
+	position: relative
+	
+.wrapper
+	// overflow: hidden
+	&.gray 
+		background-color: #f0f4f7
+//=====================================//
+//             header styles
+//=====================================//
+#slide-line
+	display: inline-block
+	height: 3px
+	background-color: $org
+	position: absolute;
+	+rem(bottom,-6px)
+	+r(1024)
+		display: none
+.page
+	&__header
+		&:not(.is-hidden)
+			.dropdown-tel-wrapp
+				animation: fadein .5s
+		&.menu-open
+			.header-bottom-mobnav,.m-logo
+				z-index: 110
+			.header-bottom-nav
+				display: none
+		&.is-hidden
+			+r(1024)
+				.header-bottom
+					+rem(height,55px)
+					&:before
+						opacity: 0
+					.m-logo
+						+rem(width, 150px)
+
+					&-nav
+						transform: translateY(-20%)
+						opacity: 0
+						visibility: hidden
+			+r(1260)
+				.m-logo
+					margin-left: 0
+				.header-bottom-menu
+					white-space: nowrap
+					+rem(margin-left, 15px)
+				.header-bottom-menu-item a
+					+padlr(16px)
+				.dropdown-tel-wrapp
+					+rem(max-width,200px)
+					.dropdown-tel-item 
+						+rem(font-size,17px)
+						+rem(padding, 20px )
+			+rm(1025)
+				transform: translateY(-3.75rem)
+				#slide-line
+					bottom: 0
+				.header-bottom
+					background-color: $bl
+					.m-logo
+						padding-bottom: 3%
+						+rem(max-width, 200px)
+						+rem(margin-top,-5px)
+				.top-nav-botton.fixed
+					transform: translateY(3.75rem)
+					border-left-color: #2e72d0
+					z-index: 2
+				.header
+					&-bottom
+						+rem(height,60px)
+						&-inner
+							max-width: 100%
+							+rem(padding-right,195px)
+						&-menu-item
+							a 
+								+rem(padding-top,0px)
+						&-contact
+							+rem(padding-top,15px)
+							+rem(width,350px)
+						&-nav
+							margin-left: 0
+				.dropdown-select-wrapp,.dropdown-tel-wrapp
+					height: auto
+					.dropdown-target
+						+rem(margin-top,-15px)
+				.dropdown-tel-content
+					background-color: $bl
+				.dropdown-tel-inner
+					+rem(max-height,60px)
+					transition-delay: .3s
+					animation: fadein .5s forwards
+					&:hover
+						+rem(max-height,180px)
+				.dropdown-tel-item
+					+rem(padding,17px 30px)
+
+								
+				.dropdown-tel-wrapp
+					+rem(width,238px)
+					+rem(margin-top,-15px)
+				// .dropdown-select-wrapp
+				// 	+rem(margin-right,-25px)
+@keyframes fadein
+	0% 
+		opacity: 0
+	50% 
+		opacity: 0
+	90%
+		opacity: 1
+.header
+	&-bottom
+		width: 100%
+		+rem(height,65px)
+		// +rem(height,60px)
+		background-color: transparent 
+		+tr(background-color .3s)
+		+r(1024)
+			+rem(height,80px)
+			+tr(height .3s)
+			background-color: $bl
+			position: relative
+			&:before
+				content: ''
+				display: inline-block
+				+rem(left,15px)
+				+rem(right,15px)
+				bottom: 0
+				height: 1px
+				background-color: #9fbacb
+				+tr(opacity .3s)
+				position: absolute
+				z-index: 150
+		+r(600)
+			&:before
+				+rem(bottom,12px)
+		.m-logo
+			+rem(max-width,225px)
+			width: 20%
+			background-position: left center
+			+rem(margin-left,5px)
+			// +tr(padding-bottom .3s)
+			position: relative
+			height: 100%
+			padding-bottom: 0
+			+vertical
+			img
+				display: inline-block
+				max-width: 100%
+				vertical-align: middle
+				+rem(margin-top,15px)
+				// +rem(margin-top,20px)
+				// position: absolute
+				// left: 0
+				// top: 0
+				// width: 100%
+				// height: 100%
+				// object-fit: contain
+				// +rem(padding,20px 0)
+			+r(1024)
+				+tr(width .3s)
+				img
+					+rem(margin-top,-8px)
+		&-mobnav
+			font-size: 0
+			width: 50%
+			text-align: right
+			
+			+rm(1025)
+				display: none
+			&-btn 
+				cursor: pointer;
+				&.active
+					.navTrigger i 
+						&:first-child
+							animation: inT .8s forwards
+						&:nth-child(2)
+							animation: inM .8s forwards
+						&:nth-child(3)
+							animation: inBtm .8s forwards
+			&-acc,&-btn 
+				display: inline-block
+				+rem(width,82px)
+				vertical-align: top
+				height: 100%
+				position: relative
+				text-align: center
+				+r(600)
+					width: 50%
+					+rem(max-width,82px)
+				+r(440)	
+					width: 40%
+				.header-btn-inner
+					+coverdiv
+					+vertical
+					+rem(padding, 16px 0)
+					text-align: right
+				svg 
+					display: inline-block
+					width: 100%
+					height: 100%
+					stroke: $white
+					overflow: visible
+					vertical-align: middle
+					+rem(max-height, 25px)
+					
+				.navTrigger
+					+rem(width,33px)
+					+rem(height,23px)
+					margin: auto;
+					display: inline-block
+					vertical-align: middle
+					will-change: transform;
+					i 
+						background-color: #fff;
+						border-radius: 2px;
+						content: "";
+						display: block;
+						width: 100%;
+						height: 2px;
+						&:first-child
+							animation: outT .8s backwards;
+							animation-direction: reverse;
+						&:nth-child(2)
+							margin: 8px 0;
+							animation: outM .8s backwards;
+							animation-direction: reverse;
+						&:nth-child(3)
+							animation: outBtm .8s backwards;
+							animation-direction: reverse;
+				
+		&-inner
+			height: 100%
+			width: 100%
+			display: flex
+			flex-flow: row nowrap
+			justify-content: space-between
+			overflow: visible
+			.m-logo
+				+r(1024)
+					+rem(width, 200px)
+					padding: 0
+					height: 100%
+					margin-left: 0
+				+r(600)
+					width: 45%
+					+rem(max-width, 175px)	
+		&-nav
+			+rem(margin-left,-42px)
+			height: 100%
+			position: relative
+			+r(1024)
+				position: absolute
+				+rem(bottom, -50px)
+				+rem(right,10px)
+				width: calc(100% - (.625rem * 2))
+				text-align: center
+				transition: transform .3s, opacity .3s, visibility .3s
+				transform: none
+		&-menu
+			font-size: 0
+			height: 100%
+			+r(600)
+				display: flex
+				flex-flow: row nowrap
+				justify-content: space-between
+			&-item
+				height: 100%
+				display: inline-block
+				vertical-align: top
+				height: 100%
+				&:nth-of-type(n+5)
+					display: none
+				+r(600)
+					a
+						+padlr(10px)
+						+rem(padding-top,16px)
+						+rem(padding-bottom,16px)
+				+r(420)
+					a 
+						+padlr(4px)
+						span 
+							+rem(font-size,13px)
+				a 
+					line-height: 1;
+					color: $white
+					+padlr(20px)
+					height: 100%
+					+vertical
+					display: inline-block
+					width: 100%
+					+rem(padding-top,34px)
+					+tr(color .3s)
+					&:hover
+						color: $org
+					span 
+						display: inline-block
+						vertical-align: middle
+						+rem(font-size,16px)
+						
+		&-contact
+			width: 310px
+			// height: 1px
+			+rem(padding-top,34px)
+			display: flex
+			flex-flow: row nowrap
+			justify-content: space-between
+			+r(1024)
+				display: none
+			.dropdown-select-wrapp,.dropdown-tel-wrapp
+				// display: inline-block
+				// vertical-align: top
+				// min-height: 1px
+				
+	&-top
+		background-color: #283342
+		width: 100%
+		+rem(height,60px)
+		+r(1024)
+			display: none
+		&-inner
+			height: 100%
+			width: 100%
+			display: flex
+			flex-flow: row nowrap
+			justify-content: space-between
+		&-nav
+			height: 100%
+			position: relative
+			&-menu
+				font-size: 0
+				height: 100%
+				display: inline-block
+				vertical-align: top
+				+rem(margin-right,24px)
+			.top-nav-item.top-link
+				&:hover,&.active
+					span 
+						color: $white
+					svg
+						stroke: $white
+			.top-nav-botton.top-link
+				&:hover,&.active
+					span 
+						color: $white
+					svg
+						stroke: $white
+		.top-nav-item
+			+padlr(14px)
+
+		.top-nav-botton
+			border-left: 1px solid #46535b
+			+padlr(30px)
+			+rem(min-width,186px)
+			+r(1280)
+				+padlr(15px)
+				+rem(min-width,176px)
+			svg
+					stroke: #d9dfec
+			&:hover,&.active
+				span 
+					color: $white
+			&:not(.fixed)
+				// +rem(margin-right, 195px)
+			&.fixed
+				+tr(transform .3s)
+				position: relative
+				z-index: 2
+
+				// position: fixed
+				// right: 0
+				// top: 0
+				// z-index: 5
+				// +rem(height,60px)
+				span
+					color: #d9dfec
+				svg
+					stroke: #d9dfec
+
+		.top-link
+			height: 100%
+			+vertical
+			text-align: center
+			display: inline-block
+			vertical-align: top
+			transition: background-color .3s
+			cursor: pointer
+			+nosel
+			span 
+				display: inline-block
+				vertical-align: middle
+				+rem(font-size,13px)
+				color: $grayy
+				transition: color .3s
+			svg
+				display: inline-block
+				vertical-align: middle
+				+rem(width,16px)
+				+rem(height,16px)
+				+rem(margin-top,-2px)
+				+rem(margin-right,11px)
+				+tr(stroke .3s)
+				stroke: $grayy
+			&:hover,&.active
+				background-color: #1f2631
+				span 
+					color: $grayy
+			&.active
+				pointer-events: none
+	&-lang
+		font-size: 0
+		.header-lang-item
+			+rem(height,60px)
+			span
+				color: $white
+		&-item
+			+rem(width,60px)
+.dropdown-tel-item
+	span 
+		position: relative
+		&:before
+			height: 1.5px
+			display: inline-block
+			content: ''
+			position: absolute
+			left: 0
+			width: 100%
+			bottom: 0
+			background-image: linear-gradient(90deg,$org 0,hsla(0,0%,100%,0) 30%);
+			background-position: bottom;
+			background-size: 6px 2px;
+			background-repeat: repeat-x;
+	&:hover
+		span 
+			&:before
+				display: none
+//=====================================//
+//             header mobile menu
+//=====================================//
+.header-mobile
+	&-menu
+		position: fixed
+		left: 0
+		top: 0
+		height: 100vh
+		width: 100vw
+		z-index: 100
+		background-color: transparentize($bl, .7)
+		text-align: right
+		opacity: 0
+		visibility: hidden
+		transition: opacity .25s,visibility .25s
+		transition-delay: .25s
+		&.active
+			transition-delay: 0s
+			opacity: 1
+			visibility: visible
+			.header-mobile-menu-outer
+				transform: none
+				transition-delay: .25s
+		+rm(1025)
+			display: none
+		&-outer
+			+rem(padding-bottom, 20px)
+			height: 100%
+			+rem(padding-top,80px)		
+			background-color: $bl
+			width: 100%
+			display: inline-block
+			+rem(max-width, 420px)
+			transform: translateX(100%)
+			transition-delay: 0s
+			+tr(transform .25s)
+			+vertical
+		&-inner
+			overflow-y: auto
+			max-height: 88%
+			+padlr(16px)
+			+rem(padding-bottom, 30px)
+			display: inline-block
+			width: 100%
+			vertical-align: middle
+			li 
+				display: block
+				text-align: center
+
+//=====================================//
+//         checkbox
+//=====================================//			
+
+.select-item
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	+nosel
+	&:hover,&.hover
+		.select-text
+			transition: color .3s;
+		.select-checked
+			border-color: $focus;
+			transition: border-color .3s ease;
+	.select-label
+		display: inline-block;
+		+rem(min-width, 15px)
+		cursor: pointer;
+		width: 100%;
+		margin-bottom: 0
+		.select-main
+			float: left;
+			position: relative;
+			display: inline-block;
+	.select-text
+		+rem(font-size, 15px)
+		color: $blk2;
+		display: block;
+		overflow: hidden;
+		cursor: pointer;
+		+rem(padding-left, 15px)
+		transition: color .3s;
+		font-weight: 600
+		line-height: 1.6;
+	.select-real
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		bottom: 0
+		right: 0
+		width: 100%
+		height: 100%
+		&:checked +.select-checked:before,&.active +.select-checked:before
+			opacity: 1;
+		&:checked +.select-checked,&.active +.select-checked
+			border: 1px solid #bebabb;
+	.select-checked
+		+rem(width, 22px)
+		+rem(height, 22px)
+		display: block;
+		+rem(margin-top,1px);
+		background: #fff;
+		border: 1px solid #bebabb
+		border-radius: 3px;
+		position: relative;
+		-o-transition: all .1s ease;
+		transition: all .1s ease;
+		&:before
+			content: '';
+			+rem(width, 18px)
+			+rem(height, 18px)
+			background: url(../img/icons/checkbox.svg) no-repeat;
+			display: block;
+			position: absolute;
+			+rem(left, 3px)
+			+rem(bottom, 2px)
+			opacity: 0;
+			transition: all .2s ease;
+.select-check.active:not(.disabled)
+	border-color: $focus
+	border-bottom-left-radius: 0
+	border-bottom-right-radius: 0
+	.arr-down
+		transform: scale(1,-1)
+		svg
+			fill: $org !important
+	.dropdown-target
+		transform: translateY(0)
+		opacity: 1
+		visibility: visible
+.select-check
+	display: inline-block
+	vertical-align: top
+	width: 100%
+	border-width: 1px;
+	border-color: #e3e3e3
+	border-style: solid;
+	+rem(border-radius,3px)
+	+rem(height,40px)
+
+	.arr-down
+		svg
+			fill: #B9C8D1;
+	.selects
+		width: 100%
+		+padlr(15px)
+		color: $blk2
+		font-weight: 600
+		cursor: pointer
+		text-align: left
+		+rem(line-height,38px)
+		font-family: $os
+		position: relative
+		background-color: $white
+		border: none
+		outline: none
+		appearance: none
+		overflow: hidden
+		height: 100%
+		.btn-text
+			+rem(padding-right,4px)
+			display: inline-block
+			+rem(font-size,15px)
+			white-space: nowrap
+			width: 100%
+			text-overflow: ellipsis
+			// overflow-x: hidden
+			overflow: hidden
+			.elem-price-value
+				width: auto
+				height: auto
+				padding: 0
+				color: $org
+				text-transform: uppercase
+				line-height: 1
+
+				font-weight: 600
+				span 
+					padding: 0
+					+rem(padding-right,5px)
+					+rem(padding-left, 5px)
+					color: $org
+					line-height: 1
+			&:not(.active)
+				&:before,&:after
+					content: '--'
+					display: inline-block
+					vertical-align: middle
+					+rem(margin-top,-5px)
+					+rem(font-size,15px)
+					font-weight: 600
+				&:before
+					+rem(padding-right, 3px)
+				&:after
+					+rem(padding-left, 3px)			
+	&.disabled
+		opacity: .95
+		pointer-events: none
+		.selects
+			background-color: #f5f5f5
+	&.error
+		border-color: red
+	div::-webkit-scrollbar
+		border-radius: 0px;
+		width: 5px
+		background-color: #e8edf1
+	div::-webkit-scrollbar-thumb
+		background-color: #ff9829
+	.dropdown-inner
+		+rem(padding-top,10px)
+		+rem(padding-bottom,10px)
+		+padlr(10px)
+		box-shadow: 0px 10px 27px 0px rgba(7, 35, 53, 0.11);
+	.dropdown-content
+		overflow-y: auto
+		+rem(max-height,242px)
+	.dropdown-target
+		+rem(min-width,200px)
+	.select-list
+		font-size: 0
+		.help-block
+			display: none
+	.option,.sort-select-item 
+		display: block
+		position: relative
+		cursor: pointer
+		margin: 0
+		+rem(padding-right,5px)
+		
+		&:hover
+			span 
+				color: $org
+		input
+			position: absolute
+			left: 0
+			right: 0
+			bottom: 0
+			top: 0
+			opacity: 0
+			&:checked ~span			
+				color: $org
+		span, a,.elem-price
+			display: inline-block
+			width: 100%
+			+rem(font-size,15px)
+			font-weight: 600
+			line-height: 1.6;
+			color: $blk2
+			+rem(padding,8px 0)
+			+tr(color .3s)
+			white-space: nowrap
+			overflow: hidden
+			text-overflow: ellipsis
+		.elem-price
+			overflow: hidden
+			white-space: nowrap
+			text-overflow: ellipsis
+			+rem(font-size,12px)
+			font-weight: 400
+			line-height: 1
+			+rem(padding, 7px 0)
+			color: $grayl
+			vertical-align: bottom
+		.elem-price-value
+			width: auto
+			height: auto
+			padding: 0
+			color: $org
+			text-transform: uppercase
+			line-height: 1
+			text-overflow: initial
+			span 
+				padding: 0
+				+rem(padding-right,5px)
+				+rem(padding-left, 5px)
+				color: $org
+				line-height: 1
+				vertical-align: top
+				text-overflow: initial
+				
+.price-total
+	.selects
+		.btn-text
+			.elem-price-value
+				+rem(font-size,15px)
+			+rem(font-size,12px)
+			font-weight: 400
+			color: $grayl
+
+//=====================================//
+//         datepicker
+//=====================================//
+
+.ui-datepicker
+	+nosel
+	z-index: 20 !important
+	.ui-datepicker-calendar
+		td 
+			a 
+				+rem(height,25px)
+	.ui-datepicker-next
+		right: 0
+		transform: rotate(-90deg)
+	.ui-datepicker-prev
+		transform: rotate(90deg)
+
+	.ui-datepicker-prev,.ui-datepicker-next
+		cursor: pointer
+		background-repeat: no-repeat
+		+rem(background-size, 13px 20px)
+		background-position: center
+		background-image: url(../img/icons/strelka.svg)
+	.ui-selectmenu-button
+		+padlr(0)
+		+rem(padding-right,12px)
+		background-image: url(../img/icons/strelka.svg)
+		+rem(background-size, 8px 12px)
+		background-position: right center
+		background-repeat: no-repeat
+		
+select.ui-datepicker-year,select.ui-datepicker-month
+	+rem(max-width,60px)
+	opacity: 0
+	
+//=====================================//
+//         inputs
+//=====================================//	
+
+.input-item
+	display: inline-block
+	vertical-align: top
+	+rem(padding-right,6px)
+	&.s100
+		width: 100%
+		.select-label
+			white-space: normal
+	&.s50
+		width: 50%		
+	&.s33
+		width: 33.33%	
+	&.s25
+		width: 25%	
+		.dropdown-target
+			min-width: 100%
+		.selects
+			+rem(padding-left,7px)
+		.btn-text
+			+rem(font-size,13px)
+			&:before,&:after
+				display: none !important
+				
+.input-wrapper
+	position: relative;
+	+rem(margin-bottom,15px)
+	&.disabled
+		+nosel
+		pointer-events: none
+		opacity: .9
+		.selects
+			background-color: #f5f5f5
+		.input-main
+			background-color: #f5f5f5
+			+placeholder 
+				color: transparent !important
+	&.double
+		font-size: 0
+		.select-check
+			width: 50%
+			display: inline-block
+			vertical-align: top
+			&:nth-child(2)
+				border-bottom-right-radius: 0
+				border-top-right-radius: 0
+			&:nth-child(3)
+				border-bottom-left-radius: 0
+				border-top-left-radius: 0
+			&:nth-child(n + 4)
+				display: none
+			.btn-text
+				+rem(font-size,13px)
+				&:before,&:after
+					+rem(font-size,13px)
+
+	
+	&.has-error
+		.input-main
+			border-color: red
+
+	&.req
+		&>label,.label
+			&:after
+				content: '*'
+				color: $org
+				+rem(font-size,16px)
+				line-height: 0
+				display: inline-block
+				+rem(margin-left,3px)
+				vertical-align: middle
+				font-weight: 100
+				
+	label,.label
+		display: inline-block;
+		width: 100%;
+		+rem(margin-bottom,4px)
+		white-space: nowrap;
+		+rem(font-size,12px)
+		color: $grayy2
+		line-height: 1.714;
+		text-align: left
+		+nosel
+	.input-main
+		border-width: 1px;
+		border-color: #e3e3e3
+		border-style: solid;
+		+rem(border-radius,3px)
+		+rem(min-height,39px)
+		+rem(line-height,38px)
+		width: 100%
+		+padlr(15px)
+		color: $blk2
+		font-weight: 600
+		font-family: $os
+		+rem(font-size,15px)
+		&.datepicker
+			cursor: pointer
+			position: relative
+			z-index: 2
+			+placeholder
+				color: $blk2
+				opacity: 1 
+				font-weight: 700
+			&:valid
+				+placeholder
+					color: $white
+					opacity: 0 
+			&~ svg
+				position: absolute
+				top: 53%
+				pointer-events: none
+				+rem(width,19px)
+				+rem(height,19px)
+				+rem(right, 12px)
+				z-index: 2
+		&:focus
+			border-color: $focus
+		+placeholder
+			color: #c5c5c5
+			+rem(font-size,14px)
+			font-weight: 400
+	textarea.input-main
+		line-height: 1.3
+		+rem(padding-top,10px)
+		+rem(padding-bottom,10px)
+	.help-block
+		position: absolute
+		+rem(bottom, -15px)
+		+rem(font-size,12px)
+		color: red
+		left: 0
+
+.mobile
+	&-header-lang
+		display: block
+		width: 100%
+		text-align: center
+		display: inline-block
+		+rem(font-size,14px)
+		color: $white
+		+rem(margin, 15px 0 )
+		.top-link
+			+rem(padding, 10px)
+			color: $white
+			&:not(:last-child)
+				position: relative
+				span 
+					&:before
+						content: ''
+						position: absolute
+						+rem(right,-1px)
+						+rem(top, 10px)
+						+rem(bottom, 10px)
+						width: 1px
+						background-color: $grayy
+			&:not(.active)
+				span
+					opacity: .7
+
+	&-list
+		+rem(padding,0 0 24px 0)
+		&-wrapper
+			border-bottom: $bby
+		li 
+			a 
+				+rem(font-size,14px)
+				color: rgb(146, 155, 174);
+				line-height: 2.077;
+				+rem(padding, 5px 10px)
+				&:hover
+					+rm(1024)
+						color: $org
+				&:active,&.active
+					color: $org
+
+		&.bold
+			padding: 0
+			li
+				a 
+					+rem(font-size,17px)
+					color: $white
+					line-height: 1.687;
+					+rem(padding, 8px 10px)
+					&:hover
+						+rm(1024)
+							color: $org
+					&:active,&.active
+						color: $org
+	&-soc
+		.soc-wrapp
+			max-width: 120%
+			text-align: center
+			+r(340)
+				+rem(margin, 0 -12px)
+			// +r(340)
+			// 	.soc-wrapp-item
+			// 		+rem(margin, 0 11px)
+	&-contact
+		+rem(padding-top,25px)
+		.info-block-head
+			text-align: center
+		.info-block-link
+			font-weight: 400
+			color: $white
+			position: relative
+.modal-layout
+	display: none
+
+.index-wrapper
+	background-color: $bl
+	+cover
+	// background-size: 400%
+	// background-position: top -1000px right -1000px
+	// background-position: top 55px right 
+	position: relative
+	backface-visibility: hidden
+	// background-size: 100% 
+	background-attachment: fixed
+	// animation: stars 1s 1s ease-in-out forwards 1
+	will-change: background
+	background-size: 100% 
+	background-position: top 55px right
+	z-index: 2
+	+gpu
+	&:after
+		content: ''
+		position: absolute
+		bottom: 0
+		z-index: 0
+		background-color: #f0f4f7
+		left: 0
+		right: 0
+		+rem(height,70px)
+	.promo
+		&-wrapper
+			position: relative
+			z-index: 1
+.page-margin
+	+rem(padding-top,155px)
+	+r(1024)
+		+rem(padding-top,130px)	
+.promo
+	&-wrapper
+		display: flex
+		flex-flow: row nowrap
+		align-items: stretch
+		position: relative
+		z-index: 2
+		&:after
+			content: ''
+			+coverdiv
+			z-index: -1
+			box-shadow: 0px 23px 90px 0px rgba(0, 68, 111, 0.2);
+		+r(850)
+			flex-flow: row wrap	
+			font-size: 0
+			.promo-form,.promo-slider
+				max-width: 100%
+				width: 100%
+			.promo-form
+				order: 2
+				margin-top: -1px
+				.input-item
+					&.s100
+						width: 50%
+						.select-item
+							+rem(margin-top,20px)
+			.promo-slider
+				height: 0
+				padding-bottom: 56.25%
+				position: relative
+				order: 1
+				&-inner
+					position: absolute
+					+coverdiv
+		+r(600)
+			.promo-form
+				.input-item
+					&.s100,&.s50
+						width: 100%
+						.select-item
+							+rem(margin-top,0)		
+				
+	&-form
+		background-color: #FFF	
+		width: 40%
+		+rem(max-width,477px)
+		flex-shrink: 0
+		+rem(padding, 38px 38px 55px 38px)
+		+r(1025)
+			+rem(padding, 30px 30px 45px 30px)
+		+r(600)
+			+rem(padding, 30px 18px 45px 18px)
+		.input-form
+			font-size: 0
+			+rem(margin-right,-6px)
+			+rem(margin-top,30px)
+			.form-footer
+				.link-border
+					+rem(margin, 10px 0 0 40px)
+	&-slider
+		+rem(flex-basis, 400px)
+		flex-grow: 1
+		width: 60%
+		+rem(max-width,707px)
+		position: relative
+		&-inner,&-item
+			height: 100%
+			
+		&-inner
+			+coverdiv
+		.slick-list,.slick-track
+			height: 100%
+		&-item
+			+cover
+			background-position: right center
+		.nav-dots
+			position: absolute
+			+rem(bottom,23px)
+			+rem(right,15px)
+			
+			.slick-dots
+				text-align: right
+.nav-dots
+	display: inline-block
+	width: 100%
+	.slick-dots
+		width: 100%
+		li 
+			display: inline-block
+			vertical-align: top
+			+rem(margin,0 4px)
+			button
+				+rem(width,13px)
+				+rem(height,13px)
+				border: none
+				box-shadow: 0px 1px 4px 0px rgba(1, 42, 68, 0.35);
+			&.slick-active
+				button
+					background-color: $bl
+
+			
+.input-form
+	.form-footer
+		+rem(margin-top,10px)		
+				
+
+.link-border
+	display: inline-block
+	+rem(font-size,15px)
+	font-weight: 600
+	color: $blk2
+	&.gray
+		+rem(font-size,13px)
+		color: $grayy
+		&:hover
+			span
+				color: $org
+		span 
+
+			font-weight: 400
+			&:before
+				background-color: $grayy
+	&.dotted
+		font-weight: 400
+		color: $blk
+		span:before
+			background: linear-gradient(90deg,$org 0,hsla(0,0%,100%,0) 30%);
+			background-position: bottom;
+			background-size: 6px 2px;
+			background-repeat: repeat-x;	
+			height: 2px
+		&:hover
+			+rm(1025)
+				span:before
+					opacity: 0
+					width: 100%
+	span 
+		display: inline-block
+		width: 100%
+		position: relative
+		line-height: 1.6;
+		&:before
+			content: ''
+			display: inline-block
+			height: 1px
+			background-color: $focus
+			width: 100%
+			left: 0
+			position: absolute
+			+rem(bottom, -1px)
+			+tr(width .3s)
+	&:hover
+		+rm(1025)
+			span:before
+				width: 0
+			
+
+
+@keyframes stars
+	0%
+		background-size: 400%
+		background-position: top -1000px right -1000px
+	100%
+		background-size: 100% 
+		background-position: top 55px right
+@keyframes inM
+	50%
+		transform: rotate(0deg)
+		opacity: 1
+	100%
+		transform: rotate(45deg)
+
+@keyframes outM
+	50%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(45deg)
+
+@keyframes inT
+	0%
+		transform: translateY(0px) rotate(0deg)
+		opacity: 1
+	50%
+		transform: translateY(10px) rotate(0deg)
+	100%
+		transform: translateY(10px) rotate(135deg)
+
+@keyframes outT
+	0%
+		transform: translateY(0px) rotate(0deg)
+	50%
+		transform: translateY(10px) rotate(0deg)
+	100%
+		transform: translateY(10px) rotate(135deg)
+
+@keyframes inBtm
+	0%
+		transform: translateY(0px) rotate(0deg)
+		opacity: 1
+	50%
+		transform: translateY(-10px) rotate(0deg)
+	100%
+		transform: translateY(-10px) rotate(135deg)
+
+@keyframes outBtm
+	0%
+		transform: translateY(0px) rotate(0deg)
+	50%
+		transform: translateY(-10px) rotate(0deg)
+	100%
+		transform: translateY(-10px) rotate(135deg)			
+
+
+
+
+//=====================================//
+//             buttons styles
+//=====================================//
+.btn
+	display: inline-block
+	outline: none
+	+nosel
+	cursor: pointer
+	border: 1px solid
+	line-height: 1
+	+rem(font-size,15px)
+	background-color: transparent
+	color: $blk
+	white-space: nowrap
+	border-radius: $br /2 
+	overflow: hidden
+	vertical-align: top
+	font-weight: 400
+	border-color: $org
+	text-align: center
+	appearance: none
+	font-family: $os
+	transition: color .3s ease-in-out, border-color .3s ease-in-out, background-color .3s ease-in-out
+	span 
+		display: inline-block
+		width: 100%
+		height: 100%
+		+rem(padding, 14px 22px)
+		// +rem(letter-spacing, 0.6px)
+	&:hover
+		background-color: $org
+	&.btn-gray
+		border-color: #96b3db
+		text-transform: uppercase
+		font-weight: 600
+		+rem(font-size,13px)
+		span 
+			+rem(padding, 12.5px 34px)
+			+rem(letter-spacing, -0.2px)
+		&:hover
+			background-color: #ecf1f4
+	&.btn-colored
+		color: $white
+		background-color: $org
+		+rem(font-size,13px)
+		font-weight: 700
+		text-transform: uppercase
+		border-radius: $br
+		+rem(min-width, 161.5px)
+		span
+			+rem(padding, 15px 22px)
+			+rem(letter-spacing, 0px)
+		&:hover
+			background-color: $orgl
+			border-color: $orgl
+		&.small
+			+rem(min-width, 180px)
+			span
+				+rem(padding, 12.5px 22px)
+	&.btn-extrasmall
+		+rem(min-width,92px)
+		border-color: $blk
+		text-transform: uppercase
+		font-weight: 600
+		+rem(font-size,10px)
+		span 
+			+rem(padding, 6px 10px)
+		&:hover
+			background-color: transparent
+			color: $bl
+			border-color: $bl
+		&:active
+			color: $org
+		&.blue,&.orange 
+			color: $white
+		&.blue 
+			background-color: $bl 
+			border-color: $bl
+			&:hover
+				background-color: lighten($bl, 20%)
+				border-color: lighten($bl, 20%)
+		&.orange
+			background-color: $org
+			border-color: $org
+			&:hover
+				background-color: $orgl
+				border-color: $orgl
+	&.disabled:not(.btn-extrasmall),&.btn-colored.disabled
+		border-color: $disabled
+		background-color: $disabled
+		color: $white
+		pointer-events: none
+	&.btn-extrasmall.disabled
+		opacity: .5
+		pointer-events: none
+
+
+
+//=====================================//
+//              text styles
+//=====================================//
+
+.text-1
+	+rem(font-size,15px)
+	line-height: 1.75;
+	color: $text
+.text-2
+	+rem(font-size,14px)
+	line-height: 1.43;
+	color: $text
+.text-3
+	+rem(font-size,13px)
+	color: $text
+	line-height: 1.85;
+.text-sm
+	+rem(font-size,13px)
+	line-height: 2;
+	color: $grayf
+.text-bold
+	+rem(font-size,15px)
+	font-weight: 600
+	line-height: 1.6;
+	color: $blk2
+	+tr(color .3s)
+.text-medium
+	color: $blk2
+	+rem(font-size,20px)
+	line-height: 1.4;
+
+
+
+.dropdown-select-wrapp
+	+rem(width,122px)
+	cursor: pointer
+	&:hover
+		transition-delay: .3s
+		box-shadow: 0px 5px 9px 0px rgba(7, 35, 53, 0.25);
+
+.country
+	&-list
+		&-item
+			display: block
+			font-size: 0
+
+		&-link
+			+rem(padding,9px 22px 9px 10px)
+			font-size: 0
+			+tr(background-color .3s)
+			background-color: $bl
+			width: 100%
+			display: block
+			white-space: nowrap
+			&:hover
+				background-color: #275ca5
+	&-img,&-text
+		display: inline-block
+		vertical-align: middle
+
+	&-img
+		+rem(width,16px)
+		+rem(height,11px)
+		img
+			display: block
+			max-width: 100%
+			max-height: 100%
+			margin: 0 auto
+		svg
+			display: block
+			max-width: 100%
+			use 
+				display: inline-block
+				max-width: 100%
+	&-text
+		color: $white
+		+rem(font-size,13px)
+		line-height: 1
+		+rem(padding-left,12px)
+	&-head
+		position: relative
+		
+.arr-down
+	display: inline-block
+	+rem(width,9px)
+	position: absolute
+	// top: 50%
+	top: 0
+	+rem(right,8px)
+	height: 100%
+	+vertical
+	svg
+		// width: 100%
+		stroke: white
+		display: inline-block
+		vertical-align: middle
+		+rem(margin-top,1px)
+.dropdown-tel
+	&-wrapp
+		+rem(width, 185px)
+		position: relative
+		// +rem(margin-right,-15px)
+		// +rem(margin-top,-5px)
+	&-inner
+		position: absolute
+		top: 0
+		right: 0
+		left: 0
+		overflow: hidden
+		transition: max-height .3s, background-color .3s
+		+rem(max-height,33px)
+		transition-delay: .15s
+		&:hover
+			+rem(max-height,165px)
+			background-color: $bl
+
+	&-item
+		display: block
+		+rem(font-size,19px)
+		line-height: 1.263;
+		font-weight: 500
+		+rem(padding, 5px 0px)
+		+rem(letter-spacing,-0.4px)
+		text-align: right
+	&-content
+		+tr(background-color .3s)
+
+.dropdown-trigger
+	position: relative
+	&:hover
+		.arr-down
+			svg
+				transform: scale(1,-1)
+		.dropdown-target
+			transition-delay: .15s
+			opacity: 1
+			visibility: visible
+			transform: translateY(0)
+.js-select-item.active
+	.arr-down
+		svg
+			transform: scale(1,-1)
+	.dropdown-target
+		transition-delay: .15s
+		opacity: 1
+		visibility: visible
+		transform: translateY(0)
+.dropdown-target
+	+gpu
+	position: absolute
+	z-index: 5
+	+rem(margin, 0 -15px -15px -15px)
+	+padlr(15px)
+	// +rem(padding-top,15px)
+	// max-height: 0
+	left: 0
+	right: 0
+	opacity: 0
+	top: 100%	
+	transform: translateY(5%)
+	transition: opacity .25s, transform .25s, visibility .25s
+	visibility: hidden
+	+clr
+	&.arrow-bottom
+		.dropdown-inner
+			position: relative
+			&:after
+				content: ''
+				+arr(26,13, $white, b)
+				position: absolute
+				bottom: -13px
+				left: calc(50% - 13px)
+				filter: drop-shadow( 0px 6px 4px rgba(7, 35, 53, 0.25));
+	&.small-dropdown-target
+		transform: translateY(-5%)
+		.dropdown-inner
+			background: $bl
+			box-shadow: 0px 5px 9px 0px rgba(7, 35, 53, 0.25);
+	.dropdown-inner
+		+rem(margin-bottom,2px)
+		float: right
+		width: 100%
+		font-size: 0
+		background-color: $white
+		box-shadow: 0px 5px 13px 0px rgba(7, 35, 53, 0.11);
+		.dropdown-content
+
+
+
+.page__footer
+	.box
+		position: relative
+
+.footer
+	&-row
+		font-size: 0
+		padding-left: 25%
+		// +rem(padding-right,30px)
+		pointer-events: none
+		// +rem(right,15px)
+		// +rem(left,15px)
+		// +rem(margin-top,-100px)
+		// position: absolute
+		// +rem(bottom, 145px)
+		+r(1040)
+			// +rem(padding-right,20px)
+			padding-left: 0
+			// +rem(margin-top,15px)
+			+rem(bottom, 115px)
+		+r(768)
+			+rem(bottom, 165px)
+		+r(735)
+			.footer-row-pay
+				+rem(margin-top,20px)
+				width: 100%
+				pointer-events: all
+				overflow-x: auto
+				&-inner
+					+rem(min-width,600px)
+					justify-content: space-around
+					+rem(padding-bottom,5px)
+			.footer-row-text
+				width: 100%	
+				text-align: center
+				+padlr(15px)
+		+r(600)
+			position: static
+		&-text,&-pay
+			display: inline-block
+			vertical-align: middle
+		&-text
+			+rem(font-size,12px)
+			line-height: 1.667;
+			color: $grayf
+			width: 33.33%
+			+rem(padding-right,20px)
+		&-pay
+			width: 66.66%
+			&-inner
+				display: flex
+				flex-flow: row nowrap
+				align-items: center
+				justify-content: space-between
+				+r(1040)
+					flex-flow: row wrap
+					.footer-row-pay-item
+						+rem(margin-bottom,15px)
+			&-item
+				+rem(height,25px)
+				+rem(width,67px)
+				img
+					max-height: 100%
+					max-width: 100%
+					display: block
+					margin: 0 auto	
+	&__main
+		display: flex
+		flex-flow: row wrap
+		align-content: flex-start
+		position: relative
+		+r(1130)
+			justify-content: space-between
+		+r(870)
+			flex-flow: column nowrap
+			min-height: 46vh
+			justify-content: flex-start
+	&-main-nav
+		width: 100%
+		font-size: 0
+		+rem(padding-top, 20px)
+		+rem(padding-bottom, 18px)
+		+clr
+		+r(735)
+			+rem(padding-top, 35px)
+		.m-logo
+			+r(768)
+				+rem(width,202px)
+				padding-bottom: 0
+				+rem(height, 60px)
+			+r(544)
+				width: calc(100% - 10rem)
+				padding-bottom: 11%
+				height: 0
+				background-position: left center
+		.btn
+			vertical-align: middle
+			+rem(margin-top,8px)
+			margin-left: 10.5%
+			+r(768)
+				float: right
+				margin-top: 0
+			+r(544)
+				margin-left: 0
+				span
+					+rem(padding, 13px)
+			span 
+				+r(735)
+					font-size: 0
+					&:before
+						content: attr(data-text)
+						+rem(font-size,14px)
+						line-height: 1
+						color: $blk
+						display: inline-block
+						width: 100%
+						text-align: center
+						height: 100%
+		+r(870)
+			order: 2
+			position: relative
+			z-index: 2
+			+rem(padding-bottom,20px)
+			+rem(padding-top,20px)
+	&-dop
+		&-nav
+			flex-shrink: 1
+			font-size: 0
+			width: 100%
+			+r(870)
+				order: 3
+				+rem(padding-bottom,20px)
+				display: block !important
+				flex-basis: 0%
+			// +r(1040)
+			// 	+rem(margin-bottom,60px)
+			+r(600)
+				margin-bottom: 0
+				padding-bottom: 0
+			+r(544)
+				.footer-column-wrap
+					display: flex
+					flex-flow: row wrap
+					.footer-column:first-child
+						order: 2
+					.footer-column:nth-child(2)
+						order: 1
+
+			.footer-column
+				display: inline-block
+				vertical-align: top
+				width: 25%
+				+rem(padding-right,30px)
+				+r(1040)
+					+rem(padding-right,20px)
+				+r(435)
+					&:not(.info-column)
+						.footer-column-list	
+							.footer-column-list-item	
+								a
+									+rem(font-size,12px)
+				+r(544)
+					&:nth-child(2)
+						width: 100%
+						font-size: 0
+						.info-block
+							display: inline-block
+							vertical-align: bottom
+							width: 50%
+						&~.footer-column
+							display: none
+							
+
+				+r(768)
+					&:not(.bold)
+						width: 33.33%
+						padding-bottom: 0
+
+					&:first-child
+						width: 100%
+						.footer-column-list
+							width: 100%
+							border-top: $bby
+							&.bold
+								margin-bottom: 0
+								display: flex
+								flex-flow: row nowrap
+								align-items: center
+								justify-content: space-between
+								.footer-column-list-item
+									// width: 33.33%
+									&:first-child
+										text-align: left
+										a
+											padding-left: 0
+									&:last-child
+										text-align: right
+										a
+											padding-right: 0
+									a
+										+rem(padding, 30px 10px)
+
+							&:not(.bold)
+								.footer-column-list-item
+									display: none
+									margin-bottom: 0
+							.footer-column-list-item
+								display: inline-block
+								vertical-align: top
+								text-align: center
+								
+								
+
+								// text-align: center
+				&-wrap
+					+rem(margin-right,-30px)
+					+r(1040)
+						+rem(margin-right,-20px)
+				&.info-column
+					+rem(margin-top,7px)
+					+rem(padding-bottom,60px)
+				.footer-column-list
+					&.bold
+						.footer-column-list-item
+							a 
+								font-weight: bold;
+								line-height: 1.733;
+								+rem(font-size,15px)
+				&-list
+					+rem(margin-bottom,17px)
+					&-item
+						a 
+							+rem(font-size,14px)
+							color: #000
+							line-height: 1.857;
+							+rem(padding, 5px 0 6px)
+							&:hover
+								color: $org
+	&__footer
+		display: block
+		font-size: 0
+		+rem(padding, 30px 0 34px)
+		+rem(margin-top,30px)
+		border-top: $bbf
+		+r(544)
+			margin-top: 0
+			border-top: none
+			+rem(padding-top,15px)
+		.soc-wrapp
+			position: absolute
+			// +rem(top,54px)
+			top: 9%
+			+rem(right,5px)
+			+r(1040)
+				top: 7%
+			+r(840)
+				top: 6%	
+			+r(768)
+				position: static
+				+rem(margin,0 auto 30px)	
+		+r(1040)
+			+rem(margin-top,15px)
+		+r(600)
+			display: flex
+			flex-flow: column nowrap
+			+rem(padding, 35px 0)
+			align-items: stretch
+			&-developer
+				order: 4
+			&-copy
+				order: 1
+				+rem(padding-top,10px)
+				position: relative
+		&-developer
+			font-size: 0
+			white-space: nowrap
+		&-copy,&-developer
+			display: inline-block
+			vertical-align: top
+			width: 50%
+			+r(600)
+				width: 100%
+				text-align: center
+		&-developer
+			+r(600)
+				min-width: 100%
+				text-align: left
+				+rem(padding, 10px 0)
+		&-developer
+			text-align: right
+.info
+	&-block
+		display: block
+		width: 100%
+		+rem(margin-bottom,30px)
+		&.small
+			+rem(margin-bottom,14px)
+		&-head
+			display: block
+			+rem(font-size,13px)
+			line-height: 1.846;
+			color: $grayy
+		&-link
+			+rem(font-size,14px)
+			line-height: 1.857;
+			color: #000
+			+rem(margin,11px 0)
+			display: block
+			+tr(color .3s)
+			+clr
+
+
+			&.bold
+				font-weight: 600
+			&.descr
+				display: flex
+				flex-flow: row nowrap
+				align-items: flex-end
+				+r(1040)
+					flex-flow: row wrap
+					span 
+						order: 2
+						width: 100%
+					span:not(.main)
+						order: 1
+						line-height: 1
+						padding-left: 0
+				span:not(.main)
+					+rem(font-size,12px)
+					color: $grayf
+					+rem(padding-left,3px)
+					font-weight: 400
+		a 
+			&:hover,&:active
+				color: $org
+
+
+
+//=====================================//
+//              social buttons
+//=====================================//
+.soc
+	&-wrapp
+		+rem(max-width, 282px)
+		&-item
+			display: inline-block
+			vertical-align: top
+			+rem(width,25px)
+			+rem(height,25px)
+			+rem(margin-right,11px)
+			+rem(margin-left,11px)
+			border-radius: 50%
+			+tr(background-color .3s)
+			text-align: center
+			// +vertical
+			position: relative
+			svg
+				vertical-align: middle
+				// +rem(max-height,35px)
+				// transform: scale(1.3)
+				+coverdiv
+				width: 100% !important
+				height: 100% !important
+				use 
+					width: 100%
+					height: 100%
+			&.vk
+				background-color: #526ea8
+				+rm(900)
+					&:hover
+						background-color: #4d74c6
+			&.fb
+				background-color: #405b99
+				+rm(900)
+					&:hover
+						background-color: #284faa
+			&.in
+				background-color: #557fa3
+				+rm(900)
+					&:hover
+						background-color: #387ab2
+			&.gp
+				background-color: #f13830
+				+rm(900)
+					&:hover
+						background-color: #f51a10
+			&.tw
+				background-color: #3eaadf
+				+rm(900)
+					&:hover
+						background-color: #03a9fb
+			&.ok
+				background-color: #f58220
+				+rm(900)
+					&:hover
+						background-color: #ff9000
+			svg
+				+rem(width, 15px)
+				fill: $white
+.footer
+	&-developer
+		font-size: 0
+		&-icon,&-text,
+			display: inline-block
+			vertical-align: middle
+			+rem(margin-left,13px)
+		&-link
+			display: block
+			+r(600)
+				text-align: center
+				
+			.text-sm
+				display: inline-block
+				vertical-align: middle
+			&:hover
+				svg
+					fill: #fa453c
+		&-icon
+			+rem(width, 22px)
+			+rem(height, 22px)
+			+rem(margin-right,-4px)
+			svg
+				fill: #000
+				+tr(fill .3s)
+		&-text
+			color: #000
+			+rem(font-size,13.5px)
+			color: #000
+			font-family: $os
+			font-weight: 800
+			transform: scaleY(0.9)
+			transform-origin: 50%
+			// +rem(margin-top,2px)
+
+.tour-outer
+	+rem(padding-top, 110px)
+	+rem(padding-bottom, 67px)
+	.btn 
+		+rem(padding-top,4px)
+		+rem(padding-bottom,4px)
+	.btn.btn-gray
+		width: 100%
+
+.tour-wrapper
+	
+	
+	+rem(margin-right,-30px)
+	overflow: hidden
+	font-size: 0
+	position: relative
+	.card-item-inner
+		&:hover
+			.card-item-img-inner
+				transform: scale(1.2)
+
+	&~.tour-sort-wrapper
+		position: absolute
+		+rem(left,13px)
+		+rem(top, 43px)
+		z-index: 0
+		// +r(1024)
+		// 	+rem(top, 23px)
+
+	.card-item-inner
+		.card-item-img-inner
+			+tr(transform .3s)
+	+r(1024)
+		+rem(margin-right,-20px)
+		// +rem(padding-top, 70px)
+
+.index-tours
+	+r(920)
+		.card-item
+			&:nth-of-type(n+7)
+				display: none
+	+r(660)
+		.card-item
+			&:nth-of-type(n+4)
+				display: none				
+//=====================================//
+//              small-cards
+//=====================================//
+.card-item
+	display: inline-block
+	vertical-align: top
+	width: 33.33%
+	+rem(padding-right,30px)
+	+rem(margin-bottom,25px)
+	+nosel
+	.small-block
+		position: absolute
+		+rem(top,15px)
+		+rem(left,15px)
+		z-index: 3
+		span 
+			+rem(font-size,10px)
+			font-weight: 600
+			text-transform: uppercase
+			+rem(letter-spacing,0.5px)
+			+padlr(2px)
+	&-bus 
+		width: 50%
+		+rem(margin-bottom,35px)
+		+rem(min-height,180px)
+		display: flex
+		align-self: flex-start
+		.card-item-inner
+			height: 100%
+			&:hover
+				.card-item-content
+					border-color: transparent
+		+r(1100)
+			+rem(padding-right,20px)
+
+		+r(945)
+			width: 100%
+			.card-item-img
+				&-inner
+					height: 0
+					padding-bottom: 100%
+		+r(480)
+			min-height: 0px
+			// +rem(margin,0 -15px 30px)
+			// display: block
+			// width: 100%
+			// padding: 0
+			// .card-item-inner
+			// 	flex-flow: row wrap
+			// .card-item-img
+			// 	width: 100%
+			// 	&-inner
+			// 		padding-bottom: 80%
+			// .card-item-content
+			// 	display: block
+			// 	width: 100%
+			// 	+rem(padding-top,15px)
+			// 	+rem(padding-bottom,15px)
+		+r(380)
+			.card-item-img
+				&-inner
+					padding: 0
+					height: 100%
+		+r(919)
+			width: 100%
+			.card-item-content
+				justify-content: center
+		.card-item-img
+			width: 39%
+			&-inner
+				padding: 0
+				height: 100%
+		.text-sm
+			position: static !important
+			padding: 0 !important
+		.card-item-content
+			justify-content: flex-start
+			// +rem(padding, 25px 22px 16px)
+			+rem(padding-top,20px)
+			+rem(padding-bottom,15px)
+			padding-left: 5%
+			padding-right: 2%
+			border: $bb
+			width: 61%
+			+tr(border-color .3s)
+			+r(1050)
+				padding: 2% 2% 3% 5%
+			.card-item-link
+				+rem(top, 15px)
+				+rem(right, 20px)
+				+r(1050)
+					+rem(top, 10px)
+		.card-bus-content
+			font-size: 0
+			+rem(margin-right,-40px)
+			&-name
+				+rem(font-size,13px)
+				color: rgb(15, 67, 138);
+				line-height: 1.231;
+				+rem(padding-right,70px)
+				// +rem(margin-bottom,5px)
+			&-block
+				display: inline-block
+				vertical-align: top
+				width: 50%
+				+rem(padding-right,40px)
+				padding-top: 7.7%
+				overflow: hidden
+				.text-sm
+					+rem(font-size,12px)
+					line-height: 1.5
+				&:nth-of-type(2)
+					width: 100%
+				&:nth-of-type(n+3)
+					.text-sm
+						+rem(height,36px)
+						overflow: hidden
+				.card-bus-val
+					+rem(font-size,13px)
+					+rem(margin-top,2px)
+					color: $blk2
+					width: 100%
+					display: inline-block
+					overflow: hidden
+					text-overflow: ellipsis
+					white-space: nowrap
+
+	&:last-of-type
+		+rem(margin-bottom,30px)
+	+r(1024)
+		+rem(padding-right,20px)
+		+rem(margin-bottom,20px)
+	+r(1000)
+		width: 50%
+	+r(660)
+		width: 100%
+	&.twoway
+		.card-item-name
+			span 
+				&:first-of-type
+					&:after
+						content: '\21C6'
+	&.oneway
+		.card-item-name
+			span 
+				&:first-of-type
+					&:after
+						// content: '\2192'
+						content: '\27f6'
+	&.backway
+		.card-item-name
+			span 
+				&:first-of-type
+					&:after
+						// content: '\2190'
+						content: '\27f5'
+	&-inner
+		display: flex
+		flex-flow: row nowrap
+		align-items: stretch
+		width: 100%
+		font-size: 0
+		position: relative
+		z-index: 0
+		height: 100%
+		&:hover
+			&:before
+				opacity: 1
+			.card-item-img
+				&:before,&:after
+					transform: skew(-13.7deg) translateX(0)
+				&:after
+					transition-delay: 0.175s
+				&:before
+					transition-delay: 0s
+			.card-item-link
+				opacity: 1
+			.card-item-name
+				color: $bl
+		&:before
+			content: ''
+			+coverdiv
+			box-shadow: 0px 10px 27px 0px rgba(7, 35, 53, 0.11);
+			+tr(opacity .3s)
+			opacity: 0
+			z-index: -1
+	&-img,&-content
+	&-img 
+		width: 45.5%
+		// padding-bottom: 45.5%
+		position: relative
+		overflow: hidden
+		background-color: darken($grayf, 5)
+		flex-shrink: 0
+
+		&-inner
+			// +coverdiv
+			+cover
+			width: 100%
+			padding-bottom: 100%
+			transform: none
+			+tr(transform .2s)
+		&:before,&:after
+			content: ''
+			display: inline-block
+			position: absolute
+			height: 100%
+			width: 50%
+			transform: skew(-13.7deg) translateX(-100%)
+			top: 0
+			bottom: 0
+			transition: transform .3s cubic-bezier(0.75, 0, 0.125, 1)
+		&:before
+			right: 86%
+			z-index: 1
+			background-color: rgb(15, 74, 155);
+			opacity: 0.71;
+			transition-delay: 0.175s
+		&:after
+			background-color: $bl
+			z-index: 2
+			right: 96%
+	&-content 
+		background-color: $white
+		width: 64.5%
+		position: relative
+		// +vertical
+		text-align: left
+		display: flex
+		flex-flow: column nowrap
+		justify-content: flex-end
+		.card-item-link
+			position: absolute
+			+rem(width,28px)
+			+rem(height,28px)
+			opacity: 0
+			+tr(opacity .3s)
+			+rem(right,11px)
+			+rem(top,11px)
+		.text-sm
+			position: absolute
+			width: 100%
+			left: 0
+			right: 0
+			+rem(padding-right, 50px)
+			+rem(padding-left, 20px)
+			+rem(top, 20px)
+			line-height: 1
+			text-align: left
+			color: $grayl
+			+r(1024)
+				+rem(padding-left, 15px)
+			+r(700)
+				+rem(padding-left, 12px)
+	&-value
+		// display: inline-block
+		width: 100%
+		vertical-align: bottom
+		+rem(padding, 35px 20px 13px)
+		+r(700)
+			+rem(padding, 35px 10px 13px 12px)	
+	&-name
+		+tr(color .3s)
+		line-height: 1.2
+		+r(600)
+			+rem(font-size,14px)
+		span 
+			overflow: hidden
+			text-overflow: ellipsis
+			-webkit-line-clamp: 3
+			-webkit-box-orient: vertical
+			display: -webkit-inline-box
+			// display: inline-block
+			&:first-of-type
+				&:after
+					content: ''
+					display: inline-block
+					+rem(font-size,16px)
+					font-weight: 600
+					font-family: $os
+					line-height: 1;
+					color: $blk2
+					+tr(color .3s)
+					+padlr(5px)
+	&-price
+		display: block
+		color: $focus
+		text-transform: uppercase
+		font-weight: 700
+		span 
+			display: inline-block
+			+rem(padding-left,5px)
+
+
+
+//=====================================//
+//              dropdown links
+//=====================================//	
+.tour-sort
+	&-wrapper
+		font-size: 0
+	&-text,&-dropdown
+		display: inline-block
+		vertical-align: top
+	&-text
+		+rem(font-size,20px)
+		color: $blk2
+		line-height: 2;
+		+rem(padding-right,5px)
+		+r(600)
+			+rem(font-size,16px)
+			line-height: 1.3
+		+r(350)
+			display: block
+	&-dropdown
+		.sort-select-title
+			+r(600)
+				line-height: 1.3
+		+r(350)
+			.dropdown-target
+				left: 0
+				+rem(right,-25px)
+.sort-select
+	position: relative
+	border: 0
+	min-height: 0
+	+rem(margin-top,.5px)
+	&.active
+		.sort-select-title span:before
+			display: none
+	&-title
+		color: $focus
+		position: relative
+		+rem(font-size,20px)
+		line-height: 2;
+		cursor: pointer
+		+rem(padding-right,20px)
+		+r(600)
+			+rem(font-size,17px)
+		span 
+			position: relative
+			&:before
+				height: 1px
+				display: inline-block
+				content: ''
+				position: absolute
+				left: 0
+				width: 100%
+				bottom: 0
+				background-image: linear-gradient(90deg,$org 0,hsla(0,0%,100%,0) 25%);
+				background-position: bottom;
+				background-size: 6px 2px;
+				background-repeat: repeat-x;		
+		.arr-down
+			+rem(width,8px)
+			svg
+				fill: $focus
+				stroke: transparent
+	&-item
+		&.active
+			a 
+				color: $org
+	.dropdown-target
+		+rem(min-width,193px)
+		+rem(left, -15px)
+		+rem(margin-top,-5px)
+		+r(700)
+			+rem(left, -35px)
+	
+
+
+.services
+	&-wrapper
+		+rem(margin-left,-13px)
+		+rem(padding-top, 75px)
+		
+		.slick-list
+			+rem(margin-top,-20px)
+			+rem(padding-top,20px)
+		+r(1024)
+			+rem(padding-top, 55px)
+		+r(950)
+			+padlr(60px)
+		+r(700)
+			+padlr(20px)
+			margin-left: 0
+	&-outer
+		+rem(padding-top,80px)
+		+rem(padding-bottom,90px)
+		+r(1024)
+			+rem(padding-top,50px)
+			+rem(padding-bottom,70px)
+		.title.h3
+			+r(1024)
+				text-align: center
+		.nav-arrows
+			+rm(950)
+				display: none
+	&-item
+		+rem(padding-left,13px)
+		+rem(padding-top, 10px)
+		+rem(padding-bottom, 10px)
+		+rem(padding-right,30px)
+		+r(1100)
+			+rem(padding-right,20px)
+		+r(700)
+			text-align: center
+			+padlr(5px)
+		&-inner
+			position: relative
+			&:before
+				content: ''
+				display: inline-block
+				position: absolute
+				left: 0
+				top: -60px
+				bottom: 0
+				width: 1px
+				background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#e9e9e9 20%,#e9e9e9 29%,#e9e9e9 80%,rgba(255,255,255,0) 100%,rgba(255,255,255,0) 100%);
+			+rm(1024)
+				&:hover
+					.services-item-head
+						+rem(margin-left,-13px)	
+					.services-item-img
+						left: 0
+					.services-item-img-arrow
+						transform: scale(1.2)
+			+r(700)
+				&:before
+					display: none
+					
+		&-head
+			position: relative
+			overflow: hidden
+			+rem(min-height,90px)
+			will-change: margin-left
+			+tr(margin-left .3s)
+			+r(700)
+				overflow: visible	
+		&-links
+			+rem(padding-left,122px)
+			+rem(margin-top,10px)
+			+rem(min-height,100px)
+			+r(700)
+				display: none
+			+r(1130)
+				+rem(padding-left,112px)
+		&-link 
+			display: block
+			width: 100%
+			+rem(font-size,13px)
+			line-height: 2.077;
+			color: $bl
+			&:hover
+				color: $org
+		&-img
+			position: absolute
+			+rem(left,-13px)
+			+rem(height,90px)
+			+rem(width,122px)
+			display: block
+			top: 0	
+			will-change: margin-left
+			+tr(left .3s)
+			+r(700)
+				position: static
+				width: 	auto
+				+rem(max-width, 90px)
+				display: inline-block
+			&-inner
+				width: 100%	
+				height: 100%	
+				position: relative
+			&-main 
+				height: 100%
+				+rem(width,80px)
+			&-arrow
+				+rem(width,38px)	
+				+rem(height,38px)
+				position: absolute
+				+rem(left,56px)
+				+rem(top, 24px)	
+				+tr(transform .3s)
+				+r(700)
+					top: 75%
+		&-body,&-footer
+			padding-left: 12%
+			padding-right: 	8%
+			+r(700)
+				padding-left: 5%
+				padding-right: 	5%
+				text-align: center
+		&-body
+			+rem(margin-top,25px)
+			display: block
+			&:hover
+				.link-border
+					span:before
+						width: 0
+			+r(700)
+				+rem(margin-top,37px)
+			.text-1
+				+rem(margin-top,10px)
+				overflow: hidden
+				text-overflow: ellipsis
+				-webkit-line-clamp: 6
+				-webkit-box-orient: vertical
+				display: -webkit-box
+			.text-medium
+				+r(950)
+					line-height: 1.2
+			.link-border
+				+rem(margin-top,40px)
+				+r(700)
+					+rem(margin-top,20px)
+					display: none
+					
+
+
+
+.nav-arrows
+	position: absolute
+	top: 50%
+	left: 0	
+	right: 0
+	+padlr(15px)
+	+clr
+	z-index: 2
+	visibility: hidden
+	+r(700)
+		// +padlr(5px)
+		.slick-arrow
+				+rem(padding, 5px)
+
+	.slick-arrow
+		display: inline-block
+		vertical-align: middle
+		+rem(width,25px)
+		+rem(height,25px)
+		visibility: visible
+		&:hover
+			svg 
+				fill: $org !important
+		&.carousel-next
+			float: right
+		&.carousel-prev
+			float: left
+			transform: scale(-1,1)				
+
+.small-block
+	+rem(font-size,10px)
+	text-transform: uppercase;
+	line-height: 1;
+	color: #000
+	+rem(border-radius, 2px)
+	background-color: $hover
+	display: inline-block
+	font-weight: 400
+	+rem(padding,5px 8px)
+	white-space: nowrap
+	overflow: hidden
+	+rem(max-width,100px)
+	font-family: $os
+	transition: box-shadow .3s, background-color .3s
+	&.promo
+		background-color: #f7d61d
+	&.news
+		background-color: #f7941d
+.news
+	&-nav
+		display: flex
+		flex-flow: row nowrap
+		align-items: center
+		justify-content: space-between
+		+rem(padding-top,85px)
+		+rem(padding-bottom,37px)
+		+r(1024)
+			+rem(padding-top,65px)
+		+r(600)
+			+rem(padding-top,40px)
+		.btn
+			span
+				+padlr(20px)
+				+r(600)
+					+padlr(15px)
+	&-wrapper
+		+rem(padding-bottom,75px)
+		+r(600)
+			+rem(padding-bottom,40px)
+		&-inner
+			display: flex
+			flex-flow: row wrap
+			align-items: stretch
+			+rem(margin-right,-31px)
+			justify-content: flex-start
+			font-size: 0
+	&-item
+		width: 25%
+		+rem(padding-right,30px)
+		+rem(margin-bottom,30px)
+		position: relative
+		display: inline-flex
+		// padding-bottom: 25%
+		+r(950)
+			width: 50%
+		+r(544)
+			width: 100%
+			+rem(margin-bottom,17px)
+		&.big 
+			width: 50%
+			+r(950)
+				width: 100%
+		&-inner
+			// display: flex
+			// flex-flow: row nowrap
+			// align-items: stretch
+			background-color: $white
+			// height: 100%
+			position: relative
+			width: 100%
+			z-index: 0
+			font-size: 0
+			// display: flex
+
+			// +coverdiv
+			+nosel
+			&:hover
+				+rm(1024)
+					&:before
+						opacity: 1
+					.news-item-name
+						color: $org
+			&:active
+				.news-item-name
+					color: $org				
+			&:before
+				content: ''
+				+coverdiv
+				box-shadow: 0px 10px 27px 0px rgba(7, 35, 53, 0.11);
+				+tr(opacity .3s)
+				opacity: 0
+				z-index: -1
+			+r(544)
+				flex-flow: row wrap
+		&-img
+			width: 50%
+			// padding-bottom: 47%
+			position: relative
+			display: inline-block
+			vertical-align: top
+			
+			+r(544)
+				width: 100%
+				
+			&-inner
+				+coverdiv
+				display: inline-block
+				+r(544)
+					padding-bottom: 85%	
+		&-content
+			width: 50%
+			// +coverdiv
+			position: relative
+			padding-left: 4.5%
+			padding-right: 4.5%
+			display: inline-block
+			vertical-align: top
+			background-color: #FFF
+			height: 100%
+			+r(544)
+				width: 100%
+				height: auto
+				.news-item-content-inner
+					+rem(padding-top,50px)
+					+rem(padding-bottom,35px)
+			+vertical
+			.small-block
+				position: absolute
+				+rem(right, 15px)
+				+rem(top, 15px)
+			&-inner
+				padding-top: 23%
+				+rem(padding-bottom,25px)
+				display: inline-block
+				vertical-align: top
+				width: 100%
+				text-align: left
+				.text-sm
+					color: #b4b4b4
+				.text-2
+					-webkit-line-clamp: 3;
+					-webkit-box-orient: vertical;
+					display: -webkit-box;
+					overflow: hidden;
+			&:only-child
+				width: 100%
+				+rm(950)
+					padding-left: 9%
+					padding-right: 9%				
+				.news-item-content-inner
+					padding-top: 24%
+					+r(950)
+						padding-top: 18%
+		&-name
+			+rem(font-size,16px)
+			line-height: 1.5;
+			color: $blk2
+			font-weight: 400
+			+rem(margin, 10px 0 25px)
+			+tr(color .3s)
+
+.question
+	&-outer
+		+rem(padding-top,85px)
+		+rem(padding-bottom,108px)
+		+r(1024)
+			+rem(padding-top,65px)
+			+rem(padding-bottom,80px)
+		+r(700)
+			+rem(padding-top,45px)
+			+rem(padding-bottom,60px)		
+		.nav-arrows
+			top: 50%
+		.title
+			text-align: center
+			+rem(padding-bottom,40px)
+			+r(700)
+				+rem(padding-bottom,20px)
+		+r(950)
+			+padlr(40px)
+		+r(480)
+			+padlr(0px)
+			+rem(margin-left,-15px)
+			+rem(margin-right,-15px)
+			.question-item
+				+rem(margin, 0 15px)
+	&-inner
+		&:not(.slick-initialized)
+			display: flex
+			flex-flow: row nowrap
+			align-items: stretch
+			justify-content: center
+		border-right: $bbl
+		border-top: $bbl
+		border-bottom: $bbl
+		border-left: $bbl
+		&.slick-initialized
+			+r(480)
+				border: none
+				.question-item
+					border: $bbl
+	&-item
+		flex-grow: 1
+		flex-shrink: 0
+		flex-basis: 16.66%
+		+rem(margin-bottom,-1px)
+		border-bottom: 2px solid transparent
+		padding-top: 3.5%
+		padding-bottom: 3%
+		height: 100%
+		+r(480)
+			padding-top: 2.5%
+			padding-bottom: 2.5%	
+			border-bottom: $bbl
+		&.active
+			border-bottom-color: $bl
+		border-right: $bbl
+		text-align: center
+		&:hover
+			.question-item-name
+				color: $bl
+		&-img
+			display: inline-block
+			+rem(width, 65px)
+			+rem(height, 80px)
+			+vertical
+			+rem(margin-bottom,40px)
+			img
+				display: inline-block
+				vertical-align:	middle
+			+r(950)
+				+rem(margin-bottom,20px)
+		&-name
+			+padlr(10px)
+			+rem(font-size,16px)
+			color: $blk2
+			line-height: 1.625;
+			+tr(color .3s)
+
+.i-arrows
+	display: block
+	text-align: center
+	+rem(margin-top,15px)
+	+rm(950)
+		display: none
+	.slider-counter
+		display: inline-block
+		font-size: 0
+		.slider
+			&-curr,&-divider,&-total
+				display: inline-block
+				vertical-align: middle
+				+rem(font-size,15px)
+				color: $blk2
+			&-curr
+				font-weight: 600
+				color: $bl
+			&-divider
+				+rem(font-size,14px)
+				+padlr(5px)
+				
+
+.page-head
+	position: relative
+	z-index: 1
+	// background-attachment: fixed
+	backface-visibility: hidden
+	+cover
+	&:before
+		content: ''
+		+coverdiv
+		background-image: radial-gradient(ellipse at center, rgba(15,74,155,0.55) 0%, rgba(15,74,155,1) 60%, rgba(15,74,155,1) 61%);
+		background-position: top -15% center
+		background-attachment: fixed
+		// +tr(background-color .3s)
+		// +gpu
+		will-change: transform
+		z-index: -1
+		// +tr(background .3s)
+		+r(600)
+			background-position: top 60px center
+	&-breadcrums
+		position: absolute
+		+rem(left, 15px)
+		+rem(bottom, -59px)
+	&-inner
+		+rem(padding-top,70px)
+		position: relative
+		z-index: 3
+		+r(1024)
+			+rem(padding-top,60px)
+		+r(700)
+			+rem(padding-top,40px)
+		+r(480)
+			+rem(padding-top,20px)
+	&-title
+		display: flex
+		flex-flow: row nowrap
+		+rem(padding-bottom, 38px)
+		.title
+			flex-basis: 70%
+			flex-grow: 1
+			line-height: 1.2
+			color: $white
+	&-form
+		font-size: 0
+		+rem(margin-right,-11px)
+		+rem(padding-bottom,25px)
+		.form-group
+			display: inline-block
+			vertical-align: top
+			+rem(padding-right,11px)
+			width: 33.33%
+			font-size: 0
+			+r(950)
+				width: 50%
+			+r(650)
+				width: 100%
+			.input-wrapper
+				display: inline-block
+				vertical-align: top
+				width: 50%
+				&:first-child
+					.input-main,.select-check
+						border-bottom-right-radius: 0
+						border-top-right-radius: 0
+				&:last-child
+					.input-main,.select-check
+						border-bottom-left-radius: 0
+						border-top-left-radius: 0
+				.btn 
+					+rem(margin-top,24px)
+					+rem(margin-left,11px)
+					+r(650)
+						width: 100%
+						margin-left: 0
+						border-bottom-left-radius: 0
+						border-top-left-radius: 0
+						+rem(height,41px)
+						min-width: 0
+						+rem(margin-top,24px)
+
+			
+
+
+	
+
+		
+.has-animation
+	position: relative
+	&:before
+		content: ''
+		+rem(width,28px)
+		+rem(height,28px)
+		background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPSc0MHB4JyBoZWlnaHQ9JzQwcHgnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0idWlsLXJpbmciPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIiBjbGFzcz0iYmsiPjwvcmVjdD48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0Mi41IiBzdHJva2UtZGFzaGFycmF5PSIyMDYuOTUyNDE2MDU1MjI3NjQgNjAuMDgyOTU5NDk5OTA0Nzc0IiBzdHJva2U9InJnYigyNTUsIDE1MiwgNDEpIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjE1Ij48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgdmFsdWVzPSIwIDUwIDUwOzE4MCA1MCA1MDszNjAgNTAgNTA7IiBrZXlUaW1lcz0iMDswLjU7MSIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwcyI+PC9hbmltYXRlVHJhbnNmb3JtPjwvY2lyY2xlPjwvc3ZnPg==')
+		+contain
+		position: absolute
+		top: 50%
+		left: 50%
+		+rem(margin-top,-14px)
+		+rem(margin-left,-14px)
+		z-index: 1
+		display: none
+		
+	&.animated
+		background-color: #dae6ec;
+		color: transparent !important
+		pointer-events: none
+		border-color: #dae6ec
+		&:before
+			display: inline-block
+			animation: anim 1s linear infinite
+
+@keyframes anim
+	0%
+		transform: rotate(0)
+	100%
+		transform: rotate(360deg)
+.content
+	&-bread
+		&-item
+			color: $blk2
+			display: inline
+			// +rem(padding-right,11px)
+			&:not(:first-child)
+				position: relative
+				// +rem(padding-left,17px)
+				&:before
+					content: '/'
+					color: #dfdfdf
+					display: inline-block
+					+padlr(5px)
+			&:last-child
+				pointer-events: none
+				color: #929bae
+			&:hover
+				+rm(991)
+					color: $org
+			&:active
+				color: $org
+
+ul.special
+	+rem(margin,42px 0)
+	display: block
+	+r(768)
+		+rem(margin,24px 0)	
+		li 
+			+rem(margin-bottom,20px)	
+	li 
+		+rem(font-size,15px)
+		color: $blk2
+		line-height: 1.8;
+		+rem(padding-left,27px)
+		position: relative
+		+rem(margin-bottom,35px)
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			+rem(top,8px)
+			+rem(width,15px)
+			display: inline-block
+			+rem(height,10px)
+			+contain
+			background-image: url(../img/icons/i-check.png)
+.promo-card
+	+rem(margin,50px 0)
+.border-card
+	vertical-align: top
+	&.extra
+		+r(600)
+			+rem(margin,0 -15px)
+		.border-card-inner
+			+rem(padding,50px 32px)
+			+r(768)
+				+rem(padding,35px 24px)
+		.special
+			width: 75%
+			+r(600)
+				width: 95%	
+		.border-card-name
+			color: $bl
+			+rem(font-size,20px)
+			line-height: 1.6
+		.btn 
+			+rem(margin-top,52px)
+			+rem(margin-left,27px)
+			display: block
+			+rem(max-width,180px)
+	&.small
+		+rem(min-height,126px)
+		.border-card-name
+			+rem(font-size,18px)
+			color: rgb(64, 71, 76);
+			line-height: 1.556;
+			+rem(margin-bottom,7px)
+			+rem(min-height,60px)
+			&:only-child
+				+rem(margin-bottom,-15px)
+			span 
+				+rem(font-size,26px)
+				color: $org
+				// line-height: 1.2
+		.border-card-inner
+			padding: 6% 1% 11% 5%
+			+r(991)
+				padding: 6% 1% 6% 5%
+		.border-card-content 
+		.bonus-content
+			p,.link-border
+				display: inline-block
+				vertical-align: middle
+			p 
+				color: $blk2
+		.link-border
+			color: $bl
+		&.percent
+			.border-card-inner
+				padding-left: 10%
+				+r(1024)
+					padding-left: 5%
+					.border-card-name
+						span 
+							+rem(margin,15px 0 25px)
+				+r(600)
+					.border-card-name
+						span 
+							+rem(margin,10px 0 20px)			
+			.border-card-name
+				+rem(max-width,260px)
+				.text-sm
+					color: $grayl
+					line-height: 1.4
+				span 
+					line-height: 1
+					+rem(font-size,40px)
+					+rem(margin,15px 0 45px)
+					display: inline-block
+
+	&:not(.medium)
+		display: inline-block
+	&.medium
+		.border-card-inner
+			padding: 13% 5% 4% 13%
+		.text-medium
+			line-height: 1.55
+		.border-card-name
+			+rem(min-height,97px)
+			max-width: 95%
+		.border-card-content
+			+rem(min-height,75px)
+	&.big 
+		.border-card-inner
+			padding: 8% 8% 11% 6%
+		.text-medium
+			+rem(font-size,18px)
+			line-height: 1.5
+			display: block
+		.text-3
+			margin-top: 10%
+			margin-bottom: 2%
+			display: block
+			+r(768)
+				max-width: 80%
+		.link-border
+			width: 100%
+			display: block
+			span
+				display: inline
+				&:before
+					+rem(bottom, -5px)
+		img
+			+rem(max-width,168px)
+			+rem(margin-top,45px)		
+			will-change: opacity
+			+r(768)
+				+rem(margin-top,25px)
+				+rem(max-width,118px)
+	&-link 
+		display: inline-block
+		&:hover
+			.border-card
+				.link-border:not(.dotted)
+					span 
+						&:before
+							width: 0					
+	&-inner
+		border: $bb
+		+cover
+		position: relative
+		&:before
+			content: ''
+			+coverdiv
+			background-color: #FFF
+			opacity: .3
+			z-index: 0
+	&-name
+		position: relative
+		z-index: 1
+		.text-medium
+			color: $bl 
+			a,span
+				color: $org
+			a
+				+r(500)
+					+rem(font-size,18px)
+	&-content
+		position: relative
+		z-index: 1
+		.soc-wrapp
+			+rem(margin-left,-10px)
+			+rem(margin-top,20px)
+			&-item
+				+rem(width,30px)
+				+rem(height,30px)
+.rules
+	&-outer
+		.title,.text-1
+			text-align: center
+		+rem(padding-top,80px)
+		+rem(padding-bottom,80px)
+		+r(1024)
+			+rem(padding-top,60px)
+			+rem(padding-bottom,60px)	
+		.title
+			+rem(padding-bottom,22px)
+	&-inner
+		display: flex
+		flex-flow: row nowrap
+		align-content: stretch
+		align-items: stretch
+		+rem(margin-right,-30px)
+		+rem(padding-top,65px)
+		counter-reset: count
+		+r(1024)
+			+rem(padding-top,45px)
+			+rem(margin-right,-20px)
+		+r(860)
+			flex-flow: row wrap
+			.border-card
+				width: 50%
+
+		+r(600)
+			.border-card
+				width: 100%	
+
+		.border-card
+			width: 33.33%
+			+rem(padding-right,30px)
+			+rem(margin-bottom,25px)
+			counter-increment: count
+			// align-self: stretch
+			&-name
+				position: relative
+				
+				&:before
+					content: counter(count)
+					+rem(font-size,20px)
+					color: rgb(146, 155, 174);
+					position: absolute
+					+rem(top,4px)
+					+rem(left,-25px)
+
+
+			&-inner
+				height: 100%
+				display: flex
+				// padding: 0 !important
+				flex-direction: column
+			+r(1024)
+				+rem(padding-right,20px)
+
+	&-btn 
+		+rem(margin-top,29px)
+		.btn 
+			display: block
+			margin: 0 auto
+			+rem(max-width,144px)
+			+rem(padding-top,3px)
+			+rem(padding-bottom,3px)
+
+
+//=====================================//
+//          aside template
+//=====================================//
+
+.aside
+	&-title
+		position: relative
+		color: $blk
+		+rem(padding,9px 13px)
+		cursor: pointer
+		+rm(769)
+			display: none
+	&-stick
+		+r(768)
+			border: 1px solid $border
+			+rem(border-radius, 3px)
+			width: 100%
+			+rem(max-width,400px)
+			text-align: left
+			+rem(margin-bottom,30px)
+			.aside-list.bold
+				margin-top: 0
+				+tr(max-height .3s ease-in-out)
+				max-height: 0
+				overflow: hidden
+				&.active
+					+rem(max-height,650px)
+				.aside-list-item
+					display: block
+					+rem(padding, 12px 13px)
+					&:last-child
+						+rem(margin-bottom,10px)
+					span:after
+						display: none
+
+
+
+	&-list
+		width: 100%
+		+rem(margin-top,-8px)
+		&:not(.bold)
+			+r(768)
+				display: none
+		&-item
+			display: block
+			width: 100%
+			font-weight: 600
+			+rem(padding, 14px 0)
+
+			&:hover
+				&:not(.active)
+					color: $bl !important
+					span
+						&:after
+							opacity: 0
+			&.active
+				color: $org
+				pointer-events: none
+				span
+					&:after
+						opacity: 0
+			span 
+				display: inline
+				width: 100%
+				position: relative
+				+tr(color .3s)
+				&:after
+					height: 2px;
+					display: inline-block;
+					content: "";
+					position: absolute;
+					left: 0;
+					width: 100%;
+					+rem(bottom, -3px)
+					background-image: linear-gradient(90deg,#ff8400,hsla(0,0%,100%,0) 30%);
+					background-position: bottom;
+					background-size: 6px 2px;
+					background-repeat: repeat-x;
+					+tr(opacity .25s)
+		&.bold
+			+rem(margin-top,-10px)
+			.aside-list-item
+				color: $blk2
+				line-height: 1.2;
+				+rem(padding, 17px 0 18px)
+				&:hover
+					span 
+						color: $org 
+				&.active
+					color: $bl
+					pointer-events: none
+					span
+						display: inline-block
+						width: auto
+						&:after
+							width: 100%
+				span
+					display: inline-block
+					width: auto
+					&:after
+						+rem(bottom,-9px)
+						height: 3px
+						opacity: 1
+						+tr(width .3s)
+						width: 0
+						background-color: $org
+				i 
+					display: inline-block
+					+rem(padding-left,10px)
+					+rem(max-width,45px)
+					vertical-align: top
+					overflow: hidden
+					text-overflow: ellipsis
+					white-space: nowrap
+			&.aside-list-tabs	
+				+r(768)
+					max-height: 100%
+					display: table
+					.aside-list-item
+						display: table-cell
+						vertical-align: middle
+						width: auto
+						min-width: 33.33%
+						text-align: center
+						color: $bl
+						+padlr(2px)
+						&.active
+							background-color: $bl
+							color: $white
+						&:not(:last-child)
+							border-right: $bbf
+						i 
+							display: none
+						+r(400)
+							+rem(font-size,14px)
+				+r(330)
+					+rem(margin-right,-10px)
+					+rem(margin-left,-10px)
+					width: calc(100% + 10px)
+
+	&-wrapp
+		font-size: 0
+		position: relative
+		display: flex
+		flex-flow: row nowrap
+		align-items: stretch
+		+rem(padding-top, 105px)
+		+rem(padding-bottom, 40px)
+		width: 100%
+		justify-content: space-between
+		&+.question-outer
+			+rem(padding-top,20px)
+			position: relative
+			
+		+r(1024)
+			+rem(padding-top, 85px)
+		+r(768)
+			display: block
+	&-menu,&-content
+		min-height: 1px
+		display: inline-block
+		vertical-align: top
+	&-menu
+		+rem(flex-basis,236px)
+		flex-shrink: 0
+		+rem(padding-right,35px)
+		+r(768)
+			display: block
+			padding-right: 0
+			+rem(margin-bottom,15px)
+			text-align: center
+			
+		.aside-stick
+			display: inline-block
+			backface-visibility: hidden
+			will-change: position
+			+r(735)
+				position: static !important
+		+r(1024)
+			+rem(flex-basis,212px)
+			+rem(padding-right,15px)
+
+		+r(768)
+			display: block
+	&-content
+		flex-grow: 1
+		flex-shrink: 1
+		font-size: 14px
+		+rem(flex-basis,280px)
+		max-width: calc(100% - 14.75rem)
+		+r(768)
+			max-width: 100%
+			display: block
+		+r(1024)
+			max-width: calc(100% - 13.25rem)
+	&-section
+		width: 100%
+		&:not(:first-child)
+			+rem(margin-top,50px)
+		&:last-child
+			+rem(padding-bottom,60px)
+			+r(1024)
+				+rem(padding-bottom,30px)
+
+
+.feature
+	&-wrap
+		position: relative
+		+rem(padding-bottom,25px)
+		+r(1024)
+			+rem(padding-bottom,5px)
+		.nav-arrows
+			+rem(right,-30px)
+			+rem(left,-20px)
+			top: 45%
+			+r(1024)
+				display: block
+	&-inner
+		&:not(.slick-initialized)
+			display: flex
+			flex-flow: row wrap
+			align-items: stretch
+		+rem(padding-top,50px)
+		.slick-list
+			+rm(1025)
+				+rem(padding-top,150px)
+				+rem(margin-top,-150px)
+				+rem(padding-left,150px)
+				+rem(margin-left,-150px)
+				+rem(padding-right,150px)
+				+rem(margin-right,-150px)
+	&-item
+		text-align: center
+		position: relative
+		+padlr(5px)
+		+rem(margin-bottom,10px)
+		+r(870)
+			+padlr(15px)
+		&-img
+			+rem(width,45px)
+			+rem(height,50px)
+			display: inline-block
+			+rem(margin-bottom,15px)
+		&-name
+			line-height: 1.2
+		.dropdown-target
+			transform: translateY(-5%)
+			top: auto
+			bottom: 115%
+			text-align: left
+			width: 150%
+			right: auto
+			left: -17%
+			+r(1024)
+				display: none
+		.dropdown-inner
+			+rem(padding,30px 30px 30px 30px)
+			.text-sm
+				// line-height: 1.4
+				+rem(font-size,12px)
+				color: $text
+
+
+//=====================================//
+//           	table
+//=====================================//	
+
+
+.table
+	display: table
+	width: 100%
+	// border: 1px solid $borderf
+	position: relative
+	border-left: $bbf
+	border-right: $bbf
+	&-head
+		display: table-header-group
+		+rem(font-size,11px)
+		color: $grayl
+		font-weight: 400
+		.table-item
+			border-bottom: $bbf
+	&-item
+		display: table-cell
+		vertical-align: top
+		+rem(padding, 15px 0)
+		// border-bottom: 1px solid $borderf
+	&-row
+		display: table-row
+		+rem(padding, 15px 0)
+		font-size: 0
+		position: relative
+
+
+// расписание
+
+.table-sheldue
+	border: none
+	.table-item-from
+		+rem(width, 155px)
+		+rem(padding-left,28px)
+		+r(1024)
+			+rem(width, 135px)
+		+r(768)
+			+rem(width, 115px)
+	+r(600)
+		font-size: 0
+		display: flex
+		flex-flow: row nowrap
+		align-items: stretch
+		border-top: $bbf
+		.table-head,.table-row
+			// display: inline-block
+			width: 33.33%
+			padding: 0
+		.table-row
+			.text-1
+				padding-right: 0 !important
+			.table-item
+				text-align: center
+
+				.bus-item
+					display: inline-block
+		.table-item
+			display: block
+			width: 100%
+			border: none
+			+rem(height,45px)
+			.text-1
+				+rem(line-height,38px)
+				// +rem(margin-top,-15px)
+			&:not(.table-item-from)
+				+rem(padding, 10px 10px)
+			&.table-item-from
+				+rem(padding, 10px)
+				+r(600)
+					+rem(height,35px)
+		.table-head
+			.table-item
+				+rem(padding,10px)
+				+rem(line-height,38px)
+	.table-row
+		.table-item-from
+			.text-1
+				font-weight: 600
+				color: $blk
+			&:first-of-type
+				.text-1
+					width: 100%
+					position: relative
+					+rem(padding-right,15px)
+					&:after
+						content: ''
+						+rem(font-size,15px)
+						font-weight: 600
+						background-color: $blk2
+						position: absolute
+						+rem(right,28px)
+						height: 1px
+						+rem(width,7px)
+						+rem(top,14px)
+						+r(1024)
+							+rem(top,14px)
+						+r(600)
+							top: auto
+							right: auto
+							left: calc(50% - 3.5px)
+							+rem(bottom,0px)
+		.table-item
+			vertical-align: middle
+		.table-item:not(.table-item-from)
+			.bus-item
+				+rem(width,24px)
+				+rem(height,24px)
+				+rem(margin-top,9px)
+				+rem(margin-bottom,9px)
+
+				&:before
+					content: ''
+					display: inline-block
+					width: 100%
+					height: 100%
+					+contain
+					background-image: url(../img/route/bus_mini.svg)
+					opacity: .4
+			&.yes
+				.bus-item
+					position: relative
+					&:before
+						opacity: 1
+					&:after
+						content: ''
+						position: absolute
+						+rem(width,13.5px)
+						+rem(height,13.5px)
+						+contain
+						background-image: url(../img/route/bus_mini_da.svg)
+						+rem(bottom, -4px)
+						+rem(right, -5px)
+.table-wrapper
+	position: relative			
+.table-price
+	border: none
+	.table-item
+		border: none
+		+rem(padding, 14px 0)
+		.text-sm
+			color: $grayl
+		&:not(.table-item-from)
+			width: 27%
+			max-width: 27%
+			// word-break: break-word
+			+rem(padding-right,5px)
+			+r(820)
+				width: 30%
+				max-width: 30%
+	.table-item-from
+		padding-right: 8%
+	.table-head
+		.table-item
+			+rem(padding-bottom,5px)
+			span 
+				display: inline-block
+				+rem(max-width,50px)
+				line-height: 1.7
+	.table-row
+		.table-item:not(.table-item-from)
+			.text-bold
+				font-weight: 700
+				color: $blk
+				line-height: 1
+				+rem(padding-top,5px)
+			text-transform: uppercase
+			span 
+				display: inline-block
+				+rem(padding-left,5px)	
+.route-table
+	&-outer
+		// +rem(margin-top,25px)
+	&-head
+		display: flex
+		flex-flow: row wrap
+		justify-content: space-between
+		border: $bbf
+		+rem(padding-top,34px)
+		+rem(padding-bottom,20px)
+		+r(600)
+			width: 100%
+			border-bottom: $bbf
+		.text-medium 
+			line-height: 1.2
+		&-text
+			+rem(padding-left,28px)
+			+rem(padding-right,15px)
+			+r(850)
+				+rem(padding-left,16px)
+				+rem(padding-right,9px)
+				width: 80%
+				.text-medium
+					+rem(font-size,18px)
+		&-link
+			+rem(padding-right,28px)
+			+r(850)
+				+rem(padding-right,16px)
+			+r(600)
+				display: none
+		.table-wrapper
+			+rem(margin-top,15px)
+			width: 100%
+			+r(600)
+				overflow: visible
+				width: 100%
+				.table
+					height: 100%
+					white-space: nowrap
+					overflow-x: auto
+					width: 100%
+					+rem(padding-bottom,10px)
+			.table-row
+				&:nth-of-type(2)
+					+rm(769)
+						.table-item
+							+rem(padding-top,25px)
+
+.price-table
+	&-wrap
+		font-size: 0
+	&-table
+		width: 54%
+		display: inline-block
+		vertical-align: top
+		+r(735)
+			width: 100%
+		.title
+			+rm(769)
+				+rem(padding-top,30px)
+	&-banner
+		width: 46%
+		display: inline-block
+		vertical-align: top
+		.border-card-link
+			width: 100%
+		+r(735)
+			width: 100%
+		+r(768)
+			vertical-align: middle
+			.border-card-link
+				+rem(margin-top,15px)
+			.border-card
+				display: block
+				+rem(max-width,480px)
+				margin: 0 auto
+.table-tickets
+	+r(650)
+		&.sold
+			white-space: nowrap
+			overflow-x: scroll
+			display: block
+			+rem(margin, 0 -15px)
+			width: calc(100% + 30px)
+			.table-item
+				white-space: normal
+				&:not(:first-child)
+					+rem(min-width,70px)
+				&.table-tel,&.table-road
+					+rem(min-width,140px)
+		&:not(.sold)
+			white-space: nowrap
+			overflow-x: auto
+			display: block
+			border: $bbf
+			font-size: 0
+			+rem(margin-left, -15px)
+			+rem(margin-right, -15px)
+			width: auto
+			+rem(padding, 10px 0 10px 95px)
+			position: static
+			.table-head,.table-row
+				display: inline-block
+				vertical-align: top
+				border: none
+			.table-head
+				+rem(max-width,95px)
+				border: $bbf
+				height: 100%	
+				position: absolute
+				+rem(left, -15px)
+				top: 0
+				bottom: 0
+				z-index: 1
+				background-color: $white
+				.table-item
+					width: 100%
+					border: none
+					padding-left: 10px !important
+					padding-top: 18px !important
+			.table-row
+				padding: 0 !important
+				border: none
+			.table-item
+				display: block
+				width: 100%
+				max-width: 100%
+				min-width: 100%
+				border: none
+				padding: 5px 12px !important
+				white-space: normal		
+				+rem(min-height,45px)
+				&.table-actions
+					+rem(font-size,13px)
+				&.table-road
+					+rem(width,260px)
+			.table-actions
+				font-size: 0
+				.btn ,.link-border
+					width: 50%
+					+rem(max-width,110px)
+					display: inline-block !important
+					vertical-align: top
+					+rem(margin-right,5px)
+	border-bottom: $bbf
+	+rem(margin-bottom,30px)
+	+rm(651)
+		+rem(margin-top,20px)
+	.table-item
+		+padlr(5px)
+		.text-1,.text-bold,.text-sm
+			display: inline-block
+		.table-navigation-link
+			+rem(margin-top,10px)
+			display: inline-block
+			
+		.text-1
+			+rem(font-size,13px)
+		.text-bold
+			+rem(font-size,13px)
+			span 
+				display: inline-block
+				+rem(padding-left,4px)
+		.text-sm
+			+r(650)
+				+rem(padding-left,6px)
+	.table-head
+		.table-item
+			border-top: $bbf
+			+rem(padding-top,25px)
+			+rem(padding-bottom,25px)
+			&:nth-child(1)
+				+rem(width, 55px)
+				+rem(max-width, 55px)
+
+			&:nth-child(2)
+				+rem(width, 76px)
+			&:nth-child(3)
+				+rem(width, 120px)
+			&:nth-child(6)
+				+rem(width, 100px)	
+				+r(800)
+						+rem(width, 80px)		
+			&:nth-child(5)
+				+rem(width, 150px)	
+				+r(768)
+					+rem(width, 100px)
+					+rem(max-width,100px)
+	.table-row
+		&:last-of-type
+			.table-actions
+				+rem(padding-bottom,30px)
+		.table-item
+			&:not(.table-actions)
+				+rm(651)
+					+rem(padding-top,47px)
+			&.table-actions
+				+rm(651)
+					+rem(padding-top,20px)		
+
+		a:not([class])
+			color: $bl
+			+rem(font-size,13px)
+			line-height: 1.3
+			+rm(1025)
+				&:hover
+					color: $org
+	&.buyed
+		.table-head
+			.table-item
+				&:nth-child(3),&:nth-child(4),&:nth-child(5)
+					+rem(width,170px)
+					+r(1150)
+						+rem(width,140px)
+					+r(650)
+						+rem(min-height,80px)
+						width: 100%
+		.table-row
+			.table-item
+				.text-1,.text-sm
+					line-height: 1.4
+				&:nth-child(3),&:nth-child(4),&:nth-child(5)
+					+r(650)
+						+rem(min-height,80px)
+	&.sold
+		+r(650)
+			padding-left: 0
+			.table-head
+				position: static
+
+		.table-head
+			span
+				line-height: 1.7
+				+rem(max-width,65px)
+				display: inline-block
+
+			.table-item
+				&:nth-child(3)
+					+rem(width,80px)
+				&:nth-child(4)
+					+rem(width,85px)	
+				&:nth-child(6),&:nth-child(7)
+					+rem(width,95px)
+				&.table-road
+					+rem(width,280px)
+		.table-row
+			.table-item:not(.table-actions)
+				+rem(padding-bottom,20px)
+				+rem(padding-top,35px)
+		&.report
+			.table-num
+				padding-left: 0
+				+rem(width,30px)
+			.table-check
+				+rem(width,65px)
+				+rem(padding-left,22px)
+				+r(1024)
+					+rem(padding-left,10px)
+			.table-row .table-item
+				+rem(padding-top,35px)
+				+rem(padding-bottom,45px)
+			+r(920)
+				.table-item
+					white-space: normal
+				white-space: nowrap;
+				overflow-x: scroll;
+				display: block;
+				margin: 0 -.9375rem;
+				width: 100%
+			+r(768)
+				width: calc(100% + 30px)
+				.table-item
+					+rem(min-width, 30px)
+					&.table-num,&.table-check
+						+padlr(15px)
+
+
+.table-tel
+	+rem(width,150px)
+	a:not([class])
+		display: block
+		color: $blk2 !important
+		&:hover
+			color: $org !important
+.text-bold.org
+	color: $org
+.table-points
+	+rem(width,95px)
+	.text-bold
+		color: $bl
+.table-row .table-item.table-num,.table-head .table-item.table-num
+	+rem(padding-left,20px)
+	.text-1
+		word-break: break-word
+.table-row .table-item.table-actions,.table-head .table-item.table-actions
+	+rem(max-width,127px)
+	+rem(width,127px)
+	+rem(padding-left,10px)
+	+rem(padding-right,27px)
+	a 
+		display: block
+		text-align: center
+		+rem(margin-bottom,6px)
+		+r(650)
+			+rem(padding-top,6px)
+			+rem(padding-bottom,6px)
+	.link-border
+		span
+			width: auto
+		+r(650)
+			text-align: left
+//=====================================//
+//          roadmap section
+//=====================================//	
+							
+.roadmap
+	&-wrapper
+		+rem(padding-top,50px)
+	&-inner
+		position: relative
+		font-size: 0
+		+r(1210)
+			width: calc(100% - 1.25rem)
+		+r(768)
+			width: 100%
+			+rem(margin, 35px 0)
+			// display: flex
+			// flex-flow: row wrap
+	&-item
+		display: inline-block
+		position: relative
+		vertical-align: top
+		+rem(height,100px)
+		+r(768)
+			display: inherit
+			min-width: 100%
+			height: auto
+			.item-circle
+				position: absolute !important
+				+rem(left, -54px)
+				z-index: 1
+				will-change: opacity
+		&-text
+			+rem(font-size,12px)
+			color: rgb(101, 101, 101);
+			line-height: 2;
+			+rem(margin-top,15px)
+		&-type
+			+rem(margin-bottom,20px)
+		&.roadmap-2w
+			.small
+				&:nth-child(2)
+					left: calc(33.33% - 3.25rem)
+				&:nth-child(3)
+					right: calc(33.33% - 3.25rem)
+		&.roadmap-1w
+			.small
+				&:nth-child(2)
+					left: calc(50% - 3.25rem)
+		&.roadmap-3w
+			.small
+				&:nth-child(2)
+					left: calc(25% - 3.25rem)	
+				&:nth-child(3)
+					left: calc(50% - 3.25rem)	
+				&:nth-child(4)
+					left: calc(75% - 3.25rem)	
+		&.roadmap-main
+			+r(768)
+				order: 2
+			&:after
+				background-color: $bl
+			.item-circle
+				border-color: $bl
+				&:after
+					background-color: $bl
+		&.roadmap-pre
+			+r(768)
+				order: 1
+				&:after
+					height: 100%
+					bottom: -7.5rem
+			&:after
+				background-color: #929bae
+				right: -3.25rem
+			.small
+				&:nth-child(2)
+					left: 50%
+			width: 33.33%
+			&+.roadmap-main
+				width: 66.66%
+			.item-circle
+				border-color: #929bae
+				&:after
+					background-color: #929bae
+		&:only-child
+			width: 100%
+		&:after
+			display: inline-block
+			content: ''
+			+rem(left,50px)
+			+rem(right,50px)
+			+rem(top,14px)
+			height: 1px
+			position: absolute
+			z-index: 0
+			+r(768)
+				right: auto
+				height: calc(100% - 4rem) 
+				width: 1px
+		&-point
+			text-align: center
+			position: absolute
+			z-index: 1
+			+r(768)
+				position: static
+				display: block
+				min-width: 100%
+				text-align: left
+				+rem(padding-left,100px)
+				+rem(height,80px)
+			&:hover
+				.item-circle:after
+					background-color: $org
+			.dropdown-target
+				top: auto
+				bottom: calc(100% + .8125rem)
+				+rem(min-width,240px)
+				left: -25%
+				+r(1024)
+					display: none
+			.dropdown-content
+				+rem(padding,25px 15px 35px 15px)
+				.text-sm
+					color: $grayf
+				.services-item-link
+					+rem(font-size,13px)
+					line-height: 1.2
+			&-inner
+				position: relative
+			.text-1
+				color: $bl
+				line-height: 1.2
+			&.small
+				+rem(top,9px)
+				+rem(width, 120px)
+				.dropdown-target
+					bottom: calc(100% + 1.1rem)
+					left: -37%
+				.item-circle
+					+rem(width,10px)
+					+rem(height,10px)
+					+rem(margin-bottom,15px)
+					+r(768)
+						+rem(top,4px)
+			&.big
+				top: 0
+				+rem(width, 140px)
+				+r(768)
+					.item-circle
+						+rem(left, -64px)
+				&:first-of-type
+					+rem(left,-5px)
+				&:last-of-type
+					+rem(right,-5px)
+				.item-circle
+					+rem(width,30px)
+					+rem(height,30px)
+					position: relative
+					text-align: center
+					+vertical
+					&:after
+						display: inline-block
+						content: ''
+						border-radius: 50%
+						+rem(width,10px)
+						+rem(height,10px)
+						vertical-align: middle
+						+tr(background-color .3s)
+						
+
+		&-description
+			text-align: left
+
+
+.item-circle
+	display: inline-block
+	border-radius: 50%
+	background-color: $white
+	text-align: center
+	border: 1px solid 
+	transition: border-color .3s, background-color .3s 	
+	+rem(margin-bottom,5px)
+						
+//=====================================//
+//          стиили колоночного
+//               шаблона 
+//             и контента
+//=====================================//			
+
+.content-column
+	&-wrap
+		display: flex
+		flex-flow: row nowrap
+		+rem(min-height,160px)
+		&.content-small
+			.content-column-right
+				+rm(992)
+					+rem(flex-basis, 340px)
+					padding-left: 0
+					.border-card-link
+						margin-left: -1px
+			.content-column-content-inner
+				+rm(992)
+					+rem(padding-right,35px)
+		+r(991)
+			flex-direction: column
+	&-content
+		flex-grow: 1
+		+rem(font-size,16px)
+		display: flex
+		flex-flow: column nowrap
+		+rem(flex-basis,280px)
+		+r(991)
+			// order: 2
+			display: block
+			flex-basis: 0
+		+r(735)
+			padding: 0
+		&-inner
+			width: 100%
+			h2
+				color: $textTitle
+				line-height: 2;
+				+rem(font-size, 20px)
+				font-weight: 400
+				&:not(:first-child)
+					+rem(margin,25px 0)
+				&:first-child
+					+rem(margin,-5px 0 25px)
+			p 
+				+rem(font-size,15px)
+				color: rgb(101, 101, 101);
+				line-height: 1.733;
+				+rem(margin,25px 0 25px)
+				&:first-child
+					+rem(margin,5px 0 25px)
+			blockquote
+				background-color: #f0f4f7 
+				+rem(margin,55px 0 55px)
+				width: 100%
+				display: block
+				+rem(font-size,13px)
+				color: rgb(101, 101, 101);
+				line-height: 1.846;
+				+rem(padding,20px 25px)
+			ul 
+				+rem(margin,40px 0 40px)
+				li 
+					+rem(font-size,15px)
+					color: rgb(101, 101, 101);
+					line-height: 1.25
+					position: relative
+					+rem(padding-left,17px)
+					display: block
+					+rem(margin,10px 0)
+					&:before
+						content: ''
+						display: inline-block
+						border-radius: 50%
+						background-color: $bl 
+						+rem(width,6px)
+						+rem(height,6px)
+						+rem(left,2px)
+						+rem(top,7px)
+						position: absolute
+			a 
+				box-shadow:  0 -2px 0 0 #fff,  0 1px 0 0 $org
+				&:active
+					box-shadow: none
+				&:hover
+					+rm(1025)
+						box-shadow: none
+	&-right
+			+rem(flex-basis, 302px)
+			flex-shrink: 0
+			justify-content: flex-end
+			padding-left: 3.5%
+			.border-card-link
+				width: 100%
+				display: block
+				&:not(:first-of-type)
+					+rem(margin-top,25px)
+				.border-card
+					width: 100%
+			.caption-content
+				position: static
+				margin-left: auto
+				text-align: left
+				+rem(margin, 120px 0 160px auto)
+				display: block
+				+r(991)
+					+rem(margin, 30px 0 0 auto)
+			+r(991)
+				order: 1
+				flex-shrink: 1
+				flex-basis: 0
+				padding-left: 0
+				// +rem(margin-top,25px)
+				margin-top: 0
+				.border-card-link
+					+rem(margin-bottom,25px)
+
+//=====================================//
+//          стиили бокового текста
+//=====================================//	
+
+.caption
+	position: relative
+	text-align: left
+	&-content
+		position: absolute
+		left: 115%
+		+rem(width,200px)
+		+rem(top,-10px)
+		background-color: transparent
+		color: rgb(64, 64, 64);
+		span
+			+rem(font-size,13px)
+			color: rgb(64, 64, 64);
+			font-style: italic;
+			line-height: 1.538;
+			&:first-child
+				+rem(margin,0px 0 15px)
+			&:not(:first-child)
+				+rem(margin,15px 0)
+		i 
+			+rem(font-size,13px)
+			color: rgb(64, 64, 64);
+			font-style: italic;
+			line-height: 1.538;	
+			color: $grayl
+			display: block
+			&:first-child
+				+rem(margin,0px 0 15px)
+			&:not(:first-child)
+				+rem(margin,15px 0)
+		a 
+			box-shadow:  0 -2px 0 0 #fff,  0 1px 0 0 $org
+			&:active
+				box-shadow: none
+			&:hover
+				+rm(1025)
+					box-shadow: none
+		+r(991)
+			display: none
+a.caption-content
+	span 
+		color: $org
+		box-shadow:  0 -2px 0 0 #fff,  0 1px 0 0 $org
+		font-style: normal
+	&:active
+		span 
+			box-shadow: none
+	&:hover
+		span 
+			+rm(1025)
+				box-shadow: none
+.stpdf2
+	font-family: Open Sans;
+	font-weight: 600
+//=====================================//
+//        стили табов карты
+//=====================================//
+
+
+.tabs
+	display: flex
+	flex-flow: row nowrap
+	align-items: stretch
+	border: 1px solid #dddddd
+	+r(735)
+		display: block
+	&-wrapper
+		+rm(736)
+			+rem(padding-bottom,50px)
+	&-head
+		+rem(min-width,167px)
+		background-color: #f7f7f7
+		border-right: 1px solid #dddddd
+		+r(735)
+			width: 100%
+			min-width: 100%
+			display: block
+			border-right: 0
+	&-item
+		+rem(padding,25px 5px 25px 29px)
+		+rem(font-size,15px)
+		color: rgb(38, 46, 51);
+		line-height: 1.2;
+		cursor: pointer
+		background-color: #f7f7f7
+		+nosel
+		+r(735)
+			+rem(padding,15px 5px 15px 20px)
+		&:not(:first-of-type)
+			border-top: 1px solid #dddddd
+		&:last-of-type
+			border-bottom: 1px solid #dddddd
+		&:not(.active)
+			
+		&.active
+			background-color: #FFF
+			+rm(736)
+				margin-right: -1px
+	&-body
+		width: 100%
+	&-cont 
+		padding-left: 5%
+		padding-right: 3%
+		width: 100%
+		+rem(padding-top,25px)
+		+r(735)
+			+padlr(15px)
+			position: relative
+		ul.js-slidelist-target
+			li 
+				cursor: pointer
+				+tr(color .3s)
+				&:hover
+					color: $bl 
+				&.active
+					color: $org
+		.map-body
+			+rem(min-height,250px)
+			position: relative
+			margin-left: calc(-5.3% - 10.4375rem)
+			margin-right: -3%
+			+r(735)
+				+rem(margin,0 -15px)
+			iframe,.map-elem
+				+coverdiv
+				// ymaps
+				// 	height: 100%
+				// 	width: 100%
+		&-head
+			display: flex
+			flex-flow: row nowrap
+			justify-content: space-between
+			align-items: center
+			width: 100%
+			+rem(margin-bottom,25px)
+		&-link
+			+r(735)
+				position: absolute
+				+rem(bottom,270px)
+				+rem(left,15px)
+		.content-column-content-inner
+			padding-bottom: 0
+			+rem(padding-bottom,15px)
+			+r(735)
+				+rem(padding-bottom,45px)
+			ul 
+				+rem(margin, 15px 0 25px)
+
+.bus-wrapper
+	display: flex
+	flex-flow: row wrap
+	align-items: stretch
+	+rem(margin-right,-30px)
+	+r(1100)
+		+rem(margin-right,-20px)
+	+r(480)
+		+rem(margin-left,-15px)
+		+rem(margin-right,-35px)
+.slider-bus
+	display: flex
+	flex-flow: row nowrap
+	align-items: stretch
+	justify-content: flex-end
+	+rem(padding-top,15px)
+	+r(900)
+		flex-flow: row wrap
+		padding-top: 0
+		.slider-bus-slider,.slider-bus-about
+			width: 100%
+			padding: 0
+			flex-basis: 100%
+			max-width: 100%
+		.slider-bus-slider
+			height: 0
+			padding-bottom: 56.25%
+			position: relative
+			&-inner
+				+coverdiv
+		.slider-bus-about
+			&-inner
+				+rem(padding-top,30px)
+				+rem(padding-bottom,30px)
+				padding-left: 5%
+				padding-right: 5%
+		.card-bus-content-block
+			padding: 1% 0
+			width: 50%
+			display: inline-block
+			vertical-align: top
+			+rem(margin-bottom,10px)
+			.text-sm
+				line-height: 1.25
+				+rem(margin-bottom,5px)
+		.slider-bus-char
+			+rem(margin, 15px 0 15px)
+			font-size: 0
+		.slider-bus-btn
+			.btn 
+				+rem(max-width,202px)
+	+r(600)
+		.slider-bus-btn
+			+rem(margin, 0)
+	+r(335)
+		.text-sm
+			+rem(height,28px)
+	&-slider
+		max-width: 71%
+		padding-right: 3%
+		position: relative
+		width: 100%
+		+r(1024)
+			padding-right: 1.5%
+		.nav-dots
+			position: absolute
+			+rem(bottom, 30px)
+			left: 0
+
+			.slick-dots
+				text-align: left
+				+rem(padding-left,20px)
+		&-inner
+			display: flex
+			+rem(height,397px)
+			width: 100%
+			.slick-track,.slick-list
+				height: 100%
+				width: 100%
+		&-elem
+			height: 100%
+			+cover
+
+	&-char
+		+rem(margin, 30px 0 30px)
+	&-btn 
+		+rem(margin-top,20px)
+		.btn 
+			span
+				+padlr(0)
+			width: 100%
+			+r(950)
+				+rem(font-size,12px)
+	&-about
+		width: 29%
+		
+		+r(950)
+			+rem(flex-basis,230px)
+			flex-shrink: 0
+		&-inner
+			width: 100%
+			border: $bb
+			display: flex
+			flex-flow: column nowrap
+			justify-content: center
+			padding: 5% 14% 7%
+			height: 100%
+			+r(1110)
+				padding: 5% 9% 7%
+			.text-1
+				// +rem(margin-bottom,50px)
+				line-height: 1.2;
+			// 	+rem(letter-spacing, 1px)
+			.text-sm
+				color: $grayl
+				+rem(font-size,12px)
+			.card-bus-val
+				+rem(font-size,12px)
+			.card-bus-content-block
+				padding: 3.5% 0
+
+.feature-outer.feature-bus
+	+rem(margin-top,50px)
+	+rem(padding-bottom,20px)
+	+r(1024)
+		+rem(margin-top,30px)
+	.feature-wrap
+		width: 72%
+		padding-right: 3%
+		+r(1024)
+			width: 95%
+			padding-right: 0
+			flex-flow: row wrap
+		+r(600)
+			+rem(margin, 0 -15px)
+			width: auto
+	.feature-inner
+		justify-content: center
+		+rem(padding-top,45px)
+		// &:not(.slick-initialized)
+		.feature-item
+			width: 16.66%
+			+r(1024)
+				+rem(min-width,120px)
+				+rem(margin-bottom,20px)
+			.dropdown-target
+				+rem(min-width,240px)
+				+rem(left,-50px)
+
+
+//=====================================//
+//         Стили основных форм
+//=====================================//
+
+
+.form-block
+	&-wrapper
+		border: $bb
+		+rem(margin,45px 0 20px)
+		+r(600)
+			+rem(margin,30px -15px 20px)	
+	&-section
+		+rem(padding, 56px 32px 15px 32px)
+		+r(768)
+			+rem(padding, 36px 25px 15px 25px)
+		&:not(:first-of-type)
+			// border-top: 1px dotted #cecece
+			position: relative
+			&:before
+				content: ''
+				position: absolute
+				height: 1.7px
+				display: inline-block
+				left: 0
+				width: 100%
+				top: 0
+				background: linear-gradient(90deg,#cecece,hsla(0,0%,100%,0) 30%);
+				background-position: bottom;
+				background-size: 6px 2px;
+				background-repeat: repeat-x;
+		.title
+			line-height: 1
+			+rem(margin-bottom,43px)
+			+clr
+			.link-border
+				float: right
+				+r(400)
+					display: block
+					+rem(margin,10px auto 0)
+					float: none
+					+rem(max-width,250px)
+					text-align: center
+					
+					span
+						width:  auto
+			+r(600)
+				+rem(margin-bottom,30px)	
+		.input-form
+			// width: 100%
+			font-size: 0
+			+rem(margin-right,-41px)
+			+r(1180)
+				+rem(margin-right,-25px)
+				.input-item
+					+rem(padding-right,25px)
+			+r(991)
+				+rem(margin-right,-31px)
+				.input-item
+					+rem(padding-right,31px)
+			+r(500)
+				+rem(margin-right,-20px)
+				.input-item
+					+rem(padding-right,20px)		
+			.input-item
+				+rem(padding-right,41px)
+				+r(600)
+					+rem(margin-bottom,30px)
+				&.s25
+					+r(600)
+						width: 50%
+				&.s33
+					+r(500)
+						width: 50%
+					+r(340)
+						width: 100%
+				&.s50
+					+r(500)
+						width: 100%
+			.selects,.input-main
+				background-color: #fafafa
+				+tr(background-color .3s)
+
+				&:hover
+					background-color: #FFF
+		.input-item
+			+rem(margin-bottom,45px)
+			.arr-down
+				+rem(width,10px)
+			.input-wrapper
+				margin-bottom: 0
+				.select-item
+					+rm(500)
+						+rem(margin-top,30px)
+			.select-text
+				font-weight: 400
+				+rem(font-size,13px)
+				letter-spacing: 0
+				+rem(padding-left,10px)
+				+rem(padding-top,2px)
+	&-footer
+		+rem(padding,0px 32px 80px 32px)
+		+rem(margin-top,-15px)
+		+r(768)
+			+rem(padding,0px 25px 50px 25px)
+.form-footer-notify
+	+rem(padding-bottom,35px)
+	+r(768)
+		+rem(padding-bottom,20px)
+	.text-sm
+		color: $grayl
+		&:before
+			content: '*'
+			color: $org
+			display: inline-block
+			+rem(padding-right,5px)
+
+//=====================================//
+//         feedback / questions
+//=====================================//
+
+.feedback
+	&-wrapper
+		+rem(margin-top,5px)
+	&-item
+		+rem(padding,30px 0 35px)
+		&:not(:last-child)
+			border-bottom: $bb
+			
+		.text-sm
+			color: $grayl
+		&-head
+			display: table
+			width: 100%
+			+rem(margin-bottom,8px)
+		&-who
+
+		&-content
+			color: #6d6d6d
+			+rem(font-size,16px)
+			line-height: 1.5;
+			+rem(margin-top,10px)
+			overflow: hidden
+		&-reply
+			position: relative
+			+rem(padding-left,18px)
+			color: #6d6d6d
+			+rem(font-size,15.5px)
+			+rem(margin-top,28px)
+			// .reply-content
+			// 	line-height: 1.5
+			.text-bold
+				+rem(margin-bottom,10px)
+			&:before
+				content: ''
+				position: absolute
+				left: 0
+				+rem(top,5px)
+				+rem(bottom,5px)
+				width: 1px
+				background-color: $org
+.profile
+	&-wrapper
+		display: flex
+		flex-flow: row nowrap
+		align-items: stretch
+		border: $bbf
+		justify-content: space-between
+		+r(950)
+			flex-flow: row wrap
+			align-items: flex-start
+			.profile-coupons
+				order: 3
+				width: 100%
+			.profile-total
+				order: 2
+
+			.profile-total,.profile-img
+				width: 50%
+			.profile-img
+				&-inner
+					height: 0
+					padding-bottom: 100%
+		+r(500)
+			border: none
+		
+			.profile-coupons
+				+rem(margin, 0 -15px)
+				&-history-inner
+					+rem(margin, 0 -20px)
+			.profile-total
+				padding-right: 0
+				+rem(padding-left,10px)
+				border: none
+				+rem(min-width,0px)
+				+rem(padding-top,15px)
+				.link-border
+					white-space: nowrap
+		+r(330)
+			.profile-total
+				.link-border
+					+rem(font-size,12px)
+	&-img
+		width: 22.5%
+		background-color: $grayy
+		&-inner
+			width: 100%
+			// padding-bottom: 100%
+			height: 100%
+			+cover
+	&-total,&-coupons
+		.text-sm
+			color: $grayl
+			+rem(height, 50px)
+			+rem(max-width,110px)
+			line-height: 1.4
+		+rem(padding,22px 30px 30px)
+	&-total
+		width: 32%
+		border-left: $bbf
+		+r(1190)
+			width: 22%
+			+rem(min-width,223px)
+			+padlr(20px)
+		.text-1
+			color: $bl 
+			+rem(font-size,40px)
+			line-height: 1
+			+rem(margin,0 0 25px)
+		.link-border
+			+rem(max-width,200px)
+			span 
+				display: inline-block
+				width: auto
+				&:before
+					display: inline
+	&-coupons
+		width: 45.5%
+		font-size: 0
+		flex-grow: 1
+		+rem(padding-left,25px)
+		&-about
+			+clr
+			&-who,&-buyed
+				display: inline-block
+				vertical-align: top
+			&-buyed
+				float: right
+				+rem(width,130px)
+				.tik
+					+rem(margin-right,3px)
+					+rem(margin-top,3px)
+			&-who
+				max-width: calc(100% - 135px)
+				.text-sm
+					color: $bl
+		&-history
+			+rem(height,50px)
+			+rem(margin,30px  -30px 0)
+			position: relative
+			+padlr(30px)
+
+			&:before
+				position: absolute
+				content: ''
+				display: inline-block
+				left: 0
+				right: 0
+				+rem(top,5px)
+				height: 1px
+				background-image: linear-gradient(90deg,#bebebe 0,hsla(0,0%,100%,0) 30%);
+				background-position: bottom;
+				background-size: 6px 2px;
+				background-repeat: repeat-x;
+			&-inner
+				+rem(margin-right,-8px)
+				position: relative
+				height: 100%
+				+r(1024)
+					+rem(margin, 0 -15px)
+
+.history-year
+	position: absolute
+	text-align: center
+	+rem(top,5px)
+	&.start,&.end
+		+rem(margin-top,-2px)
+		&:before
+			content: ''
+			display: inline-block
+			background-color: $org 
+			border-radius: 50%
+			+rem(width,5px)
+			+rem(height,5px)
+	&.month
+		+rem(margin-top,-8px)
+		.tik
+			+rem(height,20px)
+		.text-2
+			+rem(font-size,11px)
+			font-weight: bold;
+			color: $bl
+			+rem(margin-top,2px)
+
+	&.start
+		left: 0
+	&.end
+		right: 0
+	&._1
+		left: 11%
+	&._2
+		left: 17.63%
+	&._3
+		left: 24.26%
+	&._4
+		left: 30.89%
+	&._5
+		left: 37.52%
+	&._6
+		left: 44.15%
+	&._7
+		left: 50.78%
+	&._8
+		left: 57.41%
+	&._9
+		left: 64.04%
+	&._10
+		left: 70.67%
+	&._11
+		left: 77.3%
+	&._12
+		left: 84%
+
+.tik
+	+rem(width,18px)
+	display: inline-block
+	vertical-align: top
+.btn-add
+	display: inline-block
+	+rem(font-size,13px)
+	line-height: 0
+	color: $text
+	cursor: pointer
+	+rem(padding-left,22px)
+	position: relative
+	left: 0
+	+rem(margin-top,5px)
+	+rem(bottom, -20px)
+	+tr(color .2s)
+	span
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			+rem(width,16px)
+			+rem(height,17px)
+			+contain
+			background-image: url(../img/icons/add.svg)
+			+rem(left,-22px)
+			+rem(top,1px)
+	&:hover
+		+rm(1025)
+			color: $bl
+	&:active
+		color: $bl
+.company-section
+	border: $bbf
+	+rem(padding, 20px 32px)
+	+rem(margin-bottom,25px)
+	+r(400)
+		+rem(padding, 15px 18px)
+	.text-sm
+		color: $grayl
+		+rem(max-width,110px)
+		line-height: 1.4
+		
+		+rem(margin-top,5px)
+	.text-medium
+		+rem(margin-bottom,25px)
+		+rem(margin-top,10px)
+	&-row
+		font-size: 0
+		+rem(margin-right,-25px)
+		&+.text-medium
+			+rem(margin-top,55px)
+			+r(768)
+				+rem(margin-top,20px)
+	&-block
+		display: inline-block
+		vertical-align: top
+		width: 50%
+		+rem(padding-right,25px)
+		+rem(margin-bottom,30px)
+		+r(340)
+			padding-left: 0 !important
+			width: 100%
+		&:nth-child(2n)
+			+rem(padding-left,25px)
+		.text-1
+			+rem(max-width,180px)
+			+rem(font-size,13px)
+			line-height: 1.4
+		.text-sm
+			+rem(margin-bottom,18px)
+			+r(768)
+				+rem(margin-bottom,10px)
+
+.table-navigation
+	display: flex
+	flex-flow: row nowrap
+	align-items: center
+	justify-content: space-between
+	+rem(margin-bottom,15px)
+	+rem(margin-top,55px)
+	+r(768)
+		+rem(margin-top,25px)
+		align-items: flex-end
+	&-links
+		font-size: 0
+		.table-navigation-link
+			+r(1100)
+				width: 50%
+				+rem(margin-bottom,10px)
+				display: inline-block
+		+r(735)
+			.table-navigation-link
+				width: 100%
+				span
+					white-space: normal
+				&:last-child
+					margin-bottom: 0
+				
+	&-nav
+		+clr
+		.table-pagination,.table-collapse
+			display: inline-block
+			vertical-align: middle
+		.table-pagination
+			+rem(margin-right,15px)
+		+r(1100)
+			.table-collapse
+				float: right
+			.table-pagination
+				text-align: right
+
+	&-link 
+		color: $grayy
+		+rem(padding-right,22px)
+		+rem(font-size,13px)
+		+tr(color .25s)
+		white-space: nowrap
+		position: relative
+		cursor: pointer
+		svg 
+			.sttable0
+				+tr(fill .3s)
+		&:hover
+			+rm(1025)
+				color: $bl 
+				svg 
+					.sttable0
+						fill: $org
+
+		&:active
+			color: $org
+		&.active
+			color: $org
+			svg
+				transform: scale(1,-1)
+		span, i
+			display: inline-block
+			vertical-align: top
+		i 
+			+contain
+			+rem(width,17px)
+			+rem(height,16px)
+			+rem(margin-top,-1px)
+			+rem(margin-right,8px)
+			svg
+				fill: $grayy
+			&.arr-down
+				+rem(width,8px)
+				position: static
+				+rem(margin-left,8px)
+		&.has-select
+			cursor: pointer
+			span 
+				text-align: left
+			&.active
+				color: $org
+			.dropdown-target
+				+rem(left,-13px)
+			.dropdown-content
+				+rem(padding,10px)
+				+nosel
+			.sort-select-item
+				+rem(font-size,13px)
+				text-align: left
+				a 
+					color: $grayy
+					display: block
+					+rem(padding, 5px 3px)
+					&:hover
+						color: $bl
+				&.active
+					opacity: .5
+					pointer-events: none
+
+.table-collapse
+	text-align: right
+	.table-navigation-link
+		margin-right: 0
+
+.table-pagination
+	white-space: nowrap
+	span 
+		color: $grayy
+	+r(1100)
+		width: 100%
+		+rem(margin-bottom,5px)
+
+			
+	&-arr,&-inner
+		display: inline-block
+		vertical-align: middle
+
+		.arr-down
+			position: static
+			+rem(height,13px)
+			// height: 100%
+			svg
+				fill: $grayy
+				+rem(margin-top,-5px)
+				
+	&-arr
+		&:hover
+			svg 
+				fill: $org
+		&.left
+			svg 
+				transform: rotate(90deg)
+		&.right
+			svg 
+				transform: rotate(-90deg)
+		&.disabled
+			opacity: .5
+			pointer-events: none
+
+	&-item
+		+rem(font-size,13px)
+		color: $grayy
+		+rem(padding, 5px 8px)
+		display: inline-block
+		&:hover:not(.active)
+			color: $org
+		&.active
+			color: $bl
+			pointer-events: none
+			font-weight: 700
+	&-inner
+		// +rem(margin-top,10px)
+		text-align: center
+		vertical-align: middle
+		+padlr(7px)
+		
+
+a.text-1
+	&:hover
+		+rm(1025)
+			color: $org
+	&:active
+		color: $org
+ymaps
+	ymaps[class$="balloon__content"]
+		+rem(padding, 20px 0 20px 20px)
+		+rem(min-width,180px)
+		margin-right: 36px !important
+		ymaps
+			+rem(min-width,180px)
+			// +rem(padding-right,5px)
+	b 
+		+rem(font-size,20px)
+		font-weight: 600
+	b,p 
+		font-family: $os
+	p 
+		font-size: .9375rem;
+		color: #656565;
+		line-height: 1.25;
+.table-notification
+	position: fixed
+	z-index: 8
+	left: 0
+	bottom: 0
+	width: 100%
+	background-color: $white
+	box-shadow: 0px 5px 14px 0px rgba(7, 35, 53, 0.11);
+	+rem(padding, 15px)
+	+tr(transform .3s ease-in-out)
+	&:not(.active)
+		transform: translateY(100%)
+	.aside-wrapp
+		padding: 0
+		margin: 0
+	+r(767)
+		.aside-menu
+			margin: 0
+	&-content 
+		.text-1,.table-navigation-link
+			display: inline-block
+			vertical-align: middle
+		.text-1
+			+rem(padding-right,15px)
+			+rem(max-width,190px)
+			span
+				+rem(padding-right,5px)
+	&-inner
+		// +rem(max-width,850px)
+		width: 100%
+		display: flex
+		flex-flow: row nowrap
+		justify-content: space-between
+		align-items: center
+		.table-navigation-link
+			padding-right: 0
+
+		+r(600)
+			// flex-flow: row wrap
+			// .table-notification-btn,.table-notification-content
+			// 	width: 100%
+			// 	text-align: center
+			+rem(margin, 0 -20px)
+
+			width: auto
+			.text-1,.table-navigation-link
+				display: block
+			.table-navigation-link
+				+rem(font-size,14px)
+			.table-notification-btn
+				.btn
+					+rem(font-size,12px)
+					span 
+						+rem(padding,11px 12px)
+				
+		+r(340)
+			.table-notification-btn
+				.btn
+					+rem(font-size,11px)
+					span 
+						+rem(padding,12px 7px)
+
+
