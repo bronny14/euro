@@ -80,17 +80,17 @@
                     <ul class="header-bottom-menu js-slideline">
                       <!--.active для текущей страницы-->
                       <li class="header-bottom-menu-item">
-                        <a href="#">
+                        <span class="header-bottom-menu-navlink">
                           <span>Рейсы</span>
-                        </a>
+                        </span>
                       </li>
                       <li class="header-bottom-menu-item">
-                        <a href="#">
+                        <a class="header-bottom-menu-navlink" href="#">
                           <span>Трансфер в аэропорт</span>
                         </a>
                       </li>
                       <li class="header-bottom-menu-item">
-                        <a href="#">
+                        <a class="header-bottom-menu-navlink" href="#">
                           <span>Аренда автобусов</span>
                         </a>
                       </li>
@@ -99,8 +99,8 @@
                   <div class="header-bottom-contact">
                     <!--селект региона, такой же есть в заказе-->
                     <div class="dropdown-select-wrapp dropdown-trigger">
-                      <div class="country-head">
-                        <a class="country-list-link" href="#">
+                      <div class="country-head js-country-swap js-content-switch">
+                        <a class="country-list-link js-country-swap-item active" href="#" data-block="bel">
                           <!-- флаг выбирается через id <use>: для британии gb раша ru и беларусь by,больше свг не заливал, если будут еще флаги то пихать картинку -->
                           <span class="country-img">
                             <svg class="icon icon-drop">
@@ -118,13 +118,19 @@
                       <div class="dropdown-target small-dropdown-target">
                         <div class="dropdown-inner">
                           <div class="dropdown-content">
-                            <ul class="country-list">
+                            <ul class="country-list js-country-swap-list">
                               <li class="country-list-item">
-                                <a class="country-list-link" href="#">
+                                <a class="country-list-link js-country-swap-item" href="#" data-block="ru">
                                   <span class="country-img">
                                     <img src="img/ru.svg" alt="россия">
                                   </span>
                                   <span class="country-text">Россия</span>
+                                </a>
+                                <a class="js-country-swap-item country-list-link" href="#" data-block="bangbangbang">
+                                  <span class="country-img">
+                                    <img src="img/ru.svg" alt="россия">
+                                  </span>
+                                  <span class="country-text">Бангладеш</span>
                                 </a>
                               </li>
                             </ul>
@@ -132,15 +138,46 @@
                         </div>
                       </div>
                     </div>
-                    <div class="dropdown-tel-wrapp">
-                      <div class="dropdown-tel-inner">
+                    <div class="dropdown-tel-wrapp js-content-switch-parent">
+                      <div class="dropdown-tel-inner js-content-switch-item" data-block="bel">
                         <div class="dropdown-tel-content">
-                          <!--максимум 3 номера-->
+                          <!--максимум 4 номера, дальше это уже партянка некрасивая-->
                           <a class="dropdown-tel-item" href="tel:+375445000252"> 
                             <span>+375 (44) 5 000 252</span>
                           </a>
                           <a class="dropdown-tel-item" href="tel:+375295000252"> 
                             <span>+375 (29) 5 000 252</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="dropdown-tel-inner js-content-switch-item" data-block="ru">
+                        <div class="dropdown-tel-content">
+                          <!--максимум 4 номера-->
+                          <a class="dropdown-tel-item" href="tel:+375445000252"> 
+                            <span>+375 (244) 5 000 252</span>
+                          </a>
+                          <a class="dropdown-tel-item" href="tel:+375295000252"> 
+                            <span>+375 (294) 5 000 252						</span>
+                          </a>
+                          <a class="dropdown-tel-item" href="tel:+375295000252"> 
+                            <span>+375 (294) 5 000 252						</span>
+                          </a>
+                          <a class="dropdown-tel-item" href="tel:+375295000252"> 
+                            <span>+375 (294) 5 000 252</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="dropdown-tel-inner js-content-switch-item" data-block="bangbangbang">
+                        <div class="dropdown-tel-content">
+                          <!--максимум 4 номера-->
+                          <a class="dropdown-tel-item" href="tel:+375445000252"> 
+                            <span>+375 (344) 5 000 252</span>
+                          </a>
+                          <a class="dropdown-tel-item" href="tel:+375295000252"> 
+                            <span>+375 (394) 5 000 252						</span>
+                          </a>
+                          <a class="dropdown-tel-item" href="tel:+375295000252"> 
+                            <span>+375 (394) 5 000 252</span>
                           </a>
                         </div>
                       </div>
@@ -411,7 +448,7 @@
                                             <div class="select-u-body select-list">
                                               <label class="option">
                                                 <!--хотя бы на одном инпуте должен висеть дата-атрибут для валидации-->
-                                                <input type="radio" name="group47" value="val1" data-validation="required">
+                                                <input type="radio" name="group49" value="val1" data-validation="required">
                                                 <span>Минск</span>
                                               </label>
                                               <label class="option">
@@ -1785,7 +1822,89 @@
         </div>
       </div>
     </div>
-    <div class="modals"></div>
+    <div class="modals">
+      <div class="modal-layout js-popup-container" data-modal="callback">
+        <!--контейнер модалки-->
+        <!-- по саксесу вешаю на этот блок класс из-за которого следующий открывается-->
+        <div class="modal-container">
+          <div class="modal-container-header">
+            <div class="text-medium">Заказать обратный звонок</div>
+            <i class="small-link pop-close closePopup"></i>
+          </div>
+          <div class="modal-container-content">
+            <form class="form-block-wrapper js-validate" action="/">
+              <div class="form-block-section">
+                <div class="input-form">
+                  <div class="input-item s50">
+                    <div class="input-wrapper req">
+                      <label for="imb1">Имя</label>
+                      <input class="input-main" type="text" placeholder="Имя" data-validation="length" data-validation-length="min2" data-validation-error-msg="Не заполнено" id="imb1">
+                    </div>
+                  </div>
+                  <div class="input-item s50">
+                    <div class="input-wrapper req">
+                      <label for="imb3">Телефон</label>
+                      <input class="input-main" type="tel" placeholder="Телефон" data-validation="custom" data-validation-regexp="^[-0-9()+ ]+$" data-validation-error-msg="Не заполнено" id="imb3">
+                    </div>
+                  </div>
+                  <div class="input-item s100">
+                    <div class="input-wrapper req">
+                      <label for="text12121">Комментарий</label>
+                      <textarea class="input-main" rows="5" id="text12121"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-block-footer">
+                <div class="form-footer-notify">
+                  <div class="text-sm">Поля для обязательного заполнения</div>
+                </div>
+                <button class="btn btn-colored" type="sumbit">
+                  <span>Задать вопрос</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--контейнер ответа модалки -->
+        <div class="modal-container response" style="display: none;">
+          <div class="modal-container-header">
+            <div class="text-medium">Спасибо</div>
+            <i class="small-link pop-close closePopup"></i>
+          </div>
+          <div class="modal-container-content">
+            <div class="text-1">Благодарим вас за проявленый интерес к нашей компании. С вами свяжется наш специалист для решения вашего вопроса.  </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-layout js-popup-container" data-modal="payback">
+        <!--контейнер модалки-->
+        <!-- по саксесу вешаю на этот блок класс из-за которого следующий открывается-->
+        <div class="modal-container">
+          <div class="modal-container-header">
+            <div class="text-medium">Возврат билетов</div>
+            <i class="small-link pop-close closePopup"></i>
+          </div>
+          <div class="modal-container-content">
+            <div class="text-1">Вы уверены, что хотите отменить этот билет?</div>
+            <div class="form-block-footer">
+              <div class="input-form">
+                <div class="input-item s33">
+                  <a class="btn btn-colored closePopup" href="#">
+                    <span>Нет, не нужно</span>
+                  </a>
+                </div>
+                <div class="input-item s33 text-center">
+                  <a class="btn btn-colored red closePopup" href="#">
+                    <span>да, отменить!</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--END out-->
     <script src="js/lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.60/jquery.form-validator.min.js"></script>

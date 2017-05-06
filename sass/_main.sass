@@ -242,13 +242,14 @@ body, .out
 				.header-bottom-menu
 					white-space: nowrap
 					+rem(margin-left, 15px)
-				.header-bottom-menu-item a
+				.header-bottom-menu-item .header-bottom-menu-navlink
 					+padlr(16px)
 				.dropdown-tel-wrapp
 					+rem(max-width,200px)
 					.dropdown-tel-item 
 						+rem(font-size,17px)
 						+rem(padding, 20px )
+
 			+rm(1025)
 				transform: translateY(-3.75rem)
 				#slide-line
@@ -270,7 +271,7 @@ body, .out
 							max-width: 100%
 							+rem(padding-right,195px)
 						&-menu-item
-							a 
+							.header-bottom-menu-navlink
 								+rem(padding-top,0px)
 						&-contact
 							+rem(padding-top,15px)
@@ -281,6 +282,8 @@ body, .out
 					height: auto
 					.dropdown-target
 						+rem(margin-top,-15px)
+					.country-text
+						+rem(padding-right,3px)
 				.dropdown-tel-content
 					background-color: $bl
 				.dropdown-tel-inner
@@ -288,9 +291,9 @@ body, .out
 					transition-delay: .3s
 					animation: fadein .5s forwards
 					&:hover
-						+rem(max-height,180px)
+						+rem(max-height,228px)
 				.dropdown-tel-item
-					+rem(padding,17px 30px)
+					+rem(padding,17px 30px 17px 20px)
 
 								
 				.dropdown-tel-wrapp
@@ -466,19 +469,21 @@ body, .out
 				display: inline-block
 				vertical-align: top
 				height: 100%
+				&.active
+					pointer-events: none
 				&:nth-of-type(n+5)
 					display: none
 				+r(600)
-					a
+					.header-bottom-menu-navlink
 						+padlr(10px)
 						+rem(padding-top,16px)
 						+rem(padding-bottom,16px)
 				+r(420)
-					a 
+					.header-bottom-menu-navlink
 						+padlr(4px)
 						span 
 							+rem(font-size,13px)
-				a 
+				.header-bottom-menu-navlink
 					line-height: 1;
 					color: $white
 					+padlr(20px)
@@ -490,6 +495,7 @@ body, .out
 					+tr(color .3s)
 					&:hover
 						color: $org
+
 					span 
 						display: inline-block
 						vertical-align: middle
@@ -904,23 +910,34 @@ body, .out
 			text-transform: uppercase
 			line-height: 1
 			text-overflow: initial
+			vertical-align: inherit;
 			span 
 				padding: 0
 				+rem(padding-right,5px)
-				+rem(padding-left, 5px)
 				color: $org
 				line-height: 1
 				vertical-align: top
 				text-overflow: initial
 				
 .price-total
+	border-bottom-right-radius: 3px
+	border-top-right-radius: 3px
 	.selects
 		.btn-text
 			.elem-price-value
 				+rem(font-size,15px)
+				+rem(margin-top,1px)
+				span 
+					+rem(padding-left, 0px)
 			+rem(font-size,12px)
 			font-weight: 400
 			color: $grayl
+			&.active
+				+rem(padding-top,2px)
+			&:not(.active)
+				+rem(font-size,14px)
+				font-weight: 600
+				color: $blk
 
 //=====================================//
 //         datepicker
@@ -1092,7 +1109,10 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		+rem(font-size,12px)
 		color: red
 		left: 0
-
+.text-right
+	text-align: right
+.text-center
+	text-align: center
 .mobile
 	&-header-lang
 		display: block
@@ -1166,8 +1186,6 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			font-weight: 400
 			color: $white
 			position: relative
-.modal-layout
-	display: none
 
 .index-wrapper
 	background-color: $bl
@@ -1472,6 +1490,18 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		&:hover
 			background-color: $orgl
 			border-color: $orgl
+		&.red 
+			background-color: $danger
+			border-color: $danger
+			&:hover
+				background-color: lighten($danger, 20)
+				border-color: lighten($danger, 20)
+		&.blue 
+			background-color: $bl
+			border-color: $bl
+			&:hover
+				background-color: lighten($bl, 20)
+				border-color: lighten($bl, 20)
 		&.small
 			+rem(min-width, 180px)
 			span
@@ -1509,9 +1539,15 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		background-color: $disabled
 		color: $white
 		pointer-events: none
-	&.btn-extrasmall.disabled
+	&.btn-extrasmall:not(.blue).disabled,&.btn-extrasmall:not(.orange ).disabled
 		opacity: .5
 		pointer-events: none
+	&.btn-extrasmall.blue.disabled,&.btn-extrasmall.orange.disabled
+		border-color: $disabled
+		background-color: $disabled
+		color: $white
+		pointer-events: none
+
 
 
 
@@ -1549,7 +1585,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 
 
 .dropdown-select-wrapp
-	+rem(width,122px)
+	+rem(min-width,122px)
 	cursor: pointer
 	&:hover
 		transition-delay: .3s
@@ -1561,8 +1597,9 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			display: block
 			font-size: 0
 
+
 		&-link
-			+rem(padding,9px 22px 9px 10px)
+			+rem(padding,9px 24px 9px 10px)
 			font-size: 0
 			+tr(background-color .3s)
 			background-color: $bl
@@ -1571,6 +1608,8 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			white-space: nowrap
 			&:hover
 				background-color: #275ca5
+			&.active
+				pointer-events: none
 	&-img,&-text
 		display: inline-block
 		vertical-align: middle
@@ -1594,6 +1633,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		+rem(font-size,13px)
 		line-height: 1
 		+rem(padding-left,12px)
+		+rem(margin-right,5px)
 	&-head
 		position: relative
 		
@@ -1627,6 +1667,8 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		transition: max-height .3s, background-color .3s
 		+rem(max-height,33px)
 		transition-delay: .15s
+		&:not(.active)
+			display: none
 		&:hover
 			+rem(max-height,165px)
 			background-color: $bl
@@ -1639,6 +1681,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		+rem(padding, 5px 0px)
 		+rem(letter-spacing,-0.4px)
 		text-align: right
+		white-space: nowrap;
 	&-content
 		+tr(background-color .3s)
 
@@ -3056,7 +3099,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 				vertical-align: top
 				width: 50%
 				&:first-child
-					.input-main,.select-check
+					.input-main,.select-check:not(.price-total)
 						border-bottom-right-radius: 0
 						border-top-right-radius: 0
 				&:last-child
@@ -3111,6 +3154,12 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		transform: rotate(0)
 	100%
 		transform: rotate(360deg)
+form.processed
+	.input-wrapper
+		opacity: 0.5
+		pointer-events: none
+		.input-main,.selects
+			background-color: #f5f5f5
 .content
 	&-bread
 		&-item
@@ -4828,6 +4877,40 @@ a.caption-content
 	&-footer
 		+rem(padding,0px 32px 80px 32px)
 		+rem(margin-top,-15px)
+		.input-form
+			font-size: 0
+			+rem(margin-right,-5px)
+			.btn
+				+rem(min-width,0px)
+				width: 100%
+				+rem(margin-bottom,10px)
+				span
+					white-space: normal
+			+r(1130)
+				.input-item
+					&.s33
+						width: 50%
+			+r(991)
+				.input-item
+					&.s33
+						width: 33.33%
+
+			+r(600)
+				.input-item
+					&.s33
+						width: 50%	
+						.btn 
+							+rem(font-size,12px)
+							span 
+								+padlr(10px)
+			+r(480)
+				.input-item	
+					&.s50
+						.btn 
+							+rem(font-size,12px)
+							span 
+								+padlr(10px)	
+
 		+r(768)
 			+rem(padding,0px 25px 50px 25px)
 .form-footer-notify
@@ -5005,6 +5088,12 @@ a.caption-content
 				height: 100%
 				+r(1024)
 					+rem(margin, 0 -15px)
+				&.half-year
+					.history-year.month
+						&:nth-child(n+2):nth-child(odd)
+							.text-2
+								transform: translateY(-2.375rem)
+
 
 .history-year
 	position: absolute
@@ -5303,7 +5392,7 @@ ymaps
 		+rem(min-width,180px)
 		margin-right: 36px !important
 		ymaps
-			+rem(min-width,180px)
+			// +rem(min-width,180px)
 			// +rem(padding-right,5px)
 	b 
 		+rem(font-size,20px)
@@ -5377,3 +5466,92 @@ ymaps
 						+rem(padding,12px 7px)
 
 
+//=====================================//
+//         feedback / questions
+//=====================================//
+
+.modal-layout
+	position: fixed
+	left: 0
+	right: 0
+	bottom: 0
+	top: 0
+	width: 100%
+	height: 100%
+	margin: 0
+	background-color: rgba(15, 74, 155,.1);
+	z-index: 200
+	opacity: 0
+	visibility: hidden
+	transition: opacity .2s, visibility .2s
+	+vertical
+	contain: paint 
+	transition-delay: .5s
+	&.active
+		visibility: visible
+		opacity: 1
+		transition-delay: 0s
+		.modal-container
+			transform: translateY(0)
+			opacity: 1
+			transition-delay: .2s
+	.modal-container
+		display: inline-block
+		vertical-align: middle 
+		+rem(min-width,320px)
+		+rem(max-width,647px)
+		max-height: 100%;
+		overflow-y: auto 
+		width: 100%
+		background-color: $white
+		position: relative
+		transform: translateY(5%)
+		transition: transform .2s, opacity .2s
+		opacity: 0
+		transition-delay: 0.3s
+		+rem(padding,50px 34px)
+		overflow: hidden
+		box-shadow: 0px 10px 27px 0px rgba(7, 35, 53, 0.11);
+
+
+		+r(480)
+			+rem(padding,32px 20px)
+	.modal-container-content
+		+rem(margin-top,30px)
+		text-align: left
+		.form-block-wrapper
+			border: none
+		.form-block-section
+			+padlr(0)
+			+rem(padding-top,10px)
+		.form-block-footer
+			+padlr(0)
+			padding-bottom: 0
+		&>.form-block-footer
+			+rem(margin-top,30px)
+	.modal-container-footer
+		+rem(padding, 25px 0 35px)
+		text-align: left
+	.modal-container-header
+		position: relative
+		text-align: left
+		.small-link
+			cursor: pointer
+			position: absolute
+			+rem(right,-16px)
+			+rem(top,-14px)
+			display: inline-block
+			+rem(width,40px)
+			+rem(height,40px)
+			+vertical
+			+tr(opacity .3s)
+			&:not(:hover)
+				opacity: .7
+			&:after
+				content: ''
+				+rem(width,13px)
+				+rem(height,13px)
+				+contain
+				background-image: url(../img/icons/i-close.png)
+				display: inline-block
+				vertical-align: middle
