@@ -589,7 +589,11 @@ function multiPicker(){
 			onChangeMonthYear: function ( year, month, inst ) {
 							//prv = cur = -1;
 			},
+<<<<<<< HEAD
 				//
+=======
+
+>>>>>>> origin/master
 			onAfterUpdate: function ( inst ) {
 				$('<button type="submit" class="btn btn-colored" data-handler="hide" data-event="click"><span>Сформировать отчет</span></button>')
 							.appendTo(realPicker.find('.ui-datepicker-buttonpane'))
@@ -601,7 +605,11 @@ function multiPicker(){
 	 _.on('focus', function (e) {
 
 				 var v = this.value,
+<<<<<<< HEAD
 					d;
+=======
+						 d;
+>>>>>>> origin/master
 
 				 try {
 					if ( v.indexOf(' - ') > -1 ) {
@@ -1199,7 +1207,100 @@ function CountryReplace(){
 }
 
 
+function AddBlocks(){
+	var _this = this;
+	_this.elem = $('.js-btn-add');
+	_this.props = {
+		single: 'single',
+		multi: 'multiple',
+		section: 'section',
+		addedCls: 'added'
+	};
+	_this.elems = {
+		inp: '.js-btn-add-input',
+		block: '.js-btn-add-block',
+		section: '.js-btn-add-section',
+		close : '<i class=" js-btn-add-remove small-link"></i>'
+	};
+	_this.init = function(){
+		_this.elem.each(function(){
+			var _ = $(this),
+				type = _.data('type');
+			_this.findElems(_,type)
+		});
+	};
+	_this.findElems = function(trigger,type){
+		if(type == _this.props.single){
+			var target = trigger.closest('.input-item').find($(_this.elems.inp)).last();
+			_this.initClickSingle(trigger,target)
+		}
+		if(type == _this.props.multi){
+			var target = trigger.closest('.input-form').find(_this.elems.block).slice(-2);
+			_this.initClickMulti(trigger,target)
+		}
+		if(type == _this.props.section){
+			var target = trigger.closest('.form-block-section').find(_this.elems.section).last();
+			_this.initClickSection(trigger,target)
+		}
+		_this.refreshListeners();
+	};
+	_this.initClickSingle = function(trigger,target){
+		var clone;
+		trigger.off('click').on('click',function(){
+			clone = target.clone();
+			var input = clone.find('input');
+			clone.insertBefore(trigger);
+			if(!clone.hasClass(_this.props.addedCls)) clone.append(_this.elems.close).addClass(_this.props.addedCls);
+			ChangeName(input);
+			_this.findElems(trigger,_this.props.single);
+		});
+	};
+	_this.initClickMulti = function(trigger,target){
+		trigger.off('click').on('click',function(){
+			var fragment = document.createDocumentFragment();
+			target.each(function(){
+				var _ = $(this),
+					clone = _.clone(),
+					input = clone.find('input');
+				clone.find('.js-btn-add').remove();
+				if(!clone.hasClass(_this.props.addedCls)) {
+					clone.find('.double').after(_this.elems.close);
+					clone.addClass(_this.props.addedCls);
+				}
+				clone.appendTo(fragment);
+				ChangeName(input);
+			});
+			target.last().after(fragment);
+			_this.findElems(trigger,_this.props.multi);
+		});
+	};
+	_this.initClickSection = function(trigger,target){
+		trigger.off('click').on('click',function(){
+			var clone = target.clone();
+			var input = clone.find('input');
+			clone.find('.js-btn-add').remove();
+			if(!clone.hasClass(_this.props.addedCls)) {
+				clone.append(_this.elems.close).addClass(_this.props.addedCls);
+			}
+			input.each(function(){
+				ChangeName($(this));
+			});
+			clone.insertAfter(target);
+			_this.findElems(trigger,_this.props.section);
+		});
+	}
+	_this.refreshListeners = function(){
+		$(".hasDatepicker").removeClass("hasDatepicker");
+		$(".datepicker").datepicker("destroy").removeAttr('id');
+		setTimeout(function(){
+			validateForms();
+		}, 10);
+		datepick();
+		$('.datepicker').datepicker('refresh');
+		initCustomSelectList();
+	};
 
+<<<<<<< HEAD
 function AddBlocks(){
 	var _this = this;
 	_this.elem = $('.js-btn-add');
@@ -1307,6 +1408,14 @@ function AddBlocks(){
 				type = addBtn.data('type');
 			target.hasClass('js-btn-add-block') ? target.prev().addBack().remove() : target.remove();
 			_this.findElems(addBtn,type);
+=======
+	function removeAddedElements(){
+		$('.form-block-section').on('click','.js-btn-add-remove',function(){
+			var _ = $(this);
+			var target = _.parent();
+			target.hasClass('js-btn-add-block') ? target.prev().addBack().remove() : target.remove();
+			_this.init();
+>>>>>>> origin/master
 		})
 	}removeAddedElements();
 	//меняем имя инпута
@@ -1318,6 +1427,7 @@ function AddBlocks(){
 			newName= cutname + number + ']';
 		inp.attr('name',newName)
 	}
+<<<<<<< HEAD
 	//выключаем кнопку чтобы не баловались
 	function DisableButton(btn){
 		btn.addClass('disabled')
@@ -1327,6 +1437,11 @@ function AddBlocks(){
 	}
 }
 
+=======
+}
+var AdditionalBlocks = new AddBlocks();
+AdditionalBlocks.init();
+>>>>>>> origin/master
 
 function AddingComment(){
 	var _this = this;

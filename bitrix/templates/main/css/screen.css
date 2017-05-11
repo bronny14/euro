@@ -1566,12 +1566,28 @@ body, .out {
     color: #ff8400;
     font-weight: 600;
     background-color: #f2f2f2;
+<<<<<<< HEAD
     border-radius: 0;
     margin: 0 -0.625rem;
     width: auto;
     padding-left: 0.8125rem;
     padding-right: 0.8125rem;
     display: block; }
+=======
+    border-radius: 0; }
+  .ui-datepicker .date-range-selected:not(.ui-datepicker-current-day) a {
+    border-radius: 0;
+    width: auto;
+    display: block;
+    margin: 0 -0.625rem;
+    padding-left: 0.8125rem;
+    padding-right: 0.8125rem; }
+  .ui-datepicker .date-range-selected.ui-datepicker-current-day a {
+    margin-left: -0.625rem;
+    display: block;
+    width: auto;
+    padding-left: 0.8125rem; }
+>>>>>>> origin/master
 
 select.ui-datepicker-year, select.ui-datepicker-month {
   max-width: 3.75rem;
@@ -5599,6 +5615,7 @@ ymaps p {
       .modal-layout.modal-login .modal-container-header .small-link {
         top: 1.375rem;
         right: 1.875rem; }
+<<<<<<< HEAD
   .modal-layout.modal-details .modal-container {
     padding: 0;
     max-width: 59.1875rem; }
@@ -5614,6 +5631,8 @@ ymaps p {
         right: 0.625rem; }
     .modal-layout.modal-details .modal-container-content {
       margin-top: 0; }
+=======
+>>>>>>> origin/master
   .modal-layout .modal-container {
     display: inline-block;
     vertical-align: middle;
@@ -5779,6 +5798,7 @@ ymaps p {
   margin-top: 0.1875rem; }
   .lilform-wrap .input-item {
     padding-right: 0; }
+<<<<<<< HEAD
 
 .person-profile-wrapper {
   font-size: 0;
@@ -5868,6 +5888,8 @@ ymaps p {
   .comment-section .input-main {
     font-weight: 400;
     font-size: 0.875rem; }
+=======
+>>>>>>> origin/master
   @media only screen and (max-width: 768px) and (max-width: 400px) {
 
   .aside-list.bold.aside-list-tabs .aside-list-item {
@@ -6748,6 +6770,7 @@ ymaps p {
     font-size: 1.125rem; }
 
   .route-table-head-link {
+<<<<<<< HEAD
     padding-right: 1rem; }
 
   .table-wrapper .table-inline {
@@ -6755,6 +6778,9 @@ ymaps p {
 
   .table-wrapper .table-inline > .table-row, .table-wrapper .table-inline > .table-head {
     min-width: 50rem; } }
+=======
+    padding-right: 1rem; } }
+>>>>>>> origin/master
   @media only screen and (max-width: 840px) {
 
   .footer__footer .soc-wrapp {
@@ -7213,6 +7239,7 @@ ymaps p {
     padding-bottom: 1.25rem; }
 
   .page-head-inner {
+<<<<<<< HEAD
     padding-top: 2.5rem; }
 
   .person-profile-reys {
@@ -7232,6 +7259,9 @@ ymaps p {
 
   .person-profile-elem.s50 {
     width: 100%; } }
+=======
+    padding-top: 2.5rem; } }
+>>>>>>> origin/master
   @media only screen and (max-width: 660px) {
 
   .index-tours .card-item:nth-of-type(n+4) {
@@ -7248,10 +7278,14 @@ ymaps p {
     padding-top: 2.9375rem; }
 
   .table-tickets .table-row .table-item.table-actions {
+<<<<<<< HEAD
     padding-top: 1.25rem; }
 
   .table-tickets.rays-today:not(.table-inline) .table-row:last-of-type .table-item {
     padding-bottom: 1.875rem; } }
+=======
+    padding-top: 1.25rem; } }
+>>>>>>> origin/master
   @media only screen and (max-width: 650px) {
 
   .page-head-form .form-group {
@@ -7388,6 +7422,7 @@ ymaps p {
     padding-top: 3.75rem; }
 
   .modal-layout.modal-login:before {
+<<<<<<< HEAD
     display: none; }
 
   .person-profile-wrapper {
@@ -7404,6 +7439,9 @@ ymaps p {
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch; } }
+=======
+    display: none; } }
+>>>>>>> origin/master
   @media only screen and (max-width: 600px) {
 
   .header-bottom:before {
@@ -7666,6 +7704,7 @@ ymaps p {
     margin-bottom: 2.1875rem; }
 
   .login-container-block .form-block-wrapper {
+<<<<<<< HEAD
     margin: 0; }
 
   .person-profile-about, .person-profile-reys {
@@ -7688,6 +7727,9 @@ ymaps p {
 
   .person-profile-elem {
     padding-left: 0; } }
+=======
+    margin: 0; } }
+>>>>>>> origin/master
   @media only screen and (max-width: 544px) {
 
   .footer-main-nav .m-logo {
