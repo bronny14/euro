@@ -185,6 +185,38 @@ document.addEventListener("DOMContentLoaded", function() {
 			}, 400)
 		}
 	});
+	function Accordeon(){
+		if($('.js-accordion-trigger').length){
+			// $(".aside-stick").trigger("sticky_kit:detach");
+			// $(".aside-stick").stick_in_parent({
+			// 	offset_top : 73,
+			// 	recalc_every: 1
+			// });
+			var maintrigger = $('.js-accordion-trigger'),
+				body = $('.js-accordion-body'),
+				truetrigger = maintrigger.children('.accordeon-trigger');
+			maintrigger.not('.active').find(body).hide();
+			truetrigger.on('click',function(event){
+				var parent = $(this).parent(),
+					target = parent.find(body);
+
+				if(parent.hasClass('active')){
+					parent.siblings().removeClass('active').find(body).slideUp(200);
+					parent.removeClass('active').find(body).slideUp(300);
+
+				}else{
+					parent.siblings().removeClass('active').find(body).slideUp(200);
+					parent.addClass('active').find(body).slideDown(300, function(){
+						var pos = parent.offset().top;
+						$("body:not(:animated),html:not(:animated)").animate({scrollTop: pos -80}, 500);
+					});
+				}
+				setTimeout(function(){
+					$('body').trigger('scroll')
+				},801)
+			});
+		}
+	}Accordeon();
 
 	// отключаем инпуты, если поездка в одну сторону
 	//используется на главной
@@ -208,14 +240,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		});
 	}
-	jQuery.fn.toggleText = function() {
-		var altText = this.data("alt-text");
-		if (altText) {
-			this.data("alt-text", this.text());
-			this.find('span').text(altText);
 
-		}
-	};
+
 	(function(factory) {
 		if (typeof define === "function" && define.amd) {
 
@@ -262,7 +288,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	validateForms();
 	initCustomSelectList();
 	GrabReports();
+
 	datepick();
+	multiPicker();
+
 	Tabs();
 	sortItem();
 	listhide();
@@ -272,6 +301,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	promoSlider();
 	routefeaturesSlider();
 
+	var commentInputs = new AddingComment();
+	commentInputs.init();
+	var AdditionalBlocks = new AddBlocks();
+	AdditionalBlocks.init();
+	var coutryRep = new CountryReplace();
+	coutryRep.init();
 //end of document.ready
 });
 //end of document.ready
@@ -325,6 +360,14 @@ function CompareHeight() {
 	});
 }
 
+jQuery.fn.toggleText = function() {
+	var altText = this.data("alt-text"),
+		target = this.find('span');
+	if (altText) {
+		this.data("alt-text", target.text());
+		target.text(altText);
+	}
+};
 
 var sortItem = function() {
 	var trigger = $('.js-select-item');
@@ -398,11 +441,11 @@ function initCustomSelectList() {
 			}
 			CheckForSelect($(this).parents('form'));
 		});
-		_button.on('click', function() {
+		_button.off('click').on('click', function() {
 			_button.parent().toggleClass('active').siblings().removeClass('active');
 			return (false);
 		});
-		_select.on('click', 'label', function() {
+		_select.off('click').on('click', 'label', function() {
 			var _label = $(this),
 				_input = _label.find('input');
 			_input.prop('checked', true);
@@ -411,8 +454,9 @@ function initCustomSelectList() {
 		});
 		_select.trigger('reinit');
 		_select.addClass(_conf.initClass);
-		$(document).on('mouseup', function(e) {
-			if (!_select.is(e.target) && _select.has(e.target).length === 0) {
+		 $(document).on('mouseup', function (e){
+			if (!_select.is(e.target)
+				&& _select.has(e.target).length === 0) {
 				_select.removeClass('active');
 			}
 		});
@@ -450,11 +494,26 @@ function updateToSelectMenu() {
 	$('.ui-datepicker-title').append($('.ui-selectmenu-menu'));
 }
 
+
+$.datepicker._defaults.onAfterUpdate = null;
+
+var datepicker__updateDatepicker = $.datepicker._updateDatepicker;
+$.datepicker._updateDatepicker = function( inst ) {
+	 datepicker__updateDatepicker.call( this, inst );
+
+	 var onAfterUpdate = this._get(inst, 'onAfterUpdate');
+	 if (onAfterUpdate)
+		onAfterUpdate.apply((inst.input ? inst.input[0] : null),
+				 [(inst.input ? inst.input.val() : ''), inst]);
+}
+
+
 function datepick() {
 
 	var item = $(".datepicker"),
 		yearClass = 'datepicker-chengeyear',
 		pastClass = 'datepicker-past',
+		multiClass = 'datepicker-rangedate',
 		monthClass = 'datepicker-chengemonth';
 
 	item.each(function() {
@@ -473,8 +532,8 @@ function datepick() {
 			showOn: "focus",
 			//еобновляем меню при смене месяца
 			beforeShow: function() {
- 				setTimeout(function() {
- 				updateToSelectMenu()
+				setTimeout(function() {
+					updateToSelectMenu()
 				},0);
 			},
 			onChangeMonthYear: function() {
@@ -494,6 +553,81 @@ function datepick() {
 			_.datepicker( "option", "changeMonth", true );
 		}
 	});
+}
+function multiPicker(){
+
+	var cur = -1, prv = -1;
+	var item = $('.multipicker');
+
+	item.each(function(){
+		var _ = $(this),
+			dateToday = new Date();
+		realPicker = _.parent().find('.multipicker-real');
+
+		realPicker.datepicker({
+			changeMonth: false,
+			changeYear: false,
+			maxDate: dateToday,
+			showButtonPanel: true,
+			beforeShowDay: function ( date ) {
+				return [true, ( (date.getTime() >= Math.min(prv, cur) && date.getTime() <= Math.max(prv, cur)) ? 'date-range-selected' : '')];
+			},
+			onSelect: function ( dateText, inst ) {
+				var d1, d2;
+				prv = cur;
+				cur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
+				if ( prv == -1 || prv == cur ) {
+					prv = cur;
+					_.val( dateText );
+				} else {
+					d1 = $.datepicker.formatDate( 'dd.mm.yy', new Date(Math.min(prv,cur)), {} );
+					d2 = $.datepicker.formatDate( 'dd.mm.yy', new Date(Math.max(prv,cur)), {} );
+					_.val( d1+' - '+d2 );
+				}
+			},
+
+			onChangeMonthYear: function ( year, month, inst ) {
+							//prv = cur = -1;
+			},
+				//
+			onAfterUpdate: function ( inst ) {
+				$('<button type="submit" class="btn btn-colored" data-handler="hide" data-event="click"><span>Сформировать отчет</span></button>')
+							.appendTo(realPicker.find('.ui-datepicker-buttonpane'))
+							.on('click', function () { realPicker.hide(); });
+				validateForms();
+					 }
+		 }).hide();
+
+	 _.on('focus', function (e) {
+
+				 var v = this.value,
+					d;
+
+				 try {
+					if ( v.indexOf(' - ') > -1 ) {
+						d = v.split(' - ');
+
+						prv = $.datepicker.parseDate( 'dd.mm.yy', d[0] ).getTime();
+						cur = $.datepicker.parseDate( 'dd.mm.yy', d[1] ).getTime();
+
+					} else if ( v.length > 0 ) {
+							 prv = cur = $.datepicker.parseDate( 'dd.mm.yy', v ).getTime();
+					}
+				} catch ( e ) {
+					cur = prv = -1;
+				}
+		if ( cur > -1 )
+			realPicker.datepicker('setDate', new Date(cur));
+
+		realPicker.datepicker('refresh').show();
+
+		$(document).on('mousedown', function(e) {
+			if (!realPicker.is(e.target) && realPicker.has(e.target).length === 0) {
+				realPicker.hide();
+			}
+		});
+	});
+	 });
 }
 
 function promoSlider() {
@@ -703,9 +837,9 @@ function mapMarkerinit(elem) {
 		//ловим клик по принятому геообьекту и переключаем класс на соотв. лишке
 		function getElem(target,trigger){
 			trigger.events.add('click',function(e){
-	 			var elemClicked = e.get('target'),
-	 				elemId = elemClicked.properties.get('id');
-	 			target.eq(elemId).addClass('active').siblings().removeClass('active');
+				var elemClicked = e.get('target'),
+					elemId = elemClicked.properties.get('id');
+				target.eq(elemId).addClass('active').siblings().removeClass('active');
 			});
 		}
 		// убираем .active  с лишек на закрытии балуна
@@ -869,7 +1003,6 @@ function popUpsInit() {
 		$(_popup).on('click', '.modal-container', function(e) {
 			if (!$(_this.conf.close_selector).is(e.target)) {
 				e.stopPropagation();
-				console.log(1)
 			}
 		});
 		_popup.find(_this.conf.close_selector).add(_popup).off('click.popup').on('click.popup', function() {
@@ -1065,9 +1198,212 @@ function CountryReplace(){
 	}
 }
 
-var coutryRep = new CountryReplace();
-coutryRep.init();
 
 
+function AddBlocks(){
+	var _this = this;
+	_this.elem = $('.js-btn-add');
+	_this.props = {
+		single: 'single',
+		multi: 'multiple',
+		section: 'section',
+		addedCls: 'added'
+	};
+	_this.elems = {
+		inp: '.js-btn-add-input',
+		block: '.js-btn-add-block',
+		section: '.js-btn-add-section',
+		close : '<i class=" js-btn-add-remove small-link"></i>'
+	};
+	_this.init = function(){
+		_this.elem.each(function(){
+			var _ = $(this),
+				type = _.data('type');
+			_this.findElems(_,type)
+		});
+	};
+	_this.findElems = function(trigger,type){
+		if(type == _this.props.single){
+			var target = trigger.closest('.input-item').find($(_this.elems.inp)).last();
+			_this.initClickSingle(trigger,target)
+		}
+		if(type == _this.props.multi){
+			var target = trigger.closest('.input-form').find(_this.elems.block).slice(-2);
+			_this.initClickMulti(trigger,target)
+		}
+		if(type == _this.props.section){
+			var target = trigger.closest('.form-block-section').find(_this.elems.section).last();
+			_this.initClickSection(trigger,target)
+		}
+		_this.refreshListeners(trigger);
+	};
+	_this.initClickSingle = function(trigger,target){
+		var clone;
+		trigger.off('click').on('click',function(){
+			clone = target.clone();
+			var input = clone.find('input');
+			clone.insertBefore(trigger);
+			if(!clone.hasClass(_this.props.addedCls)) clone.append(_this.elems.close).addClass(_this.props.addedCls);
+			ChangeName(input);
+			_this.findElems(trigger,_this.props.single);
+			DisableButton(trigger);
+		});
+	};
+	_this.initClickMulti = function(trigger,target){
+		trigger.off('click').on('click',function(){
+			var fragment = document.createDocumentFragment();
+			target.each(function(){
+				var _ = $(this),
+					clone = _.clone(),
+					input = clone.find('input');
+				clone.find('.js-btn-add').remove();
+				if(!clone.hasClass(_this.props.addedCls)) {
+					clone.find('.double').after(_this.elems.close);
+					clone.addClass(_this.props.addedCls);
+				}
+				clone.appendTo(fragment);
+				ChangeName(input);
+			});
+			target.last().after(fragment);
+			_this.findElems(trigger,_this.props.multi);
+			DisableButton(trigger);
+		});
+	};
+	_this.initClickSection = function(trigger,target){
+		trigger.off('click').on('click',function(){
+			var clone = target.clone();
+			var input = clone.find('input');
+			clone.find('.js-btn-add').remove();
+			if(!clone.hasClass(_this.props.addedCls)) {
+				clone.append(_this.elems.close).addClass(_this.props.addedCls);
+			}
+			input.each(function(){
+				ChangeName($(this));
+			});
+			clone.insertAfter(target);
+			_this.findElems(trigger,_this.props.section);
+			DisableButton(trigger);
+		});
+	}
+	_this.refreshListeners = function(elem){
+		var currWorkFlow = elem.closest('.form-block-section'),
+			datepickers = currWorkFlow.find(".datepicker");
+		datepickers.removeClass("hasDatepicker");
+		datepickers.datepicker("destroy").removeAttr('id');
+
+		// $(".hasDatepicker").removeClass("hasDatepicker");
+		// $(".datepicker").datepicker("destroy").removeAttr('id');
+		validateForms();
+		datepick();
+		datepickers.datepicker('refresh');
+		initCustomSelectList();
+	};
+
+	function removeAddedElements(){
+		$('.form-block-section').on('click','.js-btn-add-remove',function(){
+			var _ = $(this),
+				target = _.parent(),
+				addBtn = target.siblings().find(_this.elem),
+				type = addBtn.data('type');
+			target.hasClass('js-btn-add-block') ? target.prev().addBack().remove() : target.remove();
+			_this.findElems(addBtn,type);
+		})
+	}removeAddedElements();
+	//меняем имя инпута
+	function ChangeName(inp){
+		var name = inp.attr('name'),
+			cutname = name.substring(0, name.indexOf("[")+ 1),
+			number = parseInt(name.substring(name.indexOf("[") + 1)),
+			newNumber = number++,
+			newName= cutname + number + ']';
+		inp.attr('name',newName)
+	}
+	//выключаем кнопку чтобы не баловались
+	function DisableButton(btn){
+		btn.addClass('disabled')
+		setTimeout(function(){
+			btn.removeClass('disabled');
+		},1200);
+	}
+}
 
 
+function AddingComment(){
+	var _this = this;
+	_this.cont = $('.js-comment-wrapper');
+	_this.elems = {
+		btn: '.js-comment-btn',
+		input: '.js-comment-input',
+		section: '.js-comment-section',
+		textCont: '.js-comment-text'
+	};
+	_this.state = {
+		filled: 'filled',
+		open: 'active'
+	};
+	_this.init = function(){
+		_this.cont.each(function(){
+			var _ = $(this),
+				btn = _.find(_this.elems.btn),
+				input = _.find(_this.elems.input),
+				section = _.find(_this.elems.section),
+				textCont = _.find(_this.elems.textCont),
+				submit = section.find('.btn');
+			_this.initclick(btn,section,input,_);
+			_this.initState(input,textCont,btn);
+			_this.changeComment(submit,input,textCont,section,btn,_);
+			_this.checkCont(textCont,_)
+		});
+	};
+	//проверяем наличие текста в контейнере и, если
+	//есть (или если в инпут выплюнулись какие либо данные),
+	// тянем их в инпут
+	_this.initState = function(input,text,btns){
+		var info = text.text(),
+			val = input.val(),
+			compare = info.localeCompare(val);
+		compare == 1 || compare == -1 ? input.val(info) : 0;
+		if(info.length > 0){
+			btns.addClass(_this.state.filled).toggleText();
+		}
+	}
+	//открываем/ закрываем
+	_this.initclick = function(btn,section,input,wrapper){
+		btn.on('click touchmove',function(e){
+			e.preventDefault();
+			if(section.hasClass(_this.state.open)){
+				section.slideUp(300).removeClass(_this.state.open);
+			}else{
+				section.slideDown(300).addClass(_this.state.open);
+				input.focus();
+			}
+		});
+		$(document).on('mousedown', function(e) {
+			if (!wrapper.is(e.target) && wrapper.has(e.target).length === 0) {
+				section.slideUp(300).removeClass(_this.state.open);
+			}
+		});
+	};
+	// сравниваем текст из инпута с текстом в блоке, заменяем при наличии  различий
+	_this.changeComment = function(submitBtn,input,text,section,btn,wrapper){
+		submitBtn.on('click touchmove',function(e){
+			e.preventDefault();
+			var info = text.text(),
+				val = input.val(),
+				compare = info.localeCompare(val);
+			compare == 1 || compare == -1 ? text.text(val) : 0;
+			section.slideUp(300).addClass(_this.state.open);
+
+			if(text.text().length > 0 && !btn.hasClass(_this.state.filled)){
+				btn.addClass(_this.state.filled).toggleText();
+			}else if(text.text().length === 0 && btn.hasClass(_this.state.filled)){
+				btn.removeClass(_this.state.filled).toggleText();
+			}
+			_this.checkCont(text,wrapper)
+		});
+	}
+	_this.checkCont = function(cont,elem){
+		var textlen = cont.text().length;
+		textlen > 0 ? elem.addClass(_this.state.open) : elem.removeClass(_this.state.open);
+	}
+}
