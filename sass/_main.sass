@@ -710,6 +710,9 @@ body, .out
 		transition: color .3s;
 		font-weight: 600
 		line-height: 1.6;
+		span 
+			font-weight: 600
+			color: $bl
 	.select-real
 		position: absolute;
 		top: 0;
@@ -818,6 +821,8 @@ body, .out
 					+rem(margin-top,-5px)
 					+rem(font-size,15px)
 					font-weight: 600
+					+r(700)
+						+rem(margin-top,0px)	
 				&:before
 					+rem(padding-right, 3px)
 				&:after
@@ -1039,6 +1044,8 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			+rem(font-size,13px)
 			&:before,&:after
 				display: none !important
+	&.s20
+		width: 20%
 				
 .input-wrapper
 	position: relative;
@@ -1055,8 +1062,54 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			background-color: #f5f5f5
 			+placeholder 
 				color: transparent !important
+	&.org
+		.input-main
+			border-color: $org
+			color: $org
+			font-weight: 600
+		&.disabled
+			.input-main
+				border-color: $org
+	&.special
+		.input-main
+			padding-right: 76%
+			+rem(padding-left,20px)
+		&.has-error
+			.input-value
+				border-left-color: red
+		.input-value
+			position: absolute
+			+rem(top,25px)
+			right: 0
+			width: 70%
+			+rem(height,38px)
+			border-left: $bb
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+			+nosel
+			.text-bold
+				+rem(padding-left,15px)
+				+rem(padding-top,12px)
+				line-height: 1
+	&.code
+		+clr
+		.input-main,.input-img
+			display: inline-block
+			vertical-align: bottom
+
+		.input-main
+			width: calc(100% - 11.8rem)
+		.input-img
+			+rem(width,170px)
+			float: right
+			overflow: hidden
+			+rem(height,40px)
+			border: $bbl
+			img
+				max-width: 100%
 	&:nth-child(n+2)
-		label
+		&>label
 			opacity: 0
 	&.double
 		font-size: 0
@@ -1255,6 +1308,8 @@ select.ui-datepicker-year,select.ui-datepicker-month
 	background-position: top 55px right
 	z-index: 2
 	+gpu
+	+r(1024)
+
 	&:after
 		content: ''
 		position: absolute
@@ -1612,6 +1667,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 	+rem(font-size,15px)
 	line-height: 1.75;
 	color: $text
+	font-weight: 400
 .text-2
 	+rem(font-size,14px)
 	line-height: 1.43;
@@ -1644,13 +1700,12 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		transition-delay: .3s
 		box-shadow: 0px 5px 9px 0px rgba(7, 35, 53, 0.25);
 
+
 .country
 	&-list
 		&-item
 			display: block
 			font-size: 0
-
-
 		&-link
 			+rem(padding,9px 24px 9px 10px)
 			font-size: 0
@@ -1659,6 +1714,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			width: 100%
 			display: block
 			white-space: nowrap
+			text-align: left
 			&:hover
 				background-color: #275ca5
 			&.active
@@ -1666,7 +1722,6 @@ select.ui-datepicker-year,select.ui-datepicker-month
 	&-img,&-text
 		display: inline-block
 		vertical-align: middle
-
 	&-img
 		+rem(width,16px)
 		+rem(height,11px)
@@ -1685,11 +1740,48 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		color: $white
 		+rem(font-size,13px)
 		line-height: 1
-		+rem(padding-left,12px)
+		+rem(padding-left,11px)
 		+rem(margin-right,5px)
 	&-head
 		position: relative
-		
+.dropdown-select-wrapp.white
+	+rem(max-width,90px)
+	min-width: 0
+	box-shadow: none !important
+	&:not(:hover)
+		.country
+			&-head
+				border-bottom-left-radius: 3px
+				border-bottom-right-radius: 3px
+				overflow: hidden
+	.country
+		&-head
+			border-top-left-radius: 3px
+			border-top-right-radius: 3px
+		&-list-link
+			background-color: $white
+			+rem(padding,7.5px 20px 7.5px 8px)
+		&-text
+			color: $text
+	.arr-down
+		svg 
+			stroke: $bl
+	.country-head
+		border: $bb
+	.dropdown-target
+		.dropdown-inner
+			box-shadow: none !important
+			border-right: $bb 
+			border-left: $bb 
+			border-bottom: $bb
+			border-bottom-left-radius: 3px
+			border-bottom-right-radius: 3px
+			.country-list-link
+				&:not(:last-child)
+					border-bottom: $bb
+				&:hover
+					background-color: #d6d7db
+
 .arr-down
 	display: inline-block
 	+rem(width,9px)
@@ -1740,6 +1832,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 
 .dropdown-trigger
 	position: relative
+	cursor: pointer
 	&:hover
 		.arr-down
 			transform: scale(1,-1)
@@ -2108,8 +2201,6 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			display: block
 			+tr(color .3s)
 			+clr
-
-
 			&.bold
 				font-weight: 600
 			&.descr
@@ -3040,7 +3131,6 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		+r(480)
 			padding-top: 2.5%
 			padding-bottom: 2.5%	
-			border-bottom: $bbl
 		&.active
 			border-bottom-color: $bl
 		border-right: $bbl
@@ -3108,7 +3198,7 @@ select.ui-datepicker-year,select.ui-datepicker-month
 		z-index: -1
 		// +tr(background .3s)
 		+r(600)
-			background-position: top 60px center
+			background-position: top 40px center
 	&-breadcrums
 		position: absolute
 		+rem(left, 15px)
@@ -3125,13 +3215,24 @@ select.ui-datepicker-year,select.ui-datepicker-month
 			+rem(padding-top,20px)
 	&-title
 		display: flex
-		flex-flow: row nowrap
+		flex-flow: row wrap
 		+rem(padding-bottom, 38px)
+		justify-content: space-between
+		align-items: center
 		.title
 			flex-basis: 70%
 			flex-grow: 1
 			line-height: 1.2
 			color: $white
+			&:not(:only-child)
+				max-width: calc(100% - 220px)
+				+r(650)
+					width: 100%
+					max-width: 100%
+				&~.btn
+					+rem(margin-top,25px)
+			&~.btn 
+				+rem(min-width,182px)
 	&-form
 		font-size: 0
 		+rem(margin-right,-11px)
@@ -3150,6 +3251,9 @@ select.ui-datepicker-year,select.ui-datepicker-month
 				display: inline-block
 				vertical-align: top
 				width: 50%
+				&:nth-child(2)
+					.label,label 
+						opacity: 1
 				&:first-child
 					.input-main,.select-check:not(.price-total)
 						border-bottom-right-radius: 0
@@ -3421,6 +3525,28 @@ ul.special
 			+rem(padding-bottom,60px)	
 		.title
 			+rem(padding-bottom,22px)
+		&.rules-content
+			padding-top: 0
+			+rem(margin-top,-60px)
+			padding-bottom: 0
+			.rules-inner
+				padding-top: 0
+			&+.aside-wrapp
+				+rem(padding-top,40px)
+				.content-column-right .caption-content
+					margin-bottom: 0
+					+rem(margin-top,30px)
+				.content-column-content
+					+clr 
+					p.special
+						+rem(max-width,300px)
+
+						float: right
+						+rem(margin-right,125px)
+						+r(1024)
+							max-width: 100%
+							float: none
+							margin-right: 0
 	&-inner
 		display: flex
 		flex-flow: row nowrap
@@ -3455,7 +3581,7 @@ ul.special
 					+rem(font-size,20px)
 					color: rgb(146, 155, 174);
 					position: absolute
-					+rem(top,4px)
+					+rem(top,6px)
 					+rem(left,-25px)
 
 
@@ -3491,12 +3617,14 @@ ul.special
 			display: none
 	&-stick
 		+r(768)
-			border: 1px solid $border
+			
 			+rem(border-radius, 3px)
 			width: 100%
 			+rem(max-width,400px)
 			text-align: left
 			+rem(margin-bottom,30px)
+			&.js-dropdown-parent
+				border: 1px solid $border
 			.aside-list.bold
 				margin-top: 0
 				+tr(max-height .3s ease-in-out)
@@ -3903,8 +4031,6 @@ ul.special
 						+rem(right, -5px)
 .table-wrapper
 	position: relative
-	+rem(margin-bottom,-60px)
-	+rem(padding-bottom,60px)	
 .table-price
 	border: none
 	.table-item
@@ -4525,6 +4651,23 @@ ul.special
 				text-align: left
 				+rem(padding-left,100px)
 				+rem(height,80px)
+				.dropdown-target
+					+rem(left,-84px)
+					right: auto
+					width: 100%
+					+rem(max-width,400px)
+					.dropdown-inner
+						&:after
+							display: none
+				&.small
+					.dropdown-target
+						+rem(left,-44px)
+			+r(440)
+				.dropdown-target
+					+rem(min-width,300px)	
+				&.small
+					.dropdown-target
+						+rem(left,-84px)
 			&:hover
 				.item-circle:after
 					background-color: $org
@@ -4534,7 +4677,9 @@ ul.special
 				+rem(min-width,240px)
 				left: -25%
 				+r(1024)
-					display: none
+					+rem(left,-34px)
+
+
 			.dropdown-content
 				+rem(padding,25px 15px 35px 15px)
 				.text-sm
@@ -4638,7 +4783,7 @@ ul.special
 			padding: 0
 		&-inner
 			width: 100%
-			h2
+			h3,.title.h3
 				color: $textTitle
 				line-height: 2;
 				+rem(font-size, 20px)
@@ -4654,6 +4799,66 @@ ul.special
 				+rem(margin,25px 0 25px)
 				&:first-child
 					+rem(margin,5px 0 25px)
+			.text-bold
+				+rem(margin,25px 0 25px)
+				&:first-child
+					+rem(margin,5px 0 25px)
+			b 
+				font-weight: 600
+				color: $blk
+			i 
+				font-style: italic
+			img,figure 
+				display: block
+				max-width: 100%
+				+rem(margin,60px auto)
+				position: relative
+				+r(768)
+					+rem(margin,35px auto)
+					&:first-child
+						+rem(margin,5px auto 35px)
+				&:first-child
+					+rem(margin,5px auto 60px)
+				figcaption 
+					+rem(font-size,13px)
+					font-style: italic
+					color: rgb(64, 64, 64);
+					line-height: 1.538;
+					position: absolute
+					left: 115%
+					+rem(width,200px)
+					bottom: 0
+					background-color: transparent
+					+rem(margin-top,15px)
+					+r(991)
+						position: static
+						width: 100%
+						
+			figure
+				&>img
+					margin: 0 auto !important
+			.slider-bus-slider
+				// +rem(max-width,642px)
+				max-width: 100%
+				padding-right: 0
+				display: block
+				width: auto
+				+rem(margin,40px auto)
+				&:first-child
+					+rem(margin,5px auto 40px)
+				&-inner
+					position: relative
+					height: 0
+					padding-bottom: 56.25%
+					.slick-list,.slick-track
+						+coverdiv
+				ul 
+					margin: 0
+				li 
+					padding-left: 0
+					&:before
+						display: none
+						
 			blockquote
 				background-color: #f0f4f7 
 				+rem(margin,55px 0 55px)
@@ -4665,7 +4870,7 @@ ul.special
 				+rem(padding,20px 25px)
 			ul 
 				+rem(margin,40px 0 40px)
-				li 
+				&>li 
 					+rem(font-size,15px)
 					color: rgb(101, 101, 101);
 					line-height: 1.25
@@ -4673,6 +4878,8 @@ ul.special
 					+rem(padding-left,17px)
 					display: block
 					+rem(margin,10px 0)
+					ol,ul 
+						+rem(margin, 5px 0 )
 					&:before
 						content: ''
 						display: inline-block
@@ -4683,6 +4890,23 @@ ul.special
 						+rem(left,2px)
 						+rem(top,7px)
 						position: absolute
+			ol 
+				+rem(margin,40px 0 40px)
+				counter-reset: num
+				li 
+					+rem(font-size,15px)
+					counter-increment: num
+					color: rgb(101, 101, 101);
+					line-height: 1.25
+					position: relative
+					display: block
+					+rem(margin,10px 0)
+					&:before
+						content: counter(num)
+						+rem(font-size,15px)
+						color: $bl 
+						font-weight: 600
+						+rem(margin-right,10px)
 			a 
 				box-shadow:  0 -2px 0 0 #fff,  0 1px 0 0 $org
 				&:active
@@ -4778,6 +5002,8 @@ a.caption-content
 .stpdf2
 	font-family: Open Sans;
 	font-weight: 600
+
+
 //=====================================//
 //        стили табов карты
 //=====================================//
@@ -5100,6 +5326,14 @@ a.caption-content
 				&.s50
 					+r(500)
 						width: 100%
+				&.s20
+					width: 20%
+					+r(950)
+						width: 33.33%
+					+r(700)
+						width: 50%
+					+r(450)
+						width: 100%
 			.selects,.input-main
 				background-color: #fafafa
 				+tr(background-color .3s)
@@ -5208,6 +5442,33 @@ a.caption-content
 			// 	line-height: 1.5
 			.text-bold
 				+rem(margin-bottom,10px)
+			ul 
+				+rem(margin,15px 0 15px)
+				li 
+					+rem(font-size,15px)
+					color: rgb(101, 101, 101);
+					line-height: 1.25
+					position: relative
+					+rem(padding-left,17px)
+					display: block
+					+rem(margin,10px 0)
+					&:before
+						content: ''
+						display: inline-block
+						border-radius: 50%
+						background-color: $bl 
+						+rem(width,6px)
+						+rem(height,6px)
+						+rem(left,2px)
+						+rem(top,7px)
+						position: absolute
+				a 
+					box-shadow:  0 -2px 0 0 #fff,  0 1px 0 0 $org
+					&:active
+						box-shadow: none
+					&:hover
+						+rm(1025)
+							box-shadow: none
 			&:before
 				content: ''
 				position: absolute
@@ -5466,6 +5727,8 @@ a.caption-content
 			+rem(max-width,180px)
 			+rem(font-size,13px)
 			line-height: 1.4
+		a.text-1
+			display: block
 		.text-sm
 			+rem(margin-bottom,18px)
 			+r(768)
@@ -5534,6 +5797,9 @@ a.caption-content
 			color: $org
 			.arr-down
 				transform: scale(1,-1)
+		&.disabled
+			opacity: .7
+			pointer-events: none
 		span, i
 			display: inline-block
 			vertical-align: top
@@ -6060,5 +6326,696 @@ ymaps
 		.input-main
 			font-weight: 400
 			+rem(font-size,14px)
+
+
+//=====================================//
+//         	small-switcher
+//=====================================//
+.btn-switcher
+	font-size: 0
+	white-space: nowrap
+	border-radius: 3px
+	overflow: hidden
+	display: inline-block
+	&-elem
+		display: inline-block
+		vertical-align: top
+		background-color: $white
+		+padlr(5px)
+		text-align: center 
+		text-align-last: center
+		line-height: 1
+		+nosel
+		+rem(padding-top,7.5px)
+		+rem(padding-bottom,7.5px)
+		+rem(font-size,13px)
+		+rem(min-width,60px)
+		color: $bl
+		cursor: pointer
+		border-top: 1px solid $bb
+		border-right: 1px solid $bb
+		border-bottom: 1px solid $bb
+		&:first-child
+			border-left: 1px solid $bb
+			border-bottom-left-radius: 3px
+			border-top-left-radius: 3px
+		&:last-child
+			border-bottom-right-radius: 3px
+			border-top-right-radius: 3px
+		&.active
+			background-color: $bl
+			color: $white
+			pointer-events: none
+			border-color: $bl
+
+
+
+
+
+//=====================================//
+//         	.booking module styles
+//====================================//
+
+.booking
+	&-wrapper
+		font-size: 0
+		+rem(padding-top,128px)
+		+rem(padding-bottom,150px)
+		+r(768)
+			+rem(padding-top,88px)
+			+rem(padding-bottom,50px)
+		+r(600)
+				+rem(margin, 0 -15px)
+		&-inner
+			counter-reset: blocks
+			border: 1px solid $bb
+			position: relative
+			+r(768)
+					+rem(margin-top,50px)
+			+rm(769)
+				display: flex
+				flex-flow: row wrap
+				align-items: flex-start
+				justify-content: center
+				.booking-smallcont
+					&:first-child
+						order: 1
+					&:nth-child(3)
+						order: 2
+					&:nth-child(5)
+						order: 3
+					&:nth-child(7)
+						order: 4
+					&:nth-child(9)
+						order: 5
+				.booking-block
+					&:nth-child(2)
+						order: 6
+					&:nth-child(4)
+						order: 7
+					&:nth-child(6)
+						order: 8
+					&:nth-child(8)
+						order: 9
+	&-smallcont
+		text-align: center
+		counter-increment: blocks
+		&:not(.options),&:not(.active)
+			cursor: pointer
+		&:not(:last-child)
+			border-right: 1px solid $bb
+			border-bottom: 1px solid $bb
+		+vertical
+		+rm(1025)
+			+rem(height,100px)
+			width: 18.7%
+			&.options
+				width: 25.2%
+		+screen(769,1024)
+			+rem(height,100px)
+			width: 20%
+			&.options
+				width: 20%
+		+r(768)
+			&:not(.options)
+				+rem(height,80px)
+			&:not(:first-child):not(.options)
+				border-top: $bb
+			border-bottom: none!important
+		+r(600)
+			text-align: left
+			+rem(padding-left,55px)
+		&.off
+			background-color: #fdfdfd
+			pointer-events: none
+			.text-1
+				color: $grayl
+				&:before
+					border-color: $grayl
+					color: $grayl
+		&.filled
+			.text-1
+				color: $blk
+				&:before
+					border-color: $blk
+					color: $blk
+		&.active
+			font-weight: 600
+			pointer-events: none
+			border-bottom-color: transparent
+			.text-1
+				color: $bl
+				&:before
+					background-color: $bl 
+					border-color: $bl 
+					color: $white
+		&.options
+			+padlr(30px)
+			+r(1160)
+				+padlr(15px)
+			+r(768)
+				position: absolute
+				left: 0
+				right: 0
+				+rem(top,-50px)
+			.booking-smallcont-inner
+				+justify
+				&>div
+					display: inline-block
+					vertical-align: middle
+					
+				+screen(769,1024)
+					text-align: center
+					.contry-switcher
+							display: block
+							.dropdown-select-wrapp
+								+rem(margin, 15px auto 0)
+					
+		&-inner
+			display: inline-block
+			vertical-align: middle
+			width: 100%
+			+padlr(5px)
+			&>.text-1
+				&:before
+					display: inline-block
+					+rem(padding,5px)
+					border-radius: 50%
+					content: counter(blocks)
+					+rem(font-size,13px)
+					border: 1.5px solid $bb
+					text-align: center
+					+rem(width,15px)
+					+rem(height,15px)
+					+rem(line-height,15px)
+					+rem(margin-right,10px)
+	&-block
+		width: 100%
+		&-inner
+			+padlr(40px)
+			+rem(padding-top,40px)
+			+rem(padding-bottom,50px)
+			+r(768)
+				+padlr(15px)
+				+rem(padding-top,20px)
+				position: relative
+				&:before
+					content: ''
+					position: absolute
+					+rem(left,15px)
+					+rem(right,15px)
+					top: 0
+					height: 1px
+					background-color: #d7d7d7
+			.page-head-form
+				padding-bottom: 0
+			.table-wrapper
+				*,.table-item
+					border: none
+					.dropdown-target
+						z-index: 2
+						+rem(min-width,210px)
+						.dropdown-inner
+							+rem(padding,15px)
+						
+				.table-item
+					width: auto
+					&.table-road
+						+rem(width,320px)
+						padding-left: 0
+					&:nth-child(2)
+						+rem(width,185px)
+					&:nth-child(3)
+						+rem(width,180px)
+					&:nth-child(5)
+						+rem(width,205px)
+						padding-right: 0
+						+r(1150)
+							+rem(width,165px)
+				.table-row
+					.table-item
+						padding-top: 12px !important
+				.table-head
+					.table-item
+						+rem(padding-top,5px)
+						+rem(padding-bottom,5px)
+						+r(650)
+							+rem(min-height,47px)
+
+			.select-text
+				font-weight: 400
+			.form-block-section
+				+padlr(0)
+				padding-bottom: 0
+				.select-text
+					+rem(font-size,15px)
+				.input-form
+					+rem(margin-right,-20px)
+					.input-item
+						+rem(padding-right,20px)
+						+rem(margin-bottom,25px)
+						.btn
+							+rem(margin-top,23px)
+			.form-block-wrapper
+				border: none
+				margin: 0
+				.form-block-section
+					.input-item
+						margin-bottom: 2.8125rem
+						&.s33
+							+r(700)
+								width: 50%
+							+r(440)
+								width: 100%
+						&.s50
+							+r(700)
+								width: 100%
+			.form-block-footer
+				+padlr(0)
+		&-head
+			+rem(margin-bottom,30px)
+			display: flex
+			flex-flow: row wrap
+			align-items: flex-start
+			justify-content: space-between
+			+r(768)
+				justify-content: flex-start
+				.title
+					width: 100%
+			.title
+				width: calc(100% - 25rem)
+		&-date
+			+rem(margin-right,-12px)
+			+rem(margin-top,10px)
+			+r(768)
+				+rem(margin-left,-8px)
+			+r(380)
+				.text-1
+					+rem(font-size,12px)
+					+padlr(5px)
+				.table-navigation-link
+					+rem(font-size,12px)
+					i 
+						+rem(margin-left,3px)
+						+rem(margin-right,3px)
+			&-inner
+				display: flex
+				flex-flow: row nowrap
+				align-items: baseline
+				white-space: nowrap
+				.text-1
+					+padlr(10px)
+					+rem(font-size,13px)
+					span
+						color: $bl
+				.table-navigation-link
+					padding-right: 0
+					svg 
+						stroke: #929bae
+					&:hover
+						svg 
+							stroke: #0f4a9b
+					&:first-child
+						i 
+							transform: rotate(90deg)
+					&:last-child
+						i 
+							transform: rotate(-90deg)
+.info-i
+	&>svg
+		+rem(width,15px)
+		+rem(height,15px)
+		vertical-align: sub
+		+rem(margin-left,5px)
+.promocode
+	&-wrapper
+		+rem(margin,0 -40px)
+		+padlr(40px)
+		position: relative
+		+r(768)
+			+rem(margin,0 -15px)
+			+padlr(15px)
+		.dropdown-target
+			z-index: 2
+			+rem(min-width,210px)
+			.dropdown-inner
+				+rem(padding,15px)
+	&-inner
+		display: flex
+		flex-flow: row wrap
+		align-items: flex-start
 		
+		+rem(padding-top,36px)
+		+rem(padding-bottom,38px)
+		+r(768)
+			+rem(padding-top,16px)
+			+rem(padding-bottom,20px)
+			&:before
+				display: none
+		&:before,&:after
+			content: ''
+			position: absolute
+			height: 1px
+			left: 0
+			right: 0
+			background: linear-gradient(90deg,#cecece,hsla(0,0%,100%,0) 30%);
+			background-position: bottom;
+			background-size: 6px 2px;
+			background-repeat: repeat-x;
+		&:before
+			top: 0
+		&:after
+			bottom: 0
+	&-text
+		+rem(max-width,332px)
+		+rem(padding-right,15px)
+		&>.text-1
+			+rem(margin-top,15px)
+			line-height: 1.3
+	&-input
+		+rem(padding-top,9px)
+		+r(768)
+			+rem(padding-top,15px)
+			width: 100%
+			white-space: nowrap
+		+r(380)
+			.input-wrapper
+				width: calc(100% - 7.5rem)
+				max-width: calc(100% - 7.5rem)
+		.input-wrapper,.promocode-btn
+			display: inline-block
+			vertical-align: top
+			white-space: normal
+		.input-wrapper
+			+rem(max-width,202px)
+	&-btn
+		+rem(padding-top,24px)
+		+rem(padding-left,20px)
+		+r(768)
+			+rem(padding-left,10px)
+			+rem(padding-top,25px)
+			.btn 
+				span
+					+padlr(15px)
+.booking-details
+	&-inner
+		display: flex
+		flex-flow: row wrap
+		align-items: stretch
+		+rem(margin-right,-26px)
+		.dropdown-target
+			z-index: 2
+			+rem(min-width,210px)
+			.dropdown-inner
+				+rem(padding,15px)
+	&-card
+		width: 33.33%
+		+rem(padding-right,26px)
+		+r(950)
+			width: 50%
+			+rem(margin-bottom,20px)
+		+r(600)
+			width: 100%
+		&-head
+			+padlr(24px)
+			+rem(padding-top,37px)
+			display: flex
+			flex-flow: row wrap
+			justify-content: space-between
+			align-items: center
+			+rem(margin-right,-5px)
+			+rem(margin-bottom,10px)
+			+r(600)
+				+rem(padding-top,27px)
+			.table-navigation-link
+				padding-right: 0
+		&-inner
+			border: $bbl
+			height: 100%
+			+rem(padding-bottom,35px)
+			.person-profile-about
+				width: 100%
+				max-width: 100%
+			.person-profile-elem 
+				+rem(padding-bottom,10px)
+				&.summ
+					position: relative
+					+rem(padding-top,80px)
+					&:before
+						content: ''
+						position: absolute
+						+rem(top,30px)
+						left: 0
+						+rem(right,-20px)
+						height: 1px
+						background: linear-gradient(90deg,#cecece,hsla(0,0%,100%,0) 30%);
+						background-position: bottom;
+						background-size: 6px 2px;
+						background-repeat: repeat-x;
+				.text-sm
+					+rem(margin-bottom,8px)
+				.services-item-link
+					line-height: 1.2
+
+.faq
+	&-wrapper
+		+r(1024)
+			+rem(padding-top,20px)
+		+r(735)
+			+rem(padding-top,40px)
+		.question-inner
+			+r(930)
+				overflow-x: scroll
+				justify-content: flex-start
+				.question-item
+					+rem(min-width,190px)
+					margin: 0
+	&-answer
+		+rem(margin-top,30px)
+		+r(768)
+			margin-top: 0
+		+r(480)
+			+padlr(15px)
+		.tabs-cont
+			+padlr(0)
+		.feedback-wrapper
+			+rem(margin, 5px auto)
+			+rem(max-width,700px)
+			.feedback-item
+				padding-bottom: 0
+				+rem(padding-top,20px)
+				.link-border
+					+rem(font-size,15px)
+					font-weight: 600
+			.feedback-item-reply
+				+rem(max-width,650px)
+
+			.feedback-item:not(:last-child)
+				border: none
+		.feedback-all
+			+rem(margin-top,60px)
+			+r(768)
+				+rem(margin-top,35px)
+.aside-blue
+	+rem(padding-right,20px)
+	.aside-stick
+			border: none
+.blue-card
+	background-color: #f0f4f7
+	+padlr(25px)
+	// +rem(max-width,233px)
+	+rem(padding-top,20px)
+	+rem(padding-bottom,30px)
+	+r(768)
+		text-align: center
+	.info-block
+		+rem(margin-bottom,10px)
+	.info-block-link
+		&.bold
+			color: $bl
+			+rem(font-size,16px)
+			+rem(margin,8px 0)
+			&:hover
+				color: $org
+			&.descr:not(:hover)
+				color: $blk2
+			&.descr
+				+rem(margin-bottom,17px)
+				+rem(font-size,15px)
+
+		&.descr
+			flex-flow: row wrap
+			line-height: 1.4
+			span.main
+				order: 2
+			span:not(.main)
+				order: 1
+				width: 100%
+				padding-left: 0	
+		&:not(.bold)
+			line-height: 1.6
+			+rem(margin-bottom,17px)
+	.btn
+		span 
+			+padlr(5px)
+		width: 100%
+		+rem(margin-top,12px)
+		+rem(margin-bottom,22px)
+		+rem(max-width,250px)
+.map-wrapper
+	width: 68%	
+	+rem(max-width,660px)
+	border: $bb
+	+r(950)
+		max-width: 100%
+		width: 100%
+		.company-section
+			padding-bottom: 0
+			margin-bottom: 0
+			.company-section-row
+				margin-right: 0
+			.company-section-block
+				+rem(padding-right,30px)
+				padding-left: 0 !important
+				&:first-child
+					width: 100%
+	+r(360)
+		.company-section-block
+			width: 100% !important
+	.company-section
+		border: none
+		position: relative
+		+rem(padding-bottom,30px)
+		&:not(:first-child)
+			border-top: $bb
+		&>.text-medium
+			+rem(margin-top,30px)
+		.text-sm
+			max-width: 	100%
+		.company-section-block
+			+rem(margin,20px 0 30px)
+			+rem(padding-right,70px)
+		.map-container
+			position: absolute
+			left: calc(100% - 4.375rem)
+			+rem(height,250px)
+			width: 59%	
+			+rem(top,35px)
+			border: $bb
+			background-color: $white
+			+r(950)
+				position: static
+				width: auto
+				+rem(margin,0 -32px)
+				border: none
+			+r(400)
+				+rem(margin,0 -18px)
+
+.service-mainwrap
+	.services
+		&-wrapper
+			font-size: 0
+			+rem(margin-right,-8px)
+			display: flex
+			flex-flow: row wrap
+			align-items: stretch
+			justify-content: center
+			+rem(margin-top,25px)
+			+rem(margin-bottom,115px)
+			+r(950)
+				+padlr(0)
+				+rem(margin-bottom,85px)
+			+r(700)
+				+rem(margin-bottom,45px)	
+		&-item
+			width: 33.33%
+			+rem(padding-right,8px)
+			+r(950)
+				width: 50%
+			+r(700)
+				width: 100%
+			&-inner
+				border: $bb
+				height: 100%
+				+tr(border-color .3s)
+				z-index: 1
+				&:after
+					content: ''
+					+coverdiv
+					z-index: -1
+					opacity: 0
+					+tr(opacity .3s)
+					box-shadow: 0px 10px 27px 0px rgba(7, 35, 53, 0.11)
+				&:before
+					display: none
+				&:hover
+					+rm(1025)
+						border-color: transparent 
+						&:after
+							opacity: 1
+						.services-item-bg
+							&-middle
+								transform: scale(1.1)
+						.services-item-footer
+							border-color: $bl
+							.btn 
+								opacity: 1
+								visibility: visible
+			&-bg 
+				+rem(height,121px)
+				+rem(margin-right,-1px)
+				+rem(margin-left,-1px)
+				+rem(margin-top,-1px)
+				overflow: hidden
+				&-middle
+					height: 100%
+					width: 100%
+					+tr(transform .3s)
+				&-inner
+					height: 100%
+					width: 100%
+					+cover
+					transform: translateX(0)
+			&-head
+				+rem(margin-top,-42px)
+			&-body
+				padding-left: 10%
+				+rem(margin-top,44px)
+				+rem(margin-bottom,57px)
+				+r(950)
+					+rem(margin-top,30px)
+					+rem(margin-bottom,45px)
+				+r(700)
+					+padlr(15px)
+			&-links
+				padding-left: 10%
+			&-footer
+				+rem(margin-top,19px)
+				padding-left: 10%
+				padding-right: 7%
+				+rem(padding-bottom,35px)
+				+clr
+				border-bottom: 2px solid transparent
+				+rem(min-height,82px)
+				+tr(border-color .3s)
+				+r(700)
+					+padlr(15px)
+				.link-border
+					+rem(margin-top,10px)
+				.btn 
+					float: right
+					transition: opacity .3s, visibility .3s,border-color .3s,background-color .3s
+					+r(700)
+						float: none
+					+rm(1025)
+						opacity: 0
+						visibility: hidden
+
+
+
+					
+
+									
+
+
 
