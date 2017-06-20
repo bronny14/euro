@@ -374,10 +374,10 @@ body, .out
 				position: relative
 				text-align: center
 				+r(600)
-					width: 50%
+					width: 33.33%
 					+rem(max-width,82px)
-				+r(440)	
-					width: 40%
+				// +r(440)	
+				// 	width: 40%
 				.header-btn-inner
 					+coverdiv
 					+vertical
@@ -391,7 +391,10 @@ body, .out
 					overflow: visible
 					vertical-align: middle
 					+rem(max-height, 25px)
-					
+				&.mobnav-phone
+					svg 
+						stroke: none
+						fill: $white
 				.navTrigger
 					+rem(width,33px)
 					+rem(height,23px)

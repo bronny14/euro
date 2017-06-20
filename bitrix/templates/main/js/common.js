@@ -185,6 +185,25 @@ document.addEventListener("DOMContentLoaded", function() {
 			}, 400)
 		}
 	});
+	function mobilePhones(){
+		var trigger = $('.js-phone-trigger'),
+			menutrigger = $('.js-menu'),
+			menuCont = $('.header-mobile-menu-inner'),
+			target = menuCont.find('.mobile-contact'),
+			targetOff = target.position().top;
+		$(window).on('resize',function(){
+			targetOff = target.position().top;
+		});
+
+		trigger.on('click', function(){
+			menutrigger.not('.active').trigger('click');
+			setTimeout(function() {
+				menuCont.not(':animated').animate({
+					scrollTop: targetOff
+				}, 300);
+			},500);
+		});
+	}mobilePhones();
 	//вопросы со страницы вопросов
 	function Expand(){
 		var block = $('.js-expand-block'),
