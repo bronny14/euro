@@ -196,13 +196,13 @@
                   </div>
                   <!--отображается с 1024-->
                   <div class="header-bottom-mobnav">
-                    <a class="header-bottom-mobnav-acc mobnav-phone js-phone-trigger" href="#" data-modal="login">
+                    <span class="header-bottom-mobnav-acc mobnav-phone js-menu" data-menu=".phones-content">
                       <div class="header-btn-inner">
                         <svg class="icon icon-drop">
                           <use xlink:href="#phone" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
                       </div>
-                    </a>
+                    </span>
                     <a class="header-bottom-mobnav-acc js-popup-button" href="#" data-modal="login">
                       <div class="header-btn-inner">
                         <svg class="icon icon-drop">
@@ -210,7 +210,7 @@
                         </svg>
                       </div>
                     </a>
-                    <div class="header-bottom-mobnav-btn js-menu">
+                    <div class="header-bottom-mobnav-btn js-menu" data-menu=".main-content">
                       <div class="header-btn-inner">
                         <div class="navTrigger">
                           <i></i>
@@ -225,92 +225,142 @@
               <div class="header-mobile-menu">
                 <div class="header-mobile-menu-outer">
                   <div class="header-mobile-menu-inner">
-                    <div class="mobile-header-lang">
-                      <a class="top-link header-lang-item active" href="#">
-                        <span>Ru</span>
-                      </a>
-                      <span class="top-link header-lang-item">
-                        <span>En</span>
-                      </span>
-                    </div>
-                    <div class="mobile-list-wrapper">
-                      <ul class="mobile-list bold">
-                        <li class="mobile-menu-item active">
-                          <a href="#">
-                            <span>Рейсы</span>
-                          </a>
-                        </li>
-                        <li class="mobile-menu-item">
-                          <a href="#">
-                            <span>Трансфер в аэропорт</span>
-                          </a>
-                        </li>
-                        <li class="mobile-menu-item">
-                          <a href="#">
-                            <span>Аренда автобусов</span>
-                          </a>
-                        </li>
-                      </ul>
-                      <ul class="mobile-list">
-                        <li class="mobile-menu-item active">
-                          <a href="#">
-                            <span>Клиентам</span>
-                          </a>
-                        </li>
-                        <li class="mobile-menu-menu-item">
-                          <a href="#">
-                            <span>Агентствам</span>
-                          </a>
-                        </li>
-                        <li class="mobile-menu-menu-item">
-                          <a href="#">
-                            <span>Перевозчикам</span>
-                          </a>
-                        </li>
-                        <li class="mobile-menu-menu-item">
-                          <a href="#">
-                            <span>Контакты</span>
-                          </a>
-                        </li>
-                        <li class="mobile-menu-menu-item">
-                          <a href="#">
-                            <span>Бюро находок</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="mobile-contact">
-                      <div class="info-block">
-                        <a class="info-block-head" href="#">Бронирование</a>
-                        <ul class="info-block-list">
-                          <li class="info-block-item">
-                            <a class="info-block-link bold" href="tel:+375295000252">+375 (29) 5000-252</a>
+                    <!-- 2 контейнера для меню и телефонов-->
+                    <!-- у кнопок выше дата атрибуты соответствующие классам контейнеров-->
+                    <div class="header-mobile-menu-content main-content">
+                      <div class="mobile-header-lang">
+                        <a class="top-link header-lang-item active" href="#">
+                          <span>Ru</span>
+                        </a>
+                        <span class="top-link header-lang-item">
+                          <span>En</span>
+                        </span>
+                      </div>
+                      <div class="mobile-list-wrapper">
+                        <ul class="mobile-list bold">
+                          <li class="mobile-menu-item active">
+                            <a href="#">
+                              <span>Рейсы</span>
+                            </a>
                           </li>
-                          <li class="info-block-item">
-                            <a class="info-block-link bold" href="tel:+375295000252">+375 (29) 5000-252</a>
+                          <li class="mobile-menu-item">
+                            <a href="#">
+                              <span>Трансфер в аэропорт</span>
+                            </a>
                           </li>
-                          <li class="info-block-item">
-                            <a class="info-block-link bold" href="tel:+79055591545">+375 (29) 5000-252</a>
+                          <li class="mobile-menu-item">
+                            <a href="#">
+                              <span>Аренда автобусов</span>
+                            </a>
+                          </li>
+                        </ul>
+                        <ul class="mobile-list">
+                          <li class="mobile-menu-item active">
+                            <a href="#">
+                              <span>Клиентам</span>
+                            </a>
+                          </li>
+                          <li class="mobile-menu-menu-item">
+                            <a href="#">
+                              <span>Агентствам</span>
+                            </a>
+                          </li>
+                          <li class="mobile-menu-menu-item">
+                            <a href="#">
+                              <span>Перевозчикам</span>
+                            </a>
+                          </li>
+                          <li class="mobile-menu-menu-item">
+                            <a href="#">
+                              <span>Контакты</span>
+                            </a>
+                          </li>
+                          <li class="mobile-menu-menu-item">
+                            <a href="#">
+                              <span>Бюро находок</span>
+                            </a>
                           </li>
                         </ul>
                       </div>
-                                    <div class="info-block">
-                                      <div class="info-block-head"></div>
-                                      <ul class="info-block-list">
-                                        <li class="info-block-item">
-                                          <a class="info-block-link bold descr" href="tel:+74952818817"> 
-                                            <span class="main">+7 (495) 281-88-17</span>
-                                            <span>Москва</span>
-                                          </a>
-                                        </li>
-                                        <li class="info-block-item">
-                                          <a class="info-block-link bold descr" href="tel:+78122442019"> 
-                                            <span class="main">+7 (812) 244-20-19</span>
-                                            <span>Санкт-Петербург</span>
-                                          </a>
-                                        </li>
-                                      </ul>
-                                    </div>
+                      <div class="mobile-contact">
+                        <div class="info-block">
+                          <a class="info-block-head" href="#">Бронирование</a>
+                          <ul class="info-block-list">
+                            <li class="info-block-item">
+                              <a class="info-block-link bold" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link bold" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link bold" href="tel:+79055591545">+375 (29) 5000-252</a>
+                            </li>
+                          </ul>
+                        </div>
+                                      <div class="info-block">
+                                        <div class="info-block-head"></div>
+                                        <ul class="info-block-list">
+                                          <li class="info-block-item">
+                                            <a class="info-block-link bold descr" href="tel:+74952818817">
+                                              <span class="main">+7 (495) 281-88-17</span>
+                                              <span>Москва</span>
+                                            </a>
+                                          </li>
+                                          <li class="info-block-item">
+                                            <a class="info-block-link bold descr" href="tel:+78122442019"> 
+                                              <span class="main">+7 (812) 244-20-19</span>
+                                              <span>Санкт-Петербург</span>
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                      </div>
+                    </div>
+                    <div class="header-mobile-menu-content phones-content">
+                      <div class="phones-wrap">
+                        <div class="info-block">
+                          <a class="info-block-head" href="#">Бронирование</a>
+                          <ul class="info-block-list">
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+79055591545">+375 (29) 5000-252</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="info-block">
+                          <a class="info-block-head" href="#">Москва</a>
+                          <ul class="info-block-list">
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item viber" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+79055591545">+375 (29) 5000-252</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="info-block">
+                          <a class="info-block-head" href="#">Санкт-Петербург</a>
+                          <ul class="info-block-list">
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item viber" href="tel:+375295000252">+375 (29) 5000-252</a>
+                            </li>
+                            <li class="info-block-item">
+                              <a class="info-block-link phone-item" href="tel:+79055591545">+375 (29) 5000-252</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                     <div class="mobile-soc">
                       <div class="soc-wrapp">

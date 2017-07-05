@@ -1269,10 +1269,20 @@ body, .out {
     padding-bottom: 1.875rem;
     display: inline-block;
     width: 100%;
-    vertical-align: middle; }
+    vertical-align: middle;
+    min-height: 21.875rem; }
     .header-mobile-menu-inner li {
       display: block;
       text-align: center; }
+  .header-mobile-menu-content {
+    display: inline-block;
+    vertical-align: top;
+    -webkit-transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    width: 100%; }
+  .header-mobile-menu .phones-content .info-block-list {
+    margin-top: 0.625rem; }
 
 .select-item {
   display: inline-block;
@@ -1886,7 +1896,8 @@ select.ui-datepicker-year, select.ui-datepicker-month {
 .mobile-list {
   padding: 0 0 1.5rem 0; }
   .mobile-list-wrapper {
-    border-bottom: 1px solid #c5d4e7; }
+    border-bottom: 1px solid #c5d4e7;
+    margin-bottom: 1.5625rem; }
   .mobile-list li a {
     font-size: 0.875rem;
     color: #929bae;
@@ -1909,7 +1920,7 @@ select.ui-datepicker-year, select.ui-datepicker-month {
   text-align: center; }
 
 .mobile-contact {
-  padding-top: 1.5625rem; }
+  margin-top: 1.5625rem; }
   .mobile-contact .info-block-head {
     text-align: center; }
   .mobile-contact .info-block-link {
@@ -2783,6 +2794,35 @@ select.ui-datepicker-year, select.ui-datepicker-month {
         color: #969696;
         padding-left: 0.1875rem;
         font-weight: 400; }
+    .info-block-link.phone-item {
+      min-width: 13.75rem;
+      border: 1px solid #718ea1;
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 40, 85, 0.3);
+      box-shadow: 0px 2px 7px 0px rgba(0, 40, 85, 0.3);
+      padding: 0.3125rem 0.9375rem;
+      border-radius: 4px;
+      display: inline-block;
+      width: auto;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: #fff;
+      margin: 0.1875rem 0; }
+      .info-block-link.phone-item.viber {
+        position: relative; }
+        .info-block-link.phone-item.viber:before {
+          content: '';
+          position: absolute;
+          width: 1.875rem;
+          height: 1.875rem;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: 50% 50%;
+          left: -0.9375rem;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          background-image: url(../img/icons/i-viber.png); }
   .info-block a:hover, .info-block a:active {
     color: #ff8400; }
 
