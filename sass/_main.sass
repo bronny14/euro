@@ -2253,18 +2253,33 @@ select.ui-datepicker-year,select.ui-datepicker-month
 				font-weight: 500
 				color: #fff
 				+rem(margin,3px 0)
-				&.viber
-					position: relative
-					&:before
-						content: ''
-						position: absolute
-						+rem(width,30px)
-						+rem(height,30px)
-						+contain
-						+rem(left,-15px)
-						top: 50%
-						transform: translateY(-50%)
-						background-image: url(../img/icons/i-viber.png)
+				position: relative
+				img
+					position: absolute
+					display: inline-block
+					top: 50%
+					transform: translateY(-50%)
+					+rem(width,30px)
+					+rem(height,30px)
+					+rem(left,-12px)
+					&:nth-of-type(2)
+						+rem(left,-45px)
+					&:nth-of-type(3)
+						//если комку-то действителньо придет в голову такая идея
+						//но видно ее все равно не будет
+						+rem(left,-78px)
+				// &.viber
+					
+				// 	&:before
+				// 		content: ''
+				// 		position: absolute
+				// 		+rem(width,30px)
+				// 		+rem(height,30px)
+				// 		+contain
+				// 		+rem(left,-15px)
+				// 		top: 50%
+				// 		transform: translateY(-50%)
+				// 		background-image: url(../img/icons/i-viber.png)
 				// &:first-child
 				// 	+rem(margin-top,15px)
 		a 

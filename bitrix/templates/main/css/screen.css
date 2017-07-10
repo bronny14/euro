@@ -2806,23 +2806,22 @@ select.ui-datepicker-year, select.ui-datepicker-month {
       font-size: 1.0625rem;
       font-weight: 500;
       color: #fff;
-      margin: 0.1875rem 0; }
-      .info-block-link.phone-item.viber {
-        position: relative; }
-        .info-block-link.phone-item.viber:before {
-          content: '';
-          position: absolute;
-          width: 1.875rem;
-          height: 1.875rem;
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: 50% 50%;
-          left: -0.9375rem;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-          background-image: url(../img/icons/i-viber.png); }
+      margin: 0.1875rem 0;
+      position: relative; }
+      .info-block-link.phone-item img {
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 1.875rem;
+        height: 1.875rem;
+        left: -0.75rem; }
+        .info-block-link.phone-item img:nth-of-type(2) {
+          left: -2.8125rem; }
+        .info-block-link.phone-item img:nth-of-type(3) {
+          left: -4.875rem; }
   .info-block a:hover, .info-block a:active {
     color: #ff8400; }
 
